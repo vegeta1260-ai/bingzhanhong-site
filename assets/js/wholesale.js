@@ -12,6 +12,7 @@
 
   var $ = function (id) { return document.getElementById(id); };
   var apiUrl = (C.api && C.api.url) || '';
+  var track = function (n, p) { if (U.track) U.track(n, p); };
 
   function cleanPhone(v) { return String(v || '').replace(/[^\d]/g, ''); }
   function validPhone(v) { return /^0\d{8,9}$/.test(cleanPhone(v)); }
@@ -119,6 +120,7 @@
 
     if (!apiUrl) {
       btn.textContent = '整理中…';
+      track('wholesale_manual', { qty: data.qty });
       copyToClipboard(toText(data), btn);
       submitting = false;
       return;
@@ -134,6 +136,7 @@
       .then(function (res) {
         if (!res || res.ok !== true) throw new Error('伺服器回應異常');
         $('ok').classList.remove('hide');
+        track('wholesale_inquiry', { qty: data.qty, usage: data.usage });
         btn.textContent = '✓ 已送出，我們會盡快與您聯絡';
         $('ok').scrollIntoView({ behavior: 'smooth', block: 'center' });
       })

@@ -11,6 +11,7 @@
 
   var $ = function (id) { return document.getElementById(id); };
   var show = function (id) { var el = $(id); if (el) el.classList.remove('hide'); };
+  var track = function (n, p) { if (U.track) U.track(n, p); };
 
   var order = null;
   try { order = JSON.parse(sessionStorage.getItem('bzh_order') || 'null'); } catch (e) {}
@@ -49,6 +50,7 @@
 
   /* ---------- 狀態分流 ---------- */
   if (order.saved) {
+    track('order_saved', { payment: order.paymentId, value: order.total, boxes: order.boxes });
     $('done-title').textContent = '訂單已送出';
     $('done-sub').textContent = '感謝您的訂購！我們已收到您的訂單。';
     if (order.orderNo) {
@@ -57,6 +59,7 @@
     }
   } else {
     // 未寫入資料表：明確告知，不謊稱成功
+    track('order_manual', { failed: !!order.failed, payment: order.paymentId });
     $('done-mark').textContent = '！';
     $('done-mark').style.background = 'var(--warm)';
     show('manual-block');
@@ -78,6 +81,7 @@
     $('copy-btn').addEventListener('click', function () {
       var ta = $('manual-text');
       var btn = this;
+      track('copy_line_order');
       function done(ok) {
         btn.textContent = ok ? '✓ 已複製，請貼到 LINE 傳送' : '請長按上方文字自行複製';
         setTimeout(function () { btn.textContent = '複製訂單內容'; }, 4000);

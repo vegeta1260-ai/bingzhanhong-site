@@ -6,16 +6,21 @@
 <title>訂單查詢／付款回報｜冰盞紅酸梅湯</title>
 <meta name="description" content="冰盞紅酸梅湯訂單查詢與付款回報。ATM 轉帳完成後可在此填寫帳號後 5 碼，或查詢訂單目前狀態。">
 <meta name="robots" content="noindex">
+<!-- @include:head -->
 <meta name="theme-color" content="#20604F">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<!-- 只載入標題用的宋體一個字重與等寬體；內文用系統字，零下載（見 site.css 說明） -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css?v=c9946b00">
+<!-- @end:head -->
 </head>
 
 <body class="has-bottombar">
 
+<!-- @include:header sub="訂單查詢／付款回報" -->
+<div class="ribbon"><span data-bzh="campaign.banner"></span></div>
 <header class="site-header">
   <div class="wrap site-header__in">
     <a class="brand" href="index.html">
@@ -25,15 +30,22 @@
         <span class="brand__sub">訂單查詢／付款回報</span>
       </span>
     </a>
-    <nav class="nav">
+    <nav class="nav" aria-label="主選單">
       <a href="product.html">產品</a>
       <a href="story.html">品牌故事</a>
       <a href="index.html#price">價格</a>
       <a href="wholesale.html">團購訂購</a>
       <a href="index.html#faq">常見問題</a>
     </nav>
+    <div class="header-tools">
+      <button class="fontsize" type="button" id="fontsize-toggle" aria-pressed="false" title="放大字體" aria-label="放大字體">
+        <span class="fontsize__s">A</span><span class="fontsize__l">A</span>
+      </button>
+      <a class="btn btn--primary header-cta" href="order.html">立即訂購</a>
+    </div>
   </div>
 </header>
+<!-- @end:header -->
 
 <main class="sec">
   <div class="wrap wrap--narrow">
@@ -160,20 +172,68 @@
   </div>
 </main>
 
+<!-- @include:footer -->
 <footer class="site-footer">
-  <div class="wrap center">
-    <p style="margin:0">© <span data-bzh="year"></span> <span data-bzh="brand.name">冰盞紅</span>　|　<a href="info.html#order">訂購須知</a>　<a href="info.html#privacy">隱私權政策</a></p>
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="index.html" style="margin-bottom:12px">
+        <img class="brand__mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+        <span class="brand__txt"><span class="brand__name" style="color:#fff">冰盞<i style="color:#E8897E">紅</i></span></span>
+      </a>
+      <p style="margin:0">
+        <span data-bzh="brand.product">冰盞紅酸梅湯</span><br>
+        <span data-bzh="product.spec">1000ml × 12 瓶</span>｜<span data-bzh="shipping.method">全程冷藏宅配到府</span>
+      </p>
+    </div>
+    <div>
+      <p class="footer-title">訂購資訊</p>
+      <ul class="footer-list">
+        <li><a href="product.html">產品介紹</a></li>
+        <li><a href="story.html">品牌故事</a></li>
+        <li><a href="order.html">線上訂購</a></li>
+        <li><a href="wholesale.html">團購・企業訂購</a></li>
+        <li><a href="status.html">訂單查詢／付款回報</a></li>
+        <li><a href="info.html#order">訂購須知</a></li>
+        <li><a href="info.html#shipping">配送說明</a></li>
+        <li><a href="info.html#payment">付款說明</a></li>
+        <li><a href="info.html#privacy">隱私權政策</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title">聯絡我們</p>
+      <ul class="footer-list">
+        <li>官方 LINE｜<span data-bzh="contact.lineId">@sph0133f</span></li>
+        <li>客服電話｜<span class="num" data-bzh="contact.tel">0933-661-041</span></li>
+      </ul>
+      <div class="btn-row mt-16">
+        <a class="btn btn--line" data-bzh-link="line" href="#">LINE 聯絡</a>
+        <a class="btn btn--tel" data-bzh-link="tel" href="#">電話聯絡</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-legal">
+    <p style="margin:0 0 6px">
+      營業人名稱：<span data-bzh="legal.company">[待確認]</span>｜
+      統一編號：<span data-bzh="legal.taxId">[待確認]</span>｜
+      食品業者登錄字號：<span data-bzh="legal.foodReg">[待確認]</span>
+    </p>
+    <p style="margin:0">© <span data-bzh="year">2026</span> 冰盞紅</p>
   </div>
 </footer>
+<!-- @end:footer -->
 
+<!-- @include:bottombar -->
 <div class="bottombar">
   <a class="btn btn--primary" href="order.html">立即訂購</a>
   <a class="btn btn--line" data-bzh-link="line" href="#">LINE</a>
   <a class="btn btn--tel" data-bzh-link="tel" href="#">電話</a>
 </div>
+<!-- @end:bottombar -->
 
-<script src="assets/js/config.js?v=1"></script>
-<script src="assets/js/site.js"></script>
-<script src="assets/js/status.js"></script>
+<!-- @include:scripts -->
+<script src="assets/js/config.js?v=d7870ae8"></script>
+<script src="assets/js/site.js?v=d042b059"></script>
+<!-- @end:scripts -->
+<script src="assets/js/status.js?v=8436997a"></script>
 </body>
 </html>

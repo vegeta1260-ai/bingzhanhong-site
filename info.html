@@ -5,16 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>訂購須知・配送・付款・保存・隱私權｜冰盞紅酸梅湯</title>
 <meta name="description" content="冰盞紅酸梅湯的訂購須知、冷藏配送說明、付款方式說明、保存方式與隱私權政策。">
+<!-- @include:head -->
 <meta name="theme-color" content="#20604F">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<!-- 只載入標題用的宋體一個字重與等寬體；內文用系統字，零下載（見 site.css 說明） -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css?v=c9946b00">
+<!-- @end:head -->
 </head>
 
 <body class="has-bottombar">
 
+<!-- @include:header sub="購買說明" -->
+<div class="ribbon"><span data-bzh="campaign.banner"></span></div>
 <header class="site-header">
   <div class="wrap site-header__in">
     <a class="brand" href="index.html">
@@ -24,21 +29,35 @@
         <span class="brand__sub">購買說明</span>
       </span>
     </a>
-    <nav class="nav">
-      <a href="#order">訂購須知</a>
-      <a href="#shipping">配送</a>
-      <a href="#payment">付款</a>
-      <a href="#storage">保存</a>
-      <a href="#privacy">隱私權</a>
+    <nav class="nav" aria-label="主選單">
+      <a href="product.html">產品</a>
+      <a href="story.html">品牌故事</a>
+      <a href="index.html#price">價格</a>
+      <a href="wholesale.html">團購訂購</a>
+      <a href="index.html#faq">常見問題</a>
     </nav>
-    <a class="btn btn--primary header-cta" href="order.html">立即訂購</a>
+    <div class="header-tools">
+      <button class="fontsize" type="button" id="fontsize-toggle" aria-pressed="false" title="放大字體" aria-label="放大字體">
+        <span class="fontsize__s">A</span><span class="fontsize__l">A</span>
+      </button>
+      <a class="btn btn--primary header-cta" href="order.html">立即訂購</a>
+    </div>
   </div>
 </header>
+<!-- @end:header -->
 
 <main class="sec">
   <div class="wrap wrap--narrow">
 
-    <h1 class="sec-title mb-24">購買說明</h1>
+    <h1 class="sec-title mb-16">購買說明</h1>
+    <ul class="toc">
+      <li><a href="#order">訂購須知</a></li>
+      <li><a href="#returns">取消與退換貨</a></li>
+      <li><a href="#shipping">配送說明</a></li>
+      <li><a href="#payment">付款說明</a></li>
+      <li><a href="#storage">保存方式</a></li>
+      <li><a href="#privacy">隱私權政策</a></li>
+    </ul>
 
     <!-- ===== 訂購須知 ===== -->
     <section id="order" class="mb-24">
@@ -54,9 +73,23 @@
         <li>訂單送出後，畫面會顯示訂單編號，請保留以便查詢。</li>
         <li>本商品為<strong>手工製作、小批次生產的冷藏食品</strong>，如遇備貨量不足，我們會主動與您聯絡調整出貨日期。</li>
         <li>如需修改或取消訂單，請在出貨前透過官方 LINE 或客服電話告知；商品出貨後恕無法取消。</li>
-        <li>因本商品屬冷藏保存、保存期限較短之易腐敗食品，依相關規定不適用七日猶豫期之無條件解約，敬請於下單前確認。<span class="tbd">［確切條文用語待確認］</span></li>
-        <li>若收到商品有<strong>包裝破損、漏液或明顯異常</strong>，請於收貨當日拍照並聯絡我們，我們會為您處理。</li>
-        <li>退換貨處理方式：<span class="tbd">[待確認]</span></li>
+        <li>本商品為冷藏食品，<strong>不適用七日猶豫期</strong>；退換貨規則見下方「取消與退換貨」。</li>
+      </ol>
+    </section>
+
+    <hr class="hr">
+
+    <!-- 草稿：以下「取消與退換貨」條文為草稿，依消保法第 19 條與「通訊交易解除權合理例外情事適用準則」第 2 條第 1 款撰寫。
+         其中「7 個工作天退款」「瑕疵補寄運費由店家負擔」為建議的營運政策，請業主確認後移除此註解。 -->
+    <section id="returns" class="mb-24">
+      <h2 class="fieldset__title">取消與退換貨</h2>
+      <ol style="padding-left:1.2em;color:var(--ink-soft)">
+        <li><strong>出貨前取消：</strong>請於出貨前透過官方 LINE 或客服電話告知，我們會為您取消訂單。已完成轉帳者，於確認後 7 個工作天內退款至您的原轉帳帳戶。</li>
+        <li><strong>出貨後無法取消：</strong>本商品為冷藏食品，出貨後即進入冷鏈配送，無法中途召回，敬請於下單前確認。</li>
+        <li><strong>不適用七日猶豫期：</strong>依《消費者保護法》第 19 條及《通訊交易解除權合理例外情事適用準則》第 2 條第 1 款，本商品屬「易於腐敗、保存期限較短」之商品，不適用七日無條件解除契約之規定。本站已於本頁及訂購頁事先告知。</li>
+        <li><strong>商品瑕疵：</strong>收到商品若有包裝破損、漏液、變質或品項錯誤，請於<strong>收貨當日</strong>拍照，並透過官方 LINE 或電話聯絡我們。經確認後，我們會補寄或退款，補寄運費由我們負擔。</li>
+        <li><strong>非瑕疵退貨：</strong>因口味偏好等個人因素，恕不接受退貨或退款。</li>
+        <li><strong>無人簽收：</strong>宅配送達時若無人簽收導致商品退回，冷藏商品品質將受影響而無法再次配送。如需補寄，需另計商品與運費，敬請保持收件電話暢通。</li>
       </ol>
     </section>
 
@@ -167,10 +200,13 @@
 
       <h3 class="card__title mt-24">保存與您的權利</h3>
       <ul style="padding-left:1.2em;color:var(--ink-soft)">
-        <li>資料僅於營運必要期間內保存，保存期間：<span class="tbd">[待確認]</span></li>
-        <li>除配送與法令要求外，不會將您的資料提供給第三方，也不會用於行銷以外的其他用途。</li>
+        <!-- 草稿：保存期間為建議值（訂單依稅務法規保存 5 年），請業主確認 -->
+        <li>訂單資料依稅務法規保存 5 年；付款回報所填之帳號後 5 碼於款項核對完成後 3 個月內刪除。</li>
+        <li>除配送與法令要求外，不會將您的資料提供給第三方，也不會用於行銷用途。</li>
         <li>您可以隨時透過官方 LINE 或客服電話要求查詢、更正或刪除您的個人資料。</li>
-        <li>本網站不使用第三方廣告追蹤程式。</li>
+        <li>若您在訂購頁勾選「記住我的收件資料」，資料只儲存在您自己的裝置（瀏覽器本機儲存空間），不會傳送給我們；可隨時在訂購頁按「清除」刪除。</li>
+        <li data-bzh-analytics="off">本網站不使用第三方廣告追蹤程式。</li>
+        <li data-bzh-analytics="on">本網站使用 Google Analytics 4 統計流量（IP 位址去識別化），僅用於了解網站使用情形，不用於廣告投放。您可透過瀏覽器設定或 Google 提供的停用工具拒絕。</li>
       </ul>
 
       <h3 class="card__title mt-24">聯絡窗口</h3>
@@ -189,24 +225,70 @@
   </div>
 </main>
 
+<!-- @include:footer -->
 <footer class="site-footer">
-  <div class="wrap center">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="index.html" style="margin-bottom:12px">
+        <img class="brand__mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+        <span class="brand__txt"><span class="brand__name" style="color:#fff">冰盞<i style="color:#E8897E">紅</i></span></span>
+      </a>
+      <p style="margin:0">
+        <span data-bzh="brand.product">冰盞紅酸梅湯</span><br>
+        <span data-bzh="product.spec">1000ml × 12 瓶</span>｜<span data-bzh="shipping.method">全程冷藏宅配到府</span>
+      </p>
+    </div>
+    <div>
+      <p class="footer-title">訂購資訊</p>
+      <ul class="footer-list">
+        <li><a href="product.html">產品介紹</a></li>
+        <li><a href="story.html">品牌故事</a></li>
+        <li><a href="order.html">線上訂購</a></li>
+        <li><a href="wholesale.html">團購・企業訂購</a></li>
+        <li><a href="status.html">訂單查詢／付款回報</a></li>
+        <li><a href="info.html#order">訂購須知</a></li>
+        <li><a href="info.html#shipping">配送說明</a></li>
+        <li><a href="info.html#payment">付款說明</a></li>
+        <li><a href="info.html#privacy">隱私權政策</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title">聯絡我們</p>
+      <ul class="footer-list">
+        <li>官方 LINE｜<span data-bzh="contact.lineId">@sph0133f</span></li>
+        <li>客服電話｜<span class="num" data-bzh="contact.tel">0933-661-041</span></li>
+      </ul>
+      <div class="btn-row mt-16">
+        <a class="btn btn--line" data-bzh-link="line" href="#">LINE 聯絡</a>
+        <a class="btn btn--tel" data-bzh-link="tel" href="#">電話聯絡</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-legal">
     <p style="margin:0 0 6px">
-      營業人名稱：<span data-bzh="legal.company"></span>｜
-      統一編號：<span data-bzh="legal.taxId"></span>｜
-      食品業者登錄字號：<span data-bzh="legal.foodReg"></span>
+      營業人名稱：<span data-bzh="legal.company">[待確認]</span>｜
+      統一編號：<span data-bzh="legal.taxId">[待確認]</span>｜
+      食品業者登錄字號：<span data-bzh="legal.foodReg">[待確認]</span>
     </p>
-    <p style="margin:0">© <span data-bzh="year"></span> <span data-bzh="brand.name">冰盞紅</span></p>
+    <p style="margin:0">© <span data-bzh="year">2026</span> 冰盞紅</p>
   </div>
 </footer>
+<!-- @end:footer -->
 
+<!-- @include:bottombar -->
 <div class="bottombar">
   <a class="btn btn--primary" href="order.html">立即訂購</a>
   <a class="btn btn--line" data-bzh-link="line" href="#">LINE</a>
   <a class="btn btn--tel" data-bzh-link="tel" href="#">電話</a>
 </div>
+<!-- @end:bottombar -->
 
-<script src="assets/js/config.js?v=1"></script>
-<script src="assets/js/site.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"index.html"},{"@type":"ListItem","position":2,"name":"購買說明","item":"info.html"}]}
+</script>
+<!-- @include:scripts -->
+<script src="assets/js/config.js?v=d7870ae8"></script>
+<script src="assets/js/site.js?v=d042b059"></script>
+<!-- @end:scripts -->
 </body>
 </html>

@@ -1,0 +1,25 @@
+{{^minimal}}<div class="ribbon"><span data-bzh="campaign.banner"></span></div>
+{{/minimal}}<header class="site-header{{#minimal}} site-header--minimal{{/minimal}}">
+  <div class="wrap site-header__in">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="42" height="42">
+      <span class="brand__txt">
+        <span class="brand__name">冰盞<i>紅</i></span>
+        {{#sub}}<span class="brand__sub">{{sub}}</span>{{/sub}}{{^sub}}<span class="brand__sub" data-bzh="brand.tagline">台南手作酸梅湯・冷藏宅配</span>{{/sub}}
+      </span>
+    </a>
+    {{^minimal}}<nav class="nav" aria-label="主選單">
+      <a href="product.html">產品</a>
+      <a href="story.html">品牌故事</a>
+      <a href="index.html#price">價格</a>
+      <a href="wholesale.html">團購訂購</a>
+      <a href="index.html#faq">常見問題</a>
+    </nav>
+    {{/minimal}}<div class="header-tools">
+      <button class="fontsize" type="button" id="fontsize-toggle" aria-pressed="false" title="放大字體" aria-label="放大字體">
+        <span class="fontsize__s">A</span><span class="fontsize__l">A</span>
+      </button>
+      {{^minimal}}<a class="btn btn--primary header-cta" href="order.html">立即訂購</a>{{/minimal}}{{#minimal}}<a class="btn btn--tel header-cta" data-bzh-link="tel" href="#">客服電話</a>{{/minimal}}
+    </div>
+  </div>
+</header>

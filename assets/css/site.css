@@ -54,7 +54,9 @@
   --radius-lg:  16px;
   --ring:       0 0 0 3px rgba(32,96,79,.28);
 
-  --sans:  "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  /* 內文用系統字：中文網頁字型一個字重就是數 MB，系統字零下載且手機上本來就好看。
+     iOS/macOS → PingFang，Windows → 微軟正黑，Android → 系統的 Noto Sans CJK。 */
+  --sans:  "PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,-apple-system,sans-serif;
   --serif: "Noto Serif TC","Songti TC","PMingLiU",serif;
   --mono:  "IBM Plex Mono",ui-monospace,"Cascadia Mono",monospace;
 
@@ -74,7 +76,7 @@ body{
   background:var(--paper);
   color:var(--ink);
   font-family:var(--sans);
-  font-size:17px;
+  font-size:1.0625rem;   /* 17px；用 rem 讓大字模式能一起放大 */
   line-height:1.85;
   letter-spacing:.015em;
   -webkit-font-smoothing:antialiased;
@@ -147,7 +149,8 @@ a:hover{ color:var(--green-deep); }
 .btn--green:hover{ background:var(--green-deep); color:#fff; }
 .btn--ghost{ background:transparent; color:var(--green); border-color:var(--green); }
 .btn--ghost:hover{ background:var(--green-soft); color:var(--green-deep); }
-.btn--line{ background:var(--line-green); color:#fff; }
+.btn--line{ background:var(--line-green); color:#fff; font-size:1.12rem; letter-spacing:.08em; }
+.btn--line svg{ width:22px; height:22px; flex:0 0 auto; }
 .btn--line:hover{ background:var(--line-green-deep); color:#fff; }
 .btn--tel{ background:var(--surface); color:var(--ink); border-color:var(--line-2); }
 .btn--tel:hover{ border-color:var(--green); color:var(--green-deep); }
@@ -357,10 +360,11 @@ a:hover{ color:var(--green-deep); }
   border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
 }
 .spec-list li{
-  display:flex; flex-wrap:wrap; align-items:baseline; gap:5px 14px;
+  display:grid; grid-template-columns:100px 1fr; align-items:baseline; gap:3px 14px;
   background:var(--surface); padding:15px 20px;
 }
-.spec-list .k{ min-width:100px; color:var(--ink-3); font-size:.92rem; }
+.spec-list .k{ color:var(--ink-3); font-size:.92rem; }
+.spec-list .small{ grid-column:2; }
 .spec-list .v{ font-size:1.1rem; font-weight:700; color:var(--green-deep); }
 .spec-list .v--plain{ font-weight:400; color:var(--ink); font-size:1rem; }
 .spec-list .small{ color:var(--ink-3); }
@@ -593,6 +597,107 @@ a:hover{ color:var(--green-deep); }
   .feature--flip .feature__media{ order:-1; }
 }
 
+/* ---------- 大字模式（A／A+）----------
+   html 放大 18%，所有 rem 單位一起放大。 */
+html.font-lg{ font-size:118%; }
+.header-tools{ display:flex; align-items:center; gap:10px; }
+.fontsize{
+  display:inline-flex; align-items:baseline; gap:1px;
+  min-height:44px; padding:0 12px;
+  border:1.5px solid var(--line-2); border-radius:8px;
+  background:var(--surface); color:var(--ink-2); cursor:pointer;
+  font-family:var(--serif); font-weight:700; line-height:1;
+}
+.fontsize__s{ font-size:.85rem; } .fontsize__l{ font-size:1.2rem; }
+.fontsize[aria-pressed="true"]{ background:var(--green); border-color:var(--green); color:#fff; }
+.site-header--minimal .header-cta{ display:inline-flex; }
+
+/* ---------- 提示訊息 ---------- */
+.toast{
+  position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom));
+  transform:translateX(-50%) translateY(16px); z-index:90;
+  background:var(--ink); color:#fff; padding:12px 20px; border-radius:10px;
+  font-size:.98rem; max-width:90vw; text-align:center;
+  opacity:0; pointer-events:none; transition:opacity .2s, transform .2s;
+}
+.toast.is-on{ opacity:1; transform:translateX(-50%) translateY(0); }
+body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe-area-inset-bottom)); }
+
+/* ---------- 訂購四步圖解 ---------- */
+.howto{ display:grid; gap:10px; grid-template-columns:repeat(2,1fr); margin:0 0 24px; padding:0; counter-reset:h; }
+.howto li{
+  list-style:none; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:16px 12px; display:grid; gap:6px; justify-items:center; text-align:center;
+}
+.howto li::before{
+  counter-increment:h; content:counter(h);
+  width:42px; height:42px; border-radius:50%; background:var(--green); color:#fff;
+  display:grid; place-items:center; font-family:var(--serif); font-size:1.25rem; font-weight:700;
+}
+.howto b{ font-size:1.02rem; }
+.howto span{ font-size:.86rem; color:var(--ink-2); line-height:1.5; }
+
+/* ---------- 送出前確認 ---------- */
+.summary.is-confirm{ border-color:var(--red); box-shadow:0 0 0 4px var(--red-soft); }
+.summary.is-confirm .summary__title{ color:var(--red); }
+.summary__confirm-note{
+  display:none; margin:14px 0 0; padding:12px 14px;
+  background:var(--red-soft); border-radius:8px; font-weight:700; color:var(--red-deep);
+}
+.summary.is-confirm .summary__confirm-note{ display:block; }
+
+/* ---------- 記住資料 ---------- */
+.remember-bar{
+  display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px;
+  background:var(--green-soft); border:1px solid var(--green); border-radius:var(--radius);
+  padding:14px 16px; margin:0 0 22px; font-size:.95rem;
+}
+.remember-bar b{ color:var(--green-deep); }
+.remember-bar .btn{ min-height:40px; padding:0 14px; font-size:.9rem; }
+
+/* ---------- 電話即時提示 ---------- */
+.field__ok{ display:none; margin:6px 0 0; font-size:.9rem; color:var(--green); font-weight:700; }
+.field.is-ok .field__ok{ display:block; }
+.field.is-ok .field__hint{ display:none; }
+
+/* ---------- 桌機才顯示 ---------- */
+.desktop-only{ display:none; }
+@media (hover:hover) and (pointer:fine){ .desktop-only{ display:block; } }
+
+/* ---------- 首頁：送禮 ---------- */
+.gift-band{ background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.gift-points{ display:grid; gap:12px; grid-template-columns:1fr; margin:0; padding:0; list-style:none; }
+.gift-points li{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:16px 18px; display:grid; grid-template-columns:30px 1fr; gap:12px; align-items:start;
+}
+.gift-points li::before{ content:""; width:28px; height:28px; border-radius:50%; border:2px solid var(--green); background:var(--surface-2); margin-top:2px; }
+.gift-points b{ display:block; margin-bottom:2px; }
+.gift-points span{ font-size:.92rem; color:var(--ink-2); }
+
+/* ---------- 首頁：認識這一瓶 ---------- */
+.intro-cards{ display:grid; gap:14px; grid-template-columns:1fr; }
+.intro-card{ display:block; text-decoration:none; color:inherit; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; transition:border-color .15s; }
+.intro-card:hover{ border-color:var(--green); color:inherit; }
+.intro-card .ph{ border-radius:0; aspect-ratio:16/10; }
+.intro-card__body{ padding:16px 18px 18px; }
+.intro-card__k{ font-family:var(--mono); font-size:.72rem; letter-spacing:.16em; color:var(--green); display:block; margin-bottom:4px; }
+.intro-card__t{ margin:0 0 6px; font-family:var(--serif); font-size:1.15rem; font-weight:700; }
+.intro-card__d{ margin:0; font-size:.92rem; color:var(--ink-2); }
+.intro-card__more{ display:inline-block; margin-top:10px; font-size:.9rem; color:var(--green); font-weight:700; }
+
+/* ---------- 三欄 ---------- */
+.trio{ display:grid; gap:18px; grid-template-columns:1fr; }
+
+/* ---------- 頁內目錄 ---------- */
+.toc{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 28px; padding:0; list-style:none; }
+.toc a{ display:inline-block; padding:8px 14px; border:1px solid var(--line-2); border-radius:999px; text-decoration:none; font-size:.92rem; color:var(--green-deep); background:var(--surface); }
+.toc a:hover{ border-color:var(--green); }
+
+@media (min-width:640px){ .howto{ grid-template-columns:repeat(4,1fr); } }
+@media (min-width:760px){ .gift-points{ grid-template-columns:repeat(2,1fr); } .intro-cards{ grid-template-columns:repeat(3,1fr); } }
+@media (min-width:900px){ .trio{ grid-template-columns:repeat(3,1fr); } }
+
 /* ---------- 雜項 ---------- */
 .hr{ height:1px; background:var(--line-2); border:0; margin:36px 0; }
 .center{ text-align:center; }
@@ -610,7 +715,7 @@ a:hover{ color:var(--green-deep); }
   .drinks{ grid-template-columns:repeat(2,1fr); }
 }
 @media (min-width:760px){
-  body{ font-size:18px; }
+  body{ font-size:1.125rem; }
   .sec{ padding:80px 0; }
   .hero{ padding:52px 0 64px; }
   .grid--2{ grid-template-columns:repeat(2,1fr); }

@@ -14,3 +14,4 @@ desktop.ini
 # 暫存與預覽檔
 *.log
 _preview-*.html
+__pycache__/

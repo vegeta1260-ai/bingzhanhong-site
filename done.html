@@ -5,17 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>訂單完成｜冰盞紅酸梅湯</title>
 <meta name="robots" content="noindex">
+<!-- @include:head -->
 <meta name="theme-color" content="#20604F">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<!-- 只載入標題用的宋體一個字重與等寬體；內文用系統字，零下載（見 site.css 說明） -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css?v=c9946b00">
+<!-- @end:head -->
 </head>
 
 <body>
 
-<header class="site-header">
+<!-- @include:header sub="訂單完成" minimal -->
+<header class="site-header site-header--minimal">
   <div class="wrap site-header__in">
     <a class="brand" href="index.html">
       <img class="brand__mark" src="assets/img/logo.svg" alt="" width="42" height="42">
@@ -24,8 +28,15 @@
         <span class="brand__sub">訂單完成</span>
       </span>
     </a>
+    <div class="header-tools">
+      <button class="fontsize" type="button" id="fontsize-toggle" aria-pressed="false" title="放大字體" aria-label="放大字體">
+        <span class="fontsize__s">A</span><span class="fontsize__l">A</span>
+      </button>
+      <a class="btn btn--tel header-cta" data-bzh-link="tel" href="#">客服電話</a>
+    </div>
   </div>
 </header>
+<!-- @end:header -->
 
 <main>
   <div class="wrap wrap--narrow">
@@ -88,6 +99,12 @@
         <p>款項為人工核對，請提供<strong>轉帳帳號後 5 碼</strong>，以便對帳。</p>
       </div>
       <a class="btn btn--primary btn--lg btn--block mt-24" href="status.html">我已完成轉帳，前往回報</a>
+      <div class="desktop-only mt-24">
+        <p class="small center">用手機掃描加入官方 LINE，回報付款最快：</p>
+        <figure class="ph ph--square qr-slot" data-ph="官方 LINE 加好友 QR Code（line-qr.png）">
+          <img src="assets/img/line-qr.png" alt="加入冰盞紅官方 LINE" loading="lazy" width="400" height="400">
+        </figure>
+      </div>
     </section>
 
     <!-- ===== 下一步：LINE Pay ===== -->
@@ -102,6 +119,12 @@
         <p>如果無法掃描，或想確認我們是否收到款項，歡迎透過官方 LINE 聯絡我們。</p>
       </div>
       <a class="btn btn--primary btn--lg btn--block mt-24" href="status.html">我已完成付款，前往回報</a>
+      <div class="desktop-only mt-24">
+        <p class="small center">用手機掃描加入官方 LINE，回報付款最快：</p>
+        <figure class="ph ph--square qr-slot" data-ph="官方 LINE 加好友 QR Code（line-qr.png）">
+          <img src="assets/img/line-qr.png" alt="加入冰盞紅官方 LINE" loading="lazy" width="400" height="400">
+        </figure>
+      </div>
     </section>
 
     <!-- ===== 下一步：貨到付款 ===== -->
@@ -139,14 +162,24 @@
   </div>
 </main>
 
+<!-- @include:footer minimal -->
 <footer class="site-footer">
-  <div class="wrap center">
-    <p style="margin:0">© <span data-bzh="year"></span> <span data-bzh="brand.name">冰盞紅</span>　|　<a href="info.html#order">訂購須知</a>　<a href="info.html#privacy">隱私權政策</a></p>
+  <div class="wrap footer-legal footer-legal--solo">
+    <p style="margin:0 0 8px"><a href="index.html">回首頁</a>　<a href="info.html#order">訂購須知</a>　<a href="info.html#privacy">隱私權政策</a></p>
+    <p style="margin:0 0 6px">
+      營業人名稱：<span data-bzh="legal.company">[待確認]</span>｜
+      統一編號：<span data-bzh="legal.taxId">[待確認]</span>｜
+      食品業者登錄字號：<span data-bzh="legal.foodReg">[待確認]</span>
+    </p>
+    <p style="margin:0">© <span data-bzh="year">2026</span> 冰盞紅</p>
   </div>
 </footer>
+<!-- @end:footer -->
 
-<script src="assets/js/config.js?v=1"></script>
-<script src="assets/js/site.js"></script>
-<script src="assets/js/done.js"></script>
+<!-- @include:scripts -->
+<script src="assets/js/config.js?v=d7870ae8"></script>
+<script src="assets/js/site.js?v=d042b059"></script>
+<!-- @end:scripts -->
+<script src="assets/js/done.js?v=5def0510"></script>
 </body>
 </html>

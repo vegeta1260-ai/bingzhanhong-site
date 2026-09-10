@@ -92,6 +92,7 @@
 | 檔名 | 說明 |
 |---|---|
 | `linepay-qr.png` | LINE Pay 收款 QR Code。**不要生成假的**，未放入前網站會顯示提示框 |
+| `line-qr.png` | 官方 LINE **加好友** QR Code，從 LINE 官方帳號管理後台下載。桌機使用者在訂單完成頁掃描用 |
 
 ---
 

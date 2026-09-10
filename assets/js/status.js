@@ -13,6 +13,7 @@
 
   var $ = function (id) { return document.getElementById(id); };
   var apiUrl = (C.api && C.api.url) || '';
+  var track = function (n, p) { if (U.track) U.track(n, p); };
 
   function cleanPhone(v) { return String(v || '').replace(/[^\d]/g, ''); }
   function validPhone(v) { return /^0\d{8,9}$/.test(cleanPhone(v)); }
@@ -86,6 +87,7 @@
       .then(function (data) {
         if (!data || data.ok !== true) throw new Error('伺服器回應異常');
         $('report-ok').classList.remove('hide');
+        track('payment_report', { method: method });
         btn.textContent = '✓ 已送出付款回報';
         $('report-ok').scrollIntoView({ behavior: 'smooth', block: 'center' });
       })
@@ -142,6 +144,7 @@
           row('付款狀態', o.paymentStatus) +
           row('訂單狀態', o.orderStatus);
         $('lookup-result').classList.remove('hide');
+        track('order_lookup', { found: true });
         $('lookup-result').scrollIntoView({ behavior: 'smooth', block: 'center' });
       })
       .catch(function (err) {

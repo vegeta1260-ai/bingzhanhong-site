@@ -15,6 +15,7 @@ var NOTIFY_EMAIL = '';
 var SHEET_ORDERS    = '訂單';
 var SHEET_REPORTS   = '付款回報';
 var SHEET_WHOLESALE = '團購詢價';
+var SHEET_OVERVIEW  = '總覽';
 
 /** 訂單編號前綴 */
 var ORDER_PREFIX = 'BZH';
@@ -83,7 +84,51 @@ function setup() {
   applyDropdown_(wholesale, WHOLESALE_HEADERS.indexOf('處理狀態') + 1, lastRow,
                  ['未處理', '已報價', '已成交', '未成交']);
 
-  SpreadsheetApp.getUi().alert('設定完成，已建立「訂單」「付款回報」「團購詢價」三個工作表。');
+  buildOverview_(ss);
+
+  SpreadsheetApp.getUi().alert('設定完成，已建立「總覽」「訂單」「付款回報」「團購詢價」四個工作表。');
+}
+
+/** 欄位索引 → 試算表欄位字母（1 → A） */
+function colLetter_(n) {
+  var s = '';
+  while (n > 0) { var m = (n - 1) % 26; s = String.fromCharCode(65 + m) + s; n = Math.floor((n - 1) / 26); }
+  return s;
+}
+
+/** 「總覽」：每天早上開的第一個畫面，全部用公式，不用手動更新 */
+function buildOverview_(ss) {
+  var sh = ss.getSheetByName(SHEET_OVERVIEW) || ss.insertSheet(SHEET_OVERVIEW, 0);
+  sh.clear();
+
+  var oDate = colLetter_(ORDER_HEADERS.indexOf('訂購日期') + 1);
+  var oBox  = colLetter_(ORDER_HEADERS.indexOf('箱數') + 1);
+  var oPay  = colLetter_(ORDER_HEADERS.indexOf('付款狀態') + 1);
+  var oStat = colLetter_(ORDER_HEADERS.indexOf('訂單狀態') + 1);
+  var rStat = colLetter_(REPORT_HEADERS.indexOf('處理狀態') + 1);
+  var wStat = colLetter_(WHOLESALE_HEADERS.indexOf('處理狀態') + 1);
+  var O = "'" + SHEET_ORDERS + "'!", R = "'" + SHEET_REPORTS + "'!", W = "'" + SHEET_WHOLESALE + "'!";
+
+  var rows = [
+    ['今日總覽', ''],
+    ['', ''],
+    ['今日新訂單',         '=COUNTIF(' + O + oDate + ':' + oDate + ',TEXT(TODAY(),"yyyy/mm/dd")&"*")'],
+    ['待付款（尚未回報）',  '=COUNTIF(' + O + oPay + ':' + oPay + ',"待付款")'],
+    ['待核對（已回報）',    '=COUNTIF(' + O + oPay + ':' + oPay + ',"待核對")'],
+    ['付款回報待處理',      '=COUNTIF(' + R + rStat + ':' + rStat + ',"未處理")'],
+    ['備貨中訂單',         '=COUNTIF(' + O + oStat + ':' + oStat + ',"備貨中")'],
+    ['備貨中箱數',         '=SUMIF(' + O + oStat + ':' + oStat + ',"備貨中",' + O + oBox + ':' + oBox + ')'],
+    ['團購詢價待處理',      '=COUNTIF(' + W + wStat + ':' + wStat + ',"未處理")'],
+    ['', ''],
+    ['本表由公式自動計算。處理進度請到各工作表更改「付款狀態」「訂單狀態」「處理狀態」欄。', '']
+  ];
+  sh.getRange(1, 1, rows.length, 2).setValues(rows);
+  sh.getRange(1, 1).setFontSize(16).setFontWeight('bold');
+  sh.getRange(3, 1, 7, 1).setFontWeight('bold');
+  sh.getRange(3, 2, 7, 1).setFontSize(18).setHorizontalAlignment('right');
+  sh.getRange(rows.length, 1).setFontColor('#888888');
+  sh.setColumnWidth(1, 220);
+  sh.setColumnWidth(2, 110);
 }
 
 function applyDropdown_(sheet, col, lastRow, values) {

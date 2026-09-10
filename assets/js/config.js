@@ -12,7 +12,7 @@ window.BZH = {
   brand: {
     name: '冰盞紅',
     product: '冰盞紅酸梅湯',
-    tagline: '手作酸梅湯・冷藏宅配'
+    tagline: '台南手作酸梅湯・冷藏宅配'
   },
 
   /* ---------- 聯絡方式 ---------- */
@@ -22,6 +22,20 @@ window.BZH = {
     tel: '0933-661-041',       // 顯示用
     telDial: '0933661041',     // 撥號用（不含符號）
     hours: '[待確認] 例：每日 10:00–20:00'
+  },
+
+  /* ---------- 正式網址 ----------
+     上線後填入，例如 'https://bingzhanhong.tw'。
+     build.py 會用它產生 sitemap.xml 與 robots.txt。 */
+  site: {
+    url: ''
+  },
+
+  /* ---------- 流量分析 ----------
+     填入 GA4 評估 ID（例如 'G-XXXXXXXXXX'）才會載入 Google Analytics。
+     留空 = 完全不載入，隱私權頁也會維持「不使用第三方追蹤」的說法。 */
+  analytics: {
+    ga4: ''
   },
 
   /* ---------- 檔期活動 ----------
@@ -34,7 +48,9 @@ window.BZH = {
     heroTitle: '今年中秋，冰箱裡也準備一箱。',
     heroTitleOff: '冰箱裡常備一箱，吃飯配一杯。',
     bannerText: '中秋出貨檔期 [待確認]，冷藏宅配到府',
-    bannerTextOff: '全程冷藏宅配到府'
+    bannerTextOff: '全程冷藏宅配到府',
+    deadline: '[待確認]',        // 中秋前最後下單日，例：'9/28（日）23:59'
+    deliveryWindow: '[待確認]'   // 預計送達區間，例：'10/1–10/4'
   },
 
   /* ---------- 產品規格 ---------- */
@@ -110,6 +126,11 @@ window.BZH = {
      把圖片放到 assets/img/linepay-qr.png 即可自動顯示。 */
   linePayQr: 'assets/img/linepay-qr.png',
 
+  /* ---------- 官方 LINE 加好友 QR Code ----------
+     從 LINE 官方帳號管理後台下載，放到 assets/img/line-qr.png。
+     桌機使用者會在訂單完成頁看到它（手機直接點連結）。 */
+  lineQr: 'assets/img/line-qr.png',
+
   /* ---------- 供貨狀態 ----------
      手工小批次一定會遇到來不及做。改這裡的 status 即可，全站自動反應：
        'open'     正常接單
@@ -147,6 +168,12 @@ window.BZH = {
     enabled: true,
     cardMaxLength: 60,
     note: '勾選後，我們會在出貨時附上您的祝福留言，並且不會在包裹外露出金額相關單據。'
+  },
+
+  /* ---------- 記住收件資料 ----------
+     客人勾選後把收件資料存在自己的裝置（localStorage），不會上傳。 */
+  remember: {
+    enabled: true
   },
 
   /* ---------- 訂單系統 ----------

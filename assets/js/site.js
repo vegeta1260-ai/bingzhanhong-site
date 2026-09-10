@@ -1,6 +1,11 @@
 /* ============================================================
    冰盞紅 — 全站共用腳本
-   職責：把 config.js 的設定「填進」頁面。
+   職責：把 config.js 的設定「填進」頁面，並處理全站共用的互動：
+     - 檔期／供貨狀態切換
+     - 大字模式（A／A+）
+     - 桌機版電話按鈕（複製號碼而非撥號）
+     - LINE 按鈕圖示
+     - GA4（有設定才載入）與事件追蹤
    HTML 只寫 data-bzh="鍵名"，數字與文案一律由這裡供應，
    所以改價格永遠只要改 config.js 一個地方。
    ============================================================ */
@@ -30,14 +35,8 @@
     var pay = paymentById(paymentId);
     if (!p) return null;
     var fee = (pay && pay.feePerBox ? pay.feePerBox : 0) * p.boxes;
-    return {
-      plan: p,
-      payment: pay || null,
-      goods: p.price,
-      fee: fee,
-      feeName: (pay && pay.feeName) || '',
-      total: p.price + fee
-    };
+    return { plan: p, payment: pay || null, goods: p.price, fee: fee,
+             feeName: (pay && pay.feeName) || '', total: p.price + fee };
   }
 
   /* ---------- 供貨狀態（DICT 會用到，必須先宣告）---------- */
@@ -65,6 +64,8 @@
     'campaign.label': campaignLabel,
     'campaign.heroTitle': on ? camp.heroTitle : camp.heroTitleOff,
     'campaign.banner': on ? camp.bannerText : camp.bannerTextOff,
+    'campaign.deadline': (on && camp.deadline) || '',
+    'campaign.deliveryWindow': (on && camp.deliveryWindow) || '',
 
     'product.volume': C.product.volume,
     'product.perBox': C.product.perBox + ' 瓶',
@@ -142,36 +143,28 @@
   }
 
   /* ---------- 供貨狀態 ----------
-     config.stock.status 不是 'open' 時，在頁首下方插入一條提示。
-     'closed' 另外把所有「立即訂購」改成 LINE 詢問，並停用訂購表單。 */
+     'preorder' 在頁首下方插入提示；'closed' 另外把「立即訂購」改成 LINE 詢問並停用表單。 */
   function applyStock() {
     if (stock.status === 'open') return;
-
     var closed = stock.status === 'closed';
-    var text = closed ? stock.closedNote : stock.preorderNote;
 
     var bar = document.createElement('div');
     bar.className = 'stockbar' + (closed ? ' stockbar--closed' : '');
     bar.setAttribute('role', 'status');
-    bar.textContent = text;
+    bar.textContent = closed ? stock.closedNote : stock.preorderNote;
 
     var header = document.querySelector('.site-header');
-    if (header && header.parentNode) {
-      header.parentNode.insertBefore(bar, header.nextSibling);
-    } else {
-      document.body.insertBefore(bar, document.body.firstChild);
-    }
+    if (header && header.parentNode) header.parentNode.insertBefore(bar, header.nextSibling);
+    else document.body.insertBefore(bar, document.body.firstChild);
 
     if (!closed) return;
 
-    // 暫停接單：訂購連結導向 LINE，避免客人填完才發現不能買
     document.querySelectorAll('a[href^="order.html"]').forEach(function (a) {
       a.href = C.contact.lineUrl;
       a.target = '_blank';
       a.rel = 'noopener';
       if (a.classList.contains('btn')) a.textContent = '用 LINE 詢問開賣時間';
     });
-
     var form = document.getElementById('order-form');
     if (form) {
       form.querySelectorAll('input,select,textarea,button').forEach(function (el) { el.disabled = true; });
@@ -192,6 +185,125 @@
     });
   }
 
+  /* ---------- 提示訊息（toast）---------- */
+  var toastEl = null, toastTimer = null;
+  function toast(msg) {
+    if (!toastEl) {
+      toastEl = document.createElement('div');
+      toastEl.className = 'toast';
+      toastEl.setAttribute('role', 'status');
+      document.body.appendChild(toastEl);
+    }
+    toastEl.textContent = msg;
+    toastEl.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('is-on'); }, 2600);
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      ok ? resolve() : reject();
+    });
+  }
+
+  /* ---------- 桌機版電話按鈕 ----------
+     桌機沒有撥號功能，點 tel: 會跳出系統對話框。改成顯示號碼、點一下複製。 */
+  var isDesktop = !!(window.matchMedia &&
+    window.matchMedia('(hover:hover) and (pointer:fine)').matches);
+
+  function desktopTel() {
+    if (!isDesktop) return;
+    document.querySelectorAll('[data-bzh-link="tel"]').forEach(function (a) {
+      if (a.querySelector('.num') === null && a.textContent.indexOf(C.contact.tel) === -1) {
+        var s = document.createElement('span');
+        s.className = 'num';
+        s.textContent = C.contact.tel;
+        a.appendChild(document.createTextNode(' '));
+        a.appendChild(s);
+      }
+      a.title = '點一下複製電話號碼';
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        copyText(C.contact.tel).then(
+          function () { toast('已複製客服電話 ' + C.contact.tel); },
+          function () { toast('客服電話 ' + C.contact.tel); }
+        );
+      });
+    });
+  }
+
+  /* ---------- LINE 按鈕圖示 ----------
+     白字在 LINE 綠上對比不足，加圖示讓辨識不只靠文字。 */
+  var LINE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.4 7.2 8 7.9.3.1.7.2.8.5.1.3.1.7 0 1l-.1.8c0 .2-.2.9.8.5s5.3-3.1 7.2-5.3C20.6 14.9 22 13.1 22 11c0-4.4-4.5-8-10-8zm-3.6 10.4H6.3a.5.5 0 0 1-.5-.5V9.1a.5.5 0 0 1 1 0v3.3h1.6a.5.5 0 0 1 0 1zm1.6-.5a.5.5 0 0 1-1 0V9.1a.5.5 0 0 1 1 0v3.8zm4.9 0a.5.5 0 0 1-.9.3l-2.1-2.8v2.5a.5.5 0 0 1-1 0V9.1a.5.5 0 0 1 .9-.3l2.1 2.8V9.1a.5.5 0 0 1 1 0v3.8zm3.4-2.4a.5.5 0 0 1 0 1h-1.6v1h1.6a.5.5 0 0 1 0 1h-2.1a.5.5 0 0 1-.5-.5V9.1a.5.5 0 0 1 .5-.5h2.1a.5.5 0 0 1 0 1h-1.6v1h1.6z"/></svg>';
+
+  function lineGlyph(root) {
+    (root || document).querySelectorAll('.btn--line').forEach(function (b) {
+      if (!b.querySelector('svg')) b.insertAdjacentHTML('afterbegin', LINE_ICON);
+    });
+  }
+
+  /* ---------- 大字模式 ----------
+     html 的 font-size 放大 18%，所有 rem 單位一起放大。記在本機。 */
+  var FONT_KEY = 'bzh-font-lg';
+  function fontSize() {
+    var root = document.documentElement;
+    var btn = document.getElementById('fontsize-toggle');
+    var onNow = false;
+    try { onNow = localStorage.getItem(FONT_KEY) === '1'; } catch (e) {}
+    function apply(v) {
+      root.classList.toggle('font-lg', v);
+      if (btn) {
+        btn.setAttribute('aria-pressed', v ? 'true' : 'false');
+        btn.title = v ? '恢復標準字體' : '放大字體';
+      }
+    }
+    apply(onNow);
+    if (btn) {
+      btn.addEventListener('click', function () {
+        onNow = !onNow;
+        apply(onNow);
+        try { localStorage.setItem(FONT_KEY, onNow ? '1' : '0'); } catch (e) {}
+        track('font_size_toggle', { large: onNow });
+      });
+    }
+  }
+
+  /* ---------- GA4 與事件追蹤 ----------
+     config.analytics.ga4 有值才載入；沒有就全部是空操作。 */
+  var GA = (C.analytics && C.analytics.ga4) || '';
+
+  function analytics() {
+    document.querySelectorAll('[data-bzh-analytics]').forEach(function (el) {
+      var want = el.getAttribute('data-bzh-analytics') === 'on';
+      if (want !== !!GA) el.classList.add('hide');
+    });
+    if (!GA) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA, { anonymize_ip: true });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA);
+    document.head.appendChild(s);
+  }
+
+  function track(name, params) {
+    if (!GA || typeof window.gtag !== 'function') return;
+    try { window.gtag('event', name, params || {}); } catch (e) {}
+  }
+
   /* ---------- 對外 API ---------- */
   window.BZHUtil = {
     money: money,
@@ -204,15 +316,19 @@
     campaignOn: on,
     stock: stock,
     dict: DICT,
+    isDesktop: isDesktop,
+    toast: toast,
+    copyText: copyText,
+    track: track,
     refresh: function (root) {
-      fillText(root); fillLinks(root); applyCampaign(root); bindPlaceholders(root);
+      fillText(root); fillLinks(root); applyCampaign(root); bindPlaceholders(root); lineGlyph(root);
     }
   };
 
   /* ---------- 啟動 ---------- */
   function init() {
     fillText(); fillLinks(); applyCampaign(); applyStock(); bindPlaceholders();
-    // 網頁標題若含活動字樣，一併同步
+    lineGlyph(); fontSize(); desktopTel(); analytics();
     document.querySelectorAll('[data-bzh-title]').forEach(function (el) {
       el.textContent = el.getAttribute('data-bzh-title').replace('{campaign}', campaignLabel);
     });
