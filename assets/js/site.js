@@ -39,6 +39,16 @@
              feeName: (pay && pay.feeName) || '', total: p.price + fee };
   }
 
+  /* ---------- 固定頁首高度 → CSS 變數 ----------
+     錨點跳轉的偏移量必須跟著實際頁首走。導覽在中等寬度會換行，
+     頁首高度不是固定值，寫死會讓標題被蓋住。 */
+  function syncHeaderHeight() {
+    var h = document.querySelector('.site-header');
+    if (!h) return;
+    var px = Math.round(h.getBoundingClientRect().height);
+    if (px > 0) document.documentElement.style.setProperty('--header-h', px + 'px');
+  }
+
   /* ---------- 供貨狀態（DICT 會用到，必須先宣告）---------- */
   var stock = C.stock || { status: 'open' };
 
@@ -350,6 +360,7 @@
   function init() {
     fillText(); fillLinks(); applyCampaign(); applyStock(); bindPlaceholders();
     lineGlyph(); fontSize(); desktopTel(); analytics();
+    syncHeaderHeight();
     document.querySelectorAll('[data-bzh-title]').forEach(function (el) {
       el.textContent = el.getAttribute('data-bzh-title').replace('{campaign}', campaignLabel);
     });
@@ -360,4 +371,9 @@
   } else {
     init();
   }
+
+  // 字體載入完與視窗改變寬度時，頁首高度都可能變
+  window.addEventListener('load', syncHeaderHeight);
+  window.addEventListener('resize', syncHeaderHeight);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeaderHeight);
 })();

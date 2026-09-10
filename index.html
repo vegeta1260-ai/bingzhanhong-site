@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=13fff4ce">
+<link rel="stylesheet" href="assets/css/site.css?v=329140f1">
 <!-- @end:head -->
 </head>
 
@@ -390,13 +390,24 @@
   </div>
 </section>
 
-<!-- ===== 7. 常見問題 ===== -->
+<!-- ===== 7. 常見問題（分四組）===== -->
 <section class="sec sec--alt" id="faq">
   <div class="wrap wrap--narrow">
     <div class="sec-head">
       <span class="sec-kicker">FAQ</span>
       <h2 class="sec-title">常見問題</h2>
+      <p class="sec-lead">找不到答案的話，直接用官方 LINE 問我們就好。</p>
     </div>
+
+    <!-- 純錨點連結，沒有 JS 也能用 -->
+    <nav class="faq-nav" aria-label="常見問題分類">
+      <a href="#faq-product">關於這一瓶</a>
+      <a href="#faq-order">訂購</a>
+      <a href="#faq-ship">配送</a>
+      <a href="#faq-pay">付款與發票</a>
+    </nav>
+
+    <h3 class="faq-group" id="faq-product"><span>01</span>關於這一瓶</h3>
     <div class="faq">
       <details open>
         <summary>酸梅湯需要冷藏嗎？</summary>
@@ -411,13 +422,45 @@
         <p class="faq__a">保存期限 <span data-bzh="product.shelfLife">10 天</span>，請全程冷藏保存，開封後請儘速飲用。實際日期以瓶身標示為準。</p>
       </details>
       <details>
+        <summary>可以只買一瓶嗎？</summary>
+        <p class="faq__a">網站目前提供整箱訂購（<span data-bzh="product.perBox">12 瓶</span>／箱）。單瓶零售參考價為 <span data-bzh="product.single">NT$ 120 ／瓶</span>，單瓶購買請透過官方 LINE 洽詢。</p>
+      </details>
+    </div>
+
+    <h3 class="faq-group" id="faq-order"><span>02</span>訂購</h3>
+    <div class="faq">
+      <details>
+        <summary>可以指定到貨日嗎？</summary>
+        <p class="faq__a">可以。訂購頁的「<strong>希望到貨日</strong>」欄位可以選擇日期，我們會依熬煮與冷藏配送排程盡量配合。因物流因素恕無法保證一定於當日送達，確認訂單時我們會再和您聯絡。</p>
+      </details>
+      <details>
+        <summary>不確定訂單有沒有送出成功怎麼辦？</summary>
+        <p class="faq__a">送出訂單後畫面會顯示訂單編號。如果沒有看到，或不確定是否成功，歡迎透過官方 LINE 或客服電話聯絡我們，我們會協助確認。</p>
+      </details>
+    </div>
+
+    <h3 class="faq-group" id="faq-ship"><span>03</span>配送</h3>
+    <div class="faq">
+      <details>
         <summary>兩箱會一起寄嗎？</summary>
         <p class="faq__a">兩箱商品會<strong>分成兩個獨立的冷藏宅配箱</strong>寄送，不會裝成一個大箱子。兩箱可能不同時間送達，屬正常情形。</p>
+      </details>
+      <details>
+        <summary>宅配來的時候沒人在家怎麼辦？</summary>
+        <p class="faq__a">冷藏商品<strong>需要有人簽收</strong>。若因無人簽收而退回，商品品質已受影響，無法再次配送。那幾天家裡沒人的話，建議在訂購時填上「希望到貨日」，或改寄到有人收的地址。</p>
       </details>
       <details>
         <summary>可以分送到兩個不同地址嗎？</summary>
         <p class="faq__a">可以。訂購兩箱時，請在備註欄寫明第二箱的收件人、電話與地址，我們會分別寄送。<span class="tbd">［草稿，待業主確認］</span></p>
       </details>
+      <details>
+        <summary>冷藏宅配的保冷箱需要退還嗎？</summary>
+        <p class="faq__a"><span class="tbd">［待確認：請業主提供包材資訊，例如：保麗龍箱不需退還，可回收處理］</span></p>
+      </details>
+    </div>
+
+    <h3 class="faq-group" id="faq-pay"><span>04</span>付款與發票</h3>
+    <div class="faq">
       <details>
         <summary>可以貨到付款嗎？</summary>
         <p class="faq__a">可以。貨到付款每箱加收 <span data-bzh="cod.feePlain">30</span> 元處理費。1 箱合計 <span data-bzh="cod.total1">NT$ 1,520</span>，2 箱合計 <span data-bzh="cod.total2">NT$ 2,940</span>。</p>
@@ -433,22 +476,6 @@
       <details>
         <summary>會開發票嗎？</summary>
         <p class="faq__a"><span class="tbd">［待確認：請業主提供發票開立方式，例如：出貨時隨箱附紙本發票／可提供統編開立公司戶發票］</span></p>
-      </details>
-      <details>
-        <summary>可以先訂購，之後再約送達日期嗎？</summary>
-        <p class="faq__a">可以。備註欄寫上希望的日期或時段，我們會依製作與冷藏配送排程和您確認。因物流因素恕無法保證指定日期一定送達。</p>
-      </details>
-      <details>
-        <summary>冷藏宅配的保冷箱需要退還嗎？</summary>
-        <p class="faq__a"><span class="tbd">［待確認：請業主提供包材資訊，例如：保麗龍箱不需退還，可回收處理］</span></p>
-      </details>
-      <details>
-        <summary>不確定訂單有沒有送出成功怎麼辦？</summary>
-        <p class="faq__a">送出訂單後畫面會顯示訂單編號。如果沒有看到，或不確定是否成功，歡迎透過官方 LINE 或客服電話聯絡我們，我們會協助確認。</p>
-      </details>
-      <details>
-        <summary>可以只買一瓶嗎？</summary>
-        <p class="faq__a">網站目前提供整箱訂購（<span data-bzh="product.perBox">12 瓶</span>／箱）。單瓶零售參考價為 <span data-bzh="product.single">NT$ 120 ／瓶</span>，單瓶購買請透過官方 LINE 洽詢。</p>
       </details>
     </div>
   </div>
@@ -596,6 +623,30 @@
     },
     {
       "@type": "Question",
+      "name": "可以只買一瓶嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "網站目前提供整箱訂購（12 瓶／箱）。單瓶零售參考價為 NT$ 120 ／瓶，單瓶購買請透過官方 LINE 洽詢。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "可以指定到貨日嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。訂購頁的「希望到貨日」欄位可以選擇日期，我們會依熬煮與冷藏配送排程盡量配合。因物流因素恕無法保證一定於當日送達，確認訂單時我們會再和您聯絡。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "不確定訂單有沒有送出成功怎麼辦？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "送出訂單後畫面會顯示訂單編號。如果沒有看到，或不確定是否成功，歡迎透過官方 LINE 或客服電話聯絡我們，我們會協助確認。"
+      }
+    },
+    {
+      "@type": "Question",
       "name": "兩箱會一起寄嗎？",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -604,10 +655,26 @@
     },
     {
       "@type": "Question",
+      "name": "宅配來的時候沒人在家怎麼辦？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "冷藏商品需要有人簽收。若因無人簽收而退回，商品品質已受影響，無法再次配送。那幾天家裡沒人的話，建議在訂購時填上「希望到貨日」，或改寄到有人收的地址。"
+      }
+    },
+    {
+      "@type": "Question",
       "name": "可以分送到兩個不同地址嗎？",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "可以。訂購兩箱時，請在備註欄寫明第二箱的收件人、電話與地址，我們會分別寄送。［草稿，待業主確認］"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "冷藏宅配的保冷箱需要退還嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "［待確認：請業主提供包材資訊，例如：保麗龍箱不需退還，可回收處理］"
       }
     },
     {
@@ -641,38 +708,6 @@
         "@type": "Answer",
         "text": "［待確認：請業主提供發票開立方式，例如：出貨時隨箱附紙本發票／可提供統編開立公司戶發票］"
       }
-    },
-    {
-      "@type": "Question",
-      "name": "可以先訂購，之後再約送達日期嗎？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "可以。備註欄寫上希望的日期或時段，我們會依製作與冷藏配送排程和您確認。因物流因素恕無法保證指定日期一定送達。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "冷藏宅配的保冷箱需要退還嗎？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "［待確認：請業主提供包材資訊，例如：保麗龍箱不需退還，可回收處理］"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "不確定訂單有沒有送出成功怎麼辦？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "送出訂單後畫面會顯示訂單編號。如果沒有看到，或不確定是否成功，歡迎透過官方 LINE 或客服電話聯絡我們，我們會協助確認。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "可以只買一瓶嗎？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "網站目前提供整箱訂購（12 瓶／箱）。單瓶零售參考價為 NT$ 120 ／瓶，單瓶購買請透過官方 LINE 洽詢。"
-      }
     }
   ]
 }
@@ -681,7 +716,7 @@
 
 <!-- @include:scripts -->
 <script src="assets/js/config.js?v=db3d65f7"></script>
-<script src="assets/js/site.js?v=f6b74030"></script>
+<script src="assets/js/site.js?v=d2bba2b1"></script>
 <!-- @end:scripts -->
 </body>
 </html>

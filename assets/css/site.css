@@ -54,7 +54,8 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:84px; }
+/* --header-h 由 site.js 依實際量測寫入；導覽會換行時頁首會變高，寫死會蓋住錨點標題 */
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h, 84px) + 16px); }
 /* 保險絲：即使日後有元素算錯寬度，也不會讓整頁能左右滑 */
 html,body{ max-width:100%; overflow-x:hidden; }
 html.font-lg{ font-size:118%; }
@@ -237,11 +238,11 @@ a:hover{ color:var(--red); text-decoration-color:var(--red); }
 .ing-list li{ border:1px solid var(--ink); border-radius:999px; padding:7px 18px; font-size:1rem; color:var(--ink); font-family:var(--serif); }
 
 /* ---------- 10. 喝法 ---------- */
-.drinks{ display:grid; gap:26px 18px; grid-template-columns:1fr; }
-.drink:nth-child(odd) .ph{ aspect-ratio:4/5; }
-.drink:nth-child(even) .ph{ aspect-ratio:1/1; }
-.drink{ background:transparent; border:0; }
-.drink .ph{ aspect-ratio:5/4; }
+/* 四格並排時，圖必須等高、文字必須切齊。
+   奇偶數給不同 aspect-ratio 會讓四欄高低參差，那是壞掉不是編排。 */
+.drinks{ display:grid; gap:26px 18px; grid-template-columns:1fr; align-items:start; }
+.drink{ background:transparent; border:0; display:grid; grid-template-rows:auto 1fr; align-content:start; }
+.drink .ph{ aspect-ratio:4/5; }
 .drink__body{ padding:16px 2px 0; }
 .drink__no{ font-family:var(--latin); font-weight:600; font-size:1.1rem; letter-spacing:.14em; color:var(--red); display:block; margin-bottom:2px; }
 .drink__name{ margin:0 0 6px; font-family:var(--serif); font-size:1.2rem; font-weight:700; }
@@ -694,8 +695,8 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
 
 /* 食材圖鑑：大小交錯 + 上下錯落，不再八個一模一樣 */
 @media (min-width:640px){
+  /* 只做上下錯落製造節奏。縮小尺寸會讓人以為是圖跑掉了，不做。 */
   .ing-grid--vary .ing:nth-child(even){ margin-top:44px; }
-  .ing-grid--vary .ing:nth-child(even) .ing__fig{ width:84%; margin-left:auto; margin-right:auto; }
 }
 
 /* 標誌展示：墨底讓徽章發光 */
@@ -747,6 +748,23 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   .flow__step::before{ left:54px; right:-24px; top:26px; bottom:auto; width:auto; height:1px; }
   .flow__foot{ margin-top:34px; }
 }
+
+/* ---------- 常見問題分組 ---------- */
+.faq-nav{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 30px; }
+.faq-nav a{
+  padding:8px 16px; border:1px solid var(--rule); border-radius:999px;
+  font-size:.9rem; color:var(--ink); text-decoration:none; background:transparent;
+}
+.faq-nav a:hover{ background:var(--ink); color:var(--paper); }
+.faq-group{
+  display:flex; align-items:baseline; gap:12px;
+  margin:38px 0 14px; padding-bottom:10px;
+  border-bottom:1px solid var(--rule);
+  font-family:var(--serif); font-weight:700; font-size:1.15rem; letter-spacing:.04em;
+  scroll-margin-top:calc(var(--header-h, 84px) + 16px);
+}
+.faq-group:first-of-type{ margin-top:0; }
+.faq-group span{ font-family:var(--latin); font-size:.9rem; letter-spacing:.16em; color:var(--red); }
 
 /* ---------- 雜項 ---------- */
 .hr{ height:1px; background:var(--rule); border:0; margin:40px 0; opacity:.6; }
