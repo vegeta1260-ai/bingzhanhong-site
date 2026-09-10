@@ -176,8 +176,8 @@
   /* ---------- 圖片佔位 ----------
      圖片載入失敗時顯示「待製圖」框，而不是破圖。 */
   function bindPlaceholders(root) {
-    (root || document).querySelectorAll('.ph img, .ing__fig img').forEach(function (img) {
-      var box = img.closest('.ph') || img.closest('.ing__fig');
+    (root || document).querySelectorAll('.ph img, .ing__fig img, .tile img, .bleed__bg img, .hero__media img').forEach(function (img) {
+      var box = img.closest('.ph') || img.closest('.ing__fig') || img.closest('.tile') || img.closest('.bleed__bg') || img.closest('.hero__media');
       if (!box) return;
       var fallback = img.getAttribute('data-fallback');
       function fail() {

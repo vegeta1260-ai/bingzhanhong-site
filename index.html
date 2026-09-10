@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=7b3976cb">
+<link rel="stylesheet" href="assets/css/site.css?v=98ce0695">
 <!-- @end:head -->
 </head>
 
@@ -39,6 +39,7 @@
     <nav class="nav" aria-label="主選單">
       <a href="product.html">產品</a>
       <a href="story.html">品牌故事</a>
+      <a href="notes.html">筆記</a>
       <a href="index.html#price">價格</a>
       <a href="wholesale.html">團購訂購</a>
       <a href="index.html#faq">常見問題</a>
@@ -55,88 +56,62 @@
 
 <main>
 
-<!-- ===== 1. Hero ===== -->
-<section class="hero">
-  <div class="wrap hero__grid">
-    <div>
-      <div class="hero__tagrow">
-        <span class="hero__tag" data-bzh="campaign.label">中秋分享箱</span>
-        <span class="seal" aria-hidden="true">
-          <svg viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="7" fill="#B51823"/>
-            <text x="32" y="29" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="21" font-weight="700" fill="#FBF6EA">台南</text>
-            <text x="32" y="53" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="21" font-weight="700" fill="#FBF6EA">手作</text>
-          </svg>
-        </span>
-      </div>
-      <h1 class="hero__title" data-bzh="campaign.heroTitle">今年中秋，冰箱裡也準備一箱。</h1>
-      <p class="hero__latin">Sour Plum Drink · Handmade in Tainan</p>
-      <p class="hero__sub">
-        <b data-bzh="brand.product">冰盞紅酸梅湯</b>　台南手作　<span data-bzh="product.spec">1000ml × 12 瓶</span>
-      </p>
-      <p class="hero__price">
-        <span class="amt" data-bzh="price.box1">NT$ 1,490</span>
-        <span class="unit">／箱（12 瓶）</span>
-      </p>
-      <p class="hero__ship">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <path d="M12 3v18M3.8 7.5l16.4 9M20.2 7.5l-16.4 9"/>
+<!-- ===== 1. Hero：滿版照片，資訊面板疊在上面 ===== -->
+<section class="hero hero--bleed">
+  <div class="hero__media" data-ph="主視覺（橫幅）：餐桌俯拍，數個玻璃杯與冰塊，自然光">
+    <img src="assets/img/hero-wide.jpg" data-fallback="assets/img/drink-4.jpg" alt="餐桌上的冰盞紅酸梅湯" width="1920" height="820">
+  </div>
+  <div class="hero__panel">
+    <div class="hero__tagrow">
+      <span class="hero__tag" data-bzh="campaign.label">中秋分享箱</span>
+      <span class="seal" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="7" fill="#B51823"/>
+          <text x="32" y="29" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="21" font-weight="700" fill="#FBF6EA">台南</text>
+          <text x="32" y="53" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="21" font-weight="700" fill="#FBF6EA">手作</text>
         </svg>
-        <span data-bzh="shipping.method">全程冷藏宅配到府</span>
-      </p>
-      <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="order.html">立即訂購</a>
-        <a class="btn btn--ghost btn--lg" href="product.html">先看看產品</a>
-      </div>
-      <p class="hero__note" data-bzh-campaign="on">
-        最後下單日｜<span data-bzh="campaign.deadline">[待確認]</span>　中秋前送達｜<span data-bzh="campaign.deliveryWindow">[待確認]</span>
-      </p>
-      <p class="hero__note">
-        保存期限 <span data-bzh="product.shelfLife">10 天</span>，請全程冷藏。收到後請立即冷藏。
-      </p>
+      </span>
     </div>
-    <figure class="ph ph--square" data-ph="主視覺：玻璃杯中冰鎮的酸梅湯，逆光、可見冰塊">
-      <img src="assets/img/hero.jpg" data-fallback="assets/img/drink-1.jpg" alt="玻璃杯中冰鎮的冰盞紅酸梅湯" width="900" height="900">
-    </figure>
+    <h1 class="hero__title" data-bzh="campaign.heroTitle">今年中秋，冰箱裡也準備一箱。</h1>
+    <p class="hero__latin">Sour Plum Drink · Handmade in Tainan</p>
+    <p class="hero__sub"><b data-bzh="brand.product">冰盞紅酸梅湯</b>　<span data-bzh="product.spec">1000ml × 12 瓶</span>　全程冷藏宅配</p>
+    <p class="hero__price">
+      <span class="amt" data-bzh="price.box1">NT$ 1,490</span>
+      <span class="unit">／箱（12 瓶）</span>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn--primary btn--lg" href="order.html">立即訂購</a>
+      <a class="btn btn--ghost btn--lg" href="product.html">先看看產品</a>
+    </div>
+    <p class="hero__note" data-bzh-campaign="on">最後下單日｜<span data-bzh="campaign.deadline">[待確認]</span>　中秋前送達｜<span data-bzh="campaign.deliveryWindow">[待確認]</span></p>
+    <p class="hero__note">保存期限 <span data-bzh="product.shelfLife">10 天</span>，全程冷藏，收到後請立即冷藏。</p>
   </div>
 </section>
 
-<!-- ===== 2. 為什麼是 1000ml ===== -->
-<section class="sec sec--alt">
+<!-- ===== 2. 情境：四張照片磁磚 ===== -->
+<section class="sec">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-kicker">1000ml</span>
       <h2 class="sec-title">一瓶 1000ml，是<em>倒給大家喝</em>的份量</h2>
       <p class="sec-lead">不是一個人喝的隨手瓶。放在冰箱，開飯時整瓶端上桌。</p>
     </div>
-    <div class="grid grid--4">
-      <div class="card">
-        <span class="card__icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 12h16M6 12a6 6 0 0 0 12 0M3 20h18"/></svg>
-        </span>
-        <h3 class="card__title">吃飯配一杯</h3>
-        <p class="card__text">酸中帶甘，餐桌上倒一杯，清爽解渴。</p>
-      </div>
-      <div class="card">
-        <span class="card__icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v16"/></svg>
-        </span>
-        <h3 class="card__title">聚餐與節日</h3>
-        <p class="card__text">中秋、家庭聚餐、親友來訪，冰箱裡先備著。</p>
-      </div>
-      <div class="card">
-        <span class="card__icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M4 12h16M12 8v12M9 8a2.5 2.5 0 1 1 3-4 2.5 2.5 0 1 1 3 4"/></svg>
-        </span>
-        <h3 class="card__title">送禮也合適</h3>
-        <p class="card__text">整箱冷藏宅配到對方家裡，不用自己提。</p>
-      </div>
-      <div class="card">
-        <span class="card__icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M3.8 7.5l16.4 9M20.2 7.5l-16.4 9"/></svg>
-        </span>
-        <h3 class="card__title">冰箱常備</h3>
-        <p class="card__text">冰鎮後直接倒，隨時都有一杯冰涼的。</p>
-      </div>
+    <div class="tiles">
+      <a class="tile" href="product.html#drink" data-ph="情境：家常餐桌，一盤菜與一杯酸梅湯">
+        <img src="assets/img/scene-meal.jpg" data-fallback="assets/img/drink-4.jpg" alt="吃飯配一杯" loading="lazy" width="600" height="800">
+        <span class="tile__body"><span class="tile__k">Daily</span><span class="tile__t">吃飯配一杯</span><span class="tile__d">酸中帶甘，餐桌上倒一杯，清爽解渴。</span></span>
+      </a>
+      <a class="tile" href="index.html#gift" data-ph="情境：中秋聚餐，多人餐桌與月餅、數杯酸梅湯">
+        <img src="assets/img/scene-party.jpg" data-fallback="assets/img/drink-3.jpg" alt="聚餐與節日" loading="lazy" width="600" height="800">
+        <span class="tile__body"><span class="tile__k">Gathering</span><span class="tile__t">聚餐與節日</span><span class="tile__d">中秋、家庭聚餐、親友來訪，冰箱裡先備著。</span></span>
+      </a>
+      <a class="tile" href="index.html#gift" data-ph="情境：雙手捧著繫緞帶的紙箱，門口交付">
+        <img src="assets/img/scene-gift.jpg" data-fallback="assets/img/ing-guihua.jpg" alt="送禮也合適" loading="lazy" width="600" height="800">
+        <span class="tile__body"><span class="tile__k">Gift</span><span class="tile__t">送禮也合適</span><span class="tile__d">整箱冷藏宅配到對方家裡，不用自己提。</span></span>
+      </a>
+      <a class="tile" href="product.html#spec" data-ph="情境：打開的冰箱門，層架上一壺酸梅湯與冰塊">
+        <img src="assets/img/scene-fridge.jpg" data-fallback="assets/img/drink-2.jpg" alt="冰箱常備" loading="lazy" width="600" height="800">
+        <span class="tile__body"><span class="tile__k">Always</span><span class="tile__t">冰箱常備</span><span class="tile__d">冰鎮後直接倒，隨時都有一杯冰涼的。</span></span>
+      </a>
     </div>
   </div>
 </section>
@@ -164,7 +139,7 @@
       </a>
       <a class="intro-card" href="product.html#process">
         <figure class="ph" data-ph="製程照：熬煮中的鍋">
-          <img src="assets/img/process.jpg" alt="手工熬煮酸梅湯" loading="lazy" width="640" height="400">
+          <img src="assets/img/process-pot.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="手工熬煮酸梅湯" loading="lazy" width="640" height="400">
         </figure>
         <div class="intro-card__body">
           <span class="intro-card__k">HANDMADE</span>
@@ -189,9 +164,12 @@
 </section>
 
 <!-- ===== 4. 送禮 ===== -->
-<section class="sec sec--ink" id="gift">
+<section class="sec bleed" id="gift">
+  <div class="bleed__bg" data-ph="出血背景：中秋餐桌全景">
+    <img src="assets/img/scene-party.jpg" data-fallback="assets/img/drink-4.jpg" alt="" loading="lazy" width="1920" height="900">
+  </div>
   <div class="wrap">
-    <div class="grid grid--2" style="align-items:center">
+    <div class="grid" style="max-width:640px">
       <div>
         <div class="sec-head">
           <span class="sec-kicker">GIFT</span>
@@ -209,9 +187,46 @@
           <a class="btn btn--ghost btn--lg" href="wholesale.html">公司送禮・大量訂購</a>
         </div>
       </div>
-      <figure class="ph ph--square" data-ph="情境照：餐桌上整瓶與數個杯子（scene-table）">
-        <img src="assets/img/scene-table.jpg" data-fallback="assets/img/drink-4.jpg" alt="餐桌上的冰盞紅酸梅湯" loading="lazy" width="800" height="800">
-      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 筆記：三篇短文 ===== -->
+<section class="sec sec--alt" id="notes">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Notes</span>
+      <h2 class="sec-title">關於這一杯的幾件小事</h2>
+      <p class="sec-lead">不是廣告，是我們自己覺得值得說的。</p>
+    </div>
+    <div class="articles">
+      <a class="article" href="notes.html#cold">
+        <figure class="ph" data-ph="專欄：杯壁凝著水珠的冰鎮酸梅湯特寫">
+          <img src="assets/img/note-cold.jpg" data-fallback="assets/img/drink-2.jpg" alt="" loading="lazy" width="800" height="600">
+        </figure>
+        <span class="article__k">No. 1</span>
+        <h3 class="article__t">為什麼要冰著喝</h3>
+        <p class="article__d">同一瓶，室溫和冰鎮喝起來是兩種東西。酸、甜、桂花香出場的順序都不一樣。</p>
+        <span class="article__more">讀全文 →</span>
+      </a>
+      <a class="article" href="notes.html#table">
+        <figure class="ph" data-ph="專欄：中秋烤肉後的餐桌與一杯酸梅湯">
+          <img src="assets/img/note-table.jpg" data-fallback="assets/img/drink-4.jpg" alt="" loading="lazy" width="800" height="600">
+        </figure>
+        <span class="article__k">No. 2</span>
+        <h3 class="article__t">中秋餐桌，一杯就夠</h3>
+        <p class="article__d">烤肉、月餅、柚子之後，需要的不是另一道菜，是一杯把嘴巴收乾淨的東西。</p>
+        <span class="article__more">讀全文 →</span>
+      </a>
+      <a class="article" href="notes.html#batch">
+        <figure class="ph" data-ph="專欄：熬煮中的鍋，蒸氣與木杓">
+          <img src="assets/img/process-pot.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="" loading="lazy" width="800" height="600">
+        </figure>
+        <span class="article__k">No. 3</span>
+        <h3 class="article__t">「一鍋一鍋熬」的意思</h3>
+        <p class="article__d">小批次不是行銷用語，是為什麼保存期限只有十天、為什麼偶爾要請你等一下。</p>
+        <span class="article__more">讀全文 →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -398,6 +413,7 @@
       <ul class="footer-list">
         <li><a href="product.html">產品介紹</a></li>
         <li><a href="story.html">品牌故事</a></li>
+        <li><a href="notes.html">筆記</a></li>
         <li><a href="order.html">線上訂購</a></li>
         <li><a href="wholesale.html">團購・企業訂購</a></li>
         <li><a href="status.html">訂單查詢／付款回報</a></li>
@@ -581,7 +597,7 @@
 
 <!-- @include:scripts -->
 <script src="assets/js/config.js?v=d7870ae8"></script>
-<script src="assets/js/site.js?v=d43d57f4"></script>
+<script src="assets/js/site.js?v=10418296"></script>
 <!-- @end:scripts -->
 </body>
 </html>

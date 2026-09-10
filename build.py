@@ -34,9 +34,9 @@ except Exception:
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PARTIALS = os.path.join(ROOT, 'partials')
-PAGES = ['index.html', 'product.html', 'story.html', 'order.html',
+PAGES = ['index.html', 'product.html', 'story.html', 'notes.html', 'order.html',
          'done.html', 'status.html', 'wholesale.html', 'info.html']
-SITEMAP_PAGES = ['index.html', 'product.html', 'story.html', 'wholesale.html', 'info.html']
+SITEMAP_PAGES = ['index.html', 'product.html', 'story.html', 'notes.html', 'wholesale.html', 'info.html']
 
 INCLUDE_RE = re.compile(
     r'<!--\s*@include:([\w-]+)((?:\s+[\w-]+(?:="[^"]*")?)*)\s*-->(.*?)<!--\s*@end:\1\s*-->',

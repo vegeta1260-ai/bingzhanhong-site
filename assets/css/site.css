@@ -39,8 +39,8 @@
   --line-green:      #06C755;   /* LINE 平台色，只給 LINE 按鈕 */
   --line-green-deep: #05AE4B;
 
-  --radius:     4px;       /* 收斂圓角，更接近印刷品 */
-  --radius-lg:  6px;
+  --radius:     10px;
+  --radius-lg:  14px;
   --ring:       0 0 0 3px rgba(22,21,19,.18);
 
   --serif: "Noto Serif TC","Songti TC","PMingLiU",serif;
@@ -117,7 +117,7 @@ a:hover{ color:var(--red); text-decoration-color:var(--red); }
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:9px;
   min-height:56px; padding:0 28px;
-  border:1.5px solid transparent; border-radius:var(--radius);
+  border:1.5px solid transparent; border-radius:999px;
   font-family:var(--sans); font-size:1.06rem; font-weight:700; letter-spacing:.08em;
   text-decoration:none; cursor:pointer; text-align:center; line-height:1.3;
   transition:background-color .15s, border-color .15s, color .15s, transform .15s;
@@ -159,8 +159,8 @@ a:hover{ color:var(--red); text-decoration-color:var(--red); }
 .header-cta{ display:none; }
 .header-tools{ display:flex; align-items:center; gap:10px; }
 .fontsize{
-  display:inline-flex; align-items:baseline; gap:1px; min-height:44px; padding:0 12px;
-  border:1.5px solid var(--ink); border-radius:var(--radius); background:transparent; color:var(--ink);
+  display:inline-flex; align-items:baseline; gap:1px; min-height:44px; padding:0 14px;
+  border:1.5px solid var(--ink); border-radius:999px; background:transparent; color:var(--ink);
   cursor:pointer; font-family:var(--serif); font-weight:700; line-height:1;
 }
 .fontsize__s{ font-size:.85rem; } .fontsize__l{ font-size:1.2rem; }
@@ -481,6 +481,85 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
 .bank-table th{ width:108px; color:var(--ink-3); font-weight:400; font-size:.93rem; background:var(--paper-2); }
 .bank-table td{ font-size:1.08rem; font-weight:700; letter-spacing:.03em; }
 .bank-table tr:last-child th,.bank-table tr:last-child td{ border-bottom:0; }
+
+
+/* ============================================================
+   影像版面：滿版 hero、照片磁磚、出血帶、專欄、製程照片條
+   ============================================================ */
+.hero--bleed{ padding:0 0 56px; border-bottom:0; }
+.hero__media{ position:relative; overflow:hidden; aspect-ratio:4/3; max-height:78vh; min-height:360px; background:var(--paper-3); }
+.hero__media img{ width:100%; height:100%; object-fit:cover; object-position:60% 50%; }
+.hero__media::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(22,21,19,.05) 0%, rgba(22,21,19,0) 40%, rgba(22,21,19,.35) 100%); }
+.hero__media.is-empty img{ display:none; }
+.hero__media.is-empty::before{ content:"【待製圖】" attr(data-ph); position:absolute; inset:0; display:grid; place-items:center; color:var(--ink-3); font-size:.9rem; z-index:1; }
+.hero__panel{ position:relative; z-index:2; background:var(--grain), var(--paper); border-radius:var(--radius-lg); padding:30px 24px 34px; margin:-56px 16px 0; box-shadow:0 30px 70px -40px rgba(22,21,19,.55); }
+.hero--bleed .hero__title{ font-size:clamp(2.1rem,5.6vw,3.4rem); }
+.hero--bleed .hero__latin{ margin-bottom:16px; font-size:1.2rem; }
+.hero--bleed .hero__price .amt{ font-size:3rem; }
+
+.tiles{ display:grid; gap:14px; grid-template-columns:repeat(2,1fr); }
+.tile{ position:relative; display:block; aspect-ratio:3/4; overflow:hidden; border-radius:var(--radius-lg); background:var(--paper-3); color:#fff; text-decoration:none; }
+.tile img{ width:100%; height:100%; object-fit:cover; transition:transform .7s ease; }
+.tile:hover img{ transform:scale(1.04); }
+.tile::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(22,21,19,0) 35%, rgba(22,21,19,.55) 70%, rgba(22,21,19,.85) 100%); }
+.tile__body{ position:absolute; left:0; right:0; bottom:0; padding:18px 18px 20px; z-index:1; }
+.tile__k{ display:block; font-family:var(--latin); font-weight:600; font-size:.82rem; letter-spacing:.2em; text-transform:uppercase; color:#E8897E; margin-bottom:4px; }
+.tile__t{ display:block; margin:0 0 4px; font-family:var(--serif); font-size:1.3rem; line-height:1.3; color:#fff; }
+.tile__d{ display:block; margin:0; font-size:.9rem; line-height:1.6; color:rgba(255,255,255,.86); }
+.tile.is-empty img{ display:none; }
+.tile.is-empty::before{ content:"【待製圖】" attr(data-ph); position:absolute; inset:0; display:grid; place-items:center; padding:20px; text-align:center; color:var(--ink-3); font-size:.85rem; }
+
+.bleed{ position:relative; overflow:hidden; color:#fff; }
+.bleed__bg{ position:absolute; inset:0; z-index:0; background:var(--ink); }
+.bleed__bg img{ width:100%; height:100%; object-fit:cover; object-position:70% 50%; }
+.bleed__bg::after{ content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(22,21,19,.94) 0%, rgba(22,21,19,.8) 45%, rgba(22,21,19,.35) 100%); }
+.bleed__bg.is-empty img{ display:none; }
+.bleed > .wrap{ position:relative; z-index:1; }
+.bleed .sec-head{ border-top-color:rgba(255,255,255,.4); }
+.bleed .sec-title{ color:#fff; }
+.bleed .sec-lead{ color:rgba(255,255,255,.8); }
+.bleed .sec-kicker{ color:#E8897E; } .bleed .sec-kicker::before{ background:#E8897E; }
+.bleed .gift-points{ border-top-color:rgba(255,255,255,.35); max-width:560px; }
+.bleed .gift-points li{ border-bottom-color:rgba(255,255,255,.18); }
+.bleed .gift-points b{ color:#fff; font-family:var(--serif); }
+.bleed .gift-points span{ color:rgba(255,255,255,.78); }
+.bleed .btn--ghost{ color:#fff; border-color:rgba(255,255,255,.7); }
+.bleed .btn--ghost:hover{ background:#fff; color:var(--ink); }
+
+.articles{ display:grid; gap:30px 22px; grid-template-columns:1fr; }
+.article{ display:block; text-decoration:none; color:inherit; }
+.article .ph{ aspect-ratio:4/3; margin-bottom:14px; }
+.article:hover .ph img{ filter:brightness(.96); }
+.article__k{ display:block; font-family:var(--latin); font-weight:600; font-size:.86rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:4px; }
+.article__t{ margin:0 0 8px; font-family:var(--serif); font-size:1.35rem; line-height:1.4; }
+.article__d{ margin:0; font-size:.95rem; color:var(--ink-2); }
+.article__more{ display:inline-block; margin-top:10px; font-size:.92rem; font-weight:700; border-bottom:1.5px solid var(--red); }
+
+.strip{ display:grid; gap:14px; grid-template-columns:repeat(2,1fr); margin:0; padding:0; list-style:none; }
+.strip li{ margin:0; }
+.strip .ph{ aspect-ratio:4/5; }
+.strip figcaption{ margin-top:12px; }
+.strip__n{ display:block; font-family:var(--latin); font-weight:600; font-size:.9rem; letter-spacing:.18em; color:var(--red); }
+.strip__t{ display:block; font-family:var(--serif); font-size:1.15rem; font-weight:700; margin:2px 0 4px; }
+.strip__d{ display:block; font-size:.9rem; color:var(--ink-2); line-height:1.6; }
+
+.essay{ max-width:680px; margin:0; }
+.essay__head{ padding:0 0 26px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.essay h2{ font-family:var(--serif); font-size:clamp(1.7rem,4vw,2.3rem); line-height:1.35; margin:8px 0 12px; }
+.essay .ph{ margin:0 0 28px; aspect-ratio:16/10; }
+.essay p{ font-size:1.08rem; line-height:2; margin:0 0 22px; }
+.essay + .essay{ margin-top:80px; }
+
+@media (min-width:760px){
+  .articles{ grid-template-columns:repeat(3,1fr); }
+  .strip{ grid-template-columns:repeat(4,1fr); }
+  .hero__panel{ margin:-120px auto 0; max-width:760px; padding:40px 40px 44px; }
+}
+@media (min-width:1000px){
+  .tiles{ grid-template-columns:repeat(4,1fr); }
+  .hero__media{ aspect-ratio:21/9; }
+  .hero__panel{ margin:-200px 0 0 calc((100% - var(--wrap)) / 2 + 22px); max-width:640px; }
+}
 
 /* ---------- 雜項 ---------- */
 .hr{ height:1px; background:var(--rule); border:0; margin:40px 0; opacity:.6; }

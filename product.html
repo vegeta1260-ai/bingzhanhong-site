@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=7b3976cb">
+<link rel="stylesheet" href="assets/css/site.css?v=98ce0695">
 <!-- @end:head -->
 </head>
 
@@ -37,6 +37,7 @@
     <nav class="nav" aria-label="主選單">
       <a href="product.html">產品</a>
       <a href="story.html">品牌故事</a>
+      <a href="notes.html">筆記</a>
       <a href="index.html#price">價格</a>
       <a href="wholesale.html">團購訂購</a>
       <a href="index.html#faq">常見問題</a>
@@ -90,7 +91,7 @@
         <p>小批次製作，當批熬好、當批裝瓶、當批冷藏出貨。</p>
       </div>
       <figure class="ph ph--wide feature__media" data-ph="製程照：熬煮中的鍋，有人的動作">
-        <img src="assets/img/process.jpg" alt="手工熬煮酸梅湯" loading="lazy" width="800" height="450">
+        <img src="assets/img/process-pot.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="手工熬煮酸梅湯" loading="lazy" width="800" height="450">
       </figure>
     </div>
 
@@ -114,7 +115,7 @@
         <p>訂購兩箱時，會<strong>分成兩個獨立的冷藏宅配箱</strong>寄送，不會裝成一個大箱子。</p>
       </div>
       <figure class="ph ph--wide feature__media" data-ph="情境照：冰箱裡的瓶子，或宅配紙箱開箱">
-        <img src="assets/img/scene-fridge.jpg" alt="冰箱中冷藏的酸梅湯" loading="lazy" width="800" height="450">
+        <img src="assets/img/scene-fridge.jpg" data-fallback="assets/img/drink-2.jpg" alt="冰箱中冷藏的酸梅湯" loading="lazy" width="800" height="450">
       </figure>
     </div>
   </div>
@@ -181,32 +182,20 @@
       <span class="sec-kicker">HANDMADE</span>
       <h2 class="sec-title">從備料到裝瓶</h2>
     </div>
-    <ol class="timeline">
-      <li>
-        <span class="timeline__dot">1</span>
-        <span class="timeline__t">STEP 01</span>
-        <h3 class="timeline__h">備料</h3>
-        <p class="timeline__p">八種食材分別秤量、洗淨，依序下鍋。</p>
-      </li>
-      <li>
-        <span class="timeline__dot">2</span>
-        <span class="timeline__t">STEP 02</span>
-        <h3 class="timeline__h">慢火熬煮</h3>
-        <p class="timeline__p">不是沖泡，也不是濃縮還原，是真的把料熬開。</p>
-      </li>
-      <li>
-        <span class="timeline__dot">3</span>
-        <span class="timeline__t">STEP 03</span>
-        <h3 class="timeline__h">靜置冷卻</h3>
-        <p class="timeline__p">熬好後移出靜置，讓味道沉下來再裝瓶。</p>
-      </li>
-      <li>
-        <span class="timeline__dot">4</span>
-        <span class="timeline__t">STEP 04</span>
-        <h3 class="timeline__h">裝瓶冷藏</h3>
-        <p class="timeline__p">當批裝瓶、立即冷藏，全程冷鏈送到你家。</p>
-      </li>
-    </ol>
+    <ul class="strip">
+      <li><figure class="ph" data-ph="製程 01：八種乾料分別秤量、洗淨，木盤俯拍">
+        <img src="assets/img/process-prep.jpg" data-fallback="assets/img/ing-chenpi.jpg" alt="備料" loading="lazy" width="600" height="750"></figure>
+        <figcaption><span class="strip__n">Step 01</span><span class="strip__t">備料</span><span class="strip__d">八種食材分別秤量、洗淨，依序下鍋。</span></figcaption></li>
+      <li><figure class="ph" data-ph="製程 02：熬煮中的大鍋，蒸氣、木杓，深紅湯色">
+        <img src="assets/img/process-pot.jpg" alt="慢火熬煮" loading="lazy" width="600" height="750"></figure>
+        <figcaption><span class="strip__n">Step 02</span><span class="strip__t">慢火熬煮</span><span class="strip__d">不是沖泡，也不是濃縮還原，是真的把料熬開。</span></figcaption></li>
+      <li><figure class="ph" data-ph="製程 03：熬好的湯倒入大容器靜置，表面微微反光">
+        <img src="assets/img/process-cool.jpg" alt="靜置冷卻" loading="lazy" width="600" height="750"></figure>
+        <figcaption><span class="strip__n">Step 03</span><span class="strip__t">靜置冷卻</span><span class="strip__d">熬好後移出靜置，讓味道沉下來再裝瓶。</span></figcaption></li>
+      <li><figure class="ph" data-ph="製程 04：冰箱層架上排列整齊的玻璃壺（不露品牌瓶）">
+        <img src="assets/img/process-chill.jpg" data-fallback="assets/img/drink-2.jpg" alt="裝瓶冷藏" loading="lazy" width="600" height="750"></figure>
+        <figcaption><span class="strip__n">Step 04</span><span class="strip__t">裝瓶冷藏</span><span class="strip__d">當批裝瓶、立即冷藏，全程冷鏈送到你家。</span></figcaption></li>
+    </ul>
   </div>
 </section>
 
@@ -318,6 +307,7 @@
       <ul class="footer-list">
         <li><a href="product.html">產品介紹</a></li>
         <li><a href="story.html">品牌故事</a></li>
+        <li><a href="notes.html">筆記</a></li>
         <li><a href="order.html">線上訂購</a></li>
         <li><a href="wholesale.html">團購・企業訂購</a></li>
         <li><a href="status.html">訂單查詢／付款回報</a></li>
@@ -363,7 +353,7 @@
 </script>
 <!-- @include:scripts -->
 <script src="assets/js/config.js?v=d7870ae8"></script>
-<script src="assets/js/site.js?v=d43d57f4"></script>
+<script src="assets/js/site.js?v=10418296"></script>
 <!-- @end:scripts -->
 </body>
 </html>
