@@ -579,13 +579,13 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   /* 大橫圖佔左上 2×1，右側一張高直圖跨兩列，左下兩張小圖——大小交錯才有編排感 */
   .tiles{
     grid-template-columns:1.15fr 1fr 0.95fr;
-    grid-template-rows:auto auto;
+    grid-template-rows:auto clamp(250px,21vw,320px);  /* 第二列固定高，兩張小圖才會等高且維持橫式 */
     gap:16px;
   }
   .tile{ aspect-ratio:auto; }
   .tile--wide{ grid-column:1 / 3; grid-row:1 / 2; aspect-ratio:16/9; }
   .tile--tall{ grid-column:3 / 4; grid-row:1 / 3; aspect-ratio:auto; }
-  .tile--sm{ grid-row:2 / 3; aspect-ratio:auto; min-height:264px; }
+  .tile--sm{ grid-row:2 / 3; aspect-ratio:auto; height:100%; }
   .hero__media{ aspect-ratio:21/9; max-height:78vh; }
   .hero__panel{ margin:-200px 0 0 calc((100% - var(--wrap)) / 2 + 22px); max-width:640px; }
 }
