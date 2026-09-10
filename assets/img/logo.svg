@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="冰盞紅">
+  <title>冰盞紅</title>
+  <!-- 依瓶身標籤實物重繪。取得官方向量原始檔後請直接替換本檔。 -->
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#20604F" stroke-width="3.4"/>
+  <circle cx="60" cy="60" r="50" fill="#ECEAE6" stroke="#20604F" stroke-width="1.5"/>
+  <path d="M22 44 L60 54 L98 44 A38 24 0 0 1 22 44 Z" fill="#C0281B"/>
+  <path d="M22 44 L60 54 L98 44" fill="none" stroke="#ECEAE6" stroke-width="3.6" stroke-linejoin="round"/>
+  <ellipse cx="60" cy="44" rx="7.5" ry="5.5" fill="#3B1A12"/>
+  <path d="M52 66 L68 66 L64.5 78 L55.5 78 Z" fill="#C0281B"/>
+  <rect x="43" y="78" width="34" height="5.5" rx="2.6" fill="#8C1C14"/>
+</svg>

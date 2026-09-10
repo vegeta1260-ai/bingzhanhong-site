@@ -1,0 +1,16 @@
+# Claude Code 本機設定（每台機器不同，不進版控）
+.claude/settings.local.json
+
+# 作業系統
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+
+# 暫存與預覽檔
+*.log
+_preview-*.html

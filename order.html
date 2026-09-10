@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>線上訂購｜冰盞紅酸梅湯</title>
+<meta name="description" content="冰盞紅酸梅湯線上訂購。選擇 1 箱或 2 箱，可選 ATM 轉帳、LINE Pay 或貨到付款，全程冷藏宅配到府。">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#20604F">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+
+<body class="has-orderbar">
+
+<header class="site-header">
+  <div class="wrap site-header__in">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="42" height="42">
+      <span class="brand__txt">
+        <span class="brand__name">冰盞<i>紅</i></span>
+        <span class="brand__sub">線上訂購</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="product.html">產品</a>
+      <a href="story.html">品牌故事</a>
+      <a href="index.html#price">價格</a>
+      <a href="wholesale.html">團購訂購</a>
+      <a href="index.html#faq">常見問題</a>
+    </nav>
+  </div>
+</header>
+
+<main class="sec">
+  <div class="wrap wrap--narrow">
+
+    <h1 class="sec-title mb-16">線上訂購</h1>
+    <p class="sec-lead mb-24">填寫以下三個步驟即可完成訂購，不需要註冊會員。</p>
+
+    <ol class="steps">
+      <li class="is-active">1・選擇方案</li>
+      <li>2・付款方式</li>
+      <li>3・收件資料</li>
+    </ol>
+
+    <form id="order-form" novalidate>
+
+      <!-- ===== 1. 商品選擇 ===== -->
+      <fieldset class="fieldset">
+        <legend class="fieldset__title">1・選擇方案</legend>
+        <p class="fieldset__hint">一箱固定 <span data-bzh="product.perBox">12 瓶</span>，每瓶 <span data-bzh="product.volume">1000ml</span>。</p>
+        <div class="opts" id="plan-opts"><!-- 由 order.js 產生 --></div>
+        <div class="note note--ok mt-16 hide" id="two-box-note">
+          <p><strong>兩箱寄送方式</strong></p>
+          <p>12 瓶／箱，共 2 箱，將<strong>分成兩個獨立的冷藏宅配箱</strong>寄送，兩箱可能不同時間送達。</p>
+        </div>
+        <p class="field__err" id="plan-err">請選擇一個方案。</p>
+      </fieldset>
+
+      <!-- ===== 2. 付款方式 ===== -->
+      <fieldset class="fieldset">
+        <legend class="fieldset__title">2・付款方式</legend>
+        <p class="fieldset__hint">本站為人工確認收款，不會在網頁上要求您輸入卡號或密碼。</p>
+        <div class="opts" id="pay-opts"><!-- 由 order.js 產生 --></div>
+        <p class="field__err" id="pay-err">請選擇付款方式。</p>
+
+        <div class="note mt-16 hide" id="pay-note-atm">
+          <p><strong>ATM 轉帳流程</strong></p>
+          <p>送出訂單後，畫面會顯示轉帳資訊。完成轉帳後，請到「付款回報」填寫<strong>帳號後 5 碼</strong>，或用官方 LINE、電話告知我們，以便人工核對款項。</p>
+        </div>
+        <div class="note mt-16 hide" id="pay-note-linepay">
+          <p><strong>LINE Pay 付款流程</strong></p>
+          <p>送出訂單後，畫面會顯示 LINE Pay QR Code，掃描完成付款即可。付款後可到「付款回報」或用官方 LINE 通知我們。</p>
+        </div>
+        <div class="note note--warn mt-16 hide" id="pay-note-cod">
+          <p><strong>貨到付款</strong></p>
+          <p>每箱加收 <span data-bzh="cod.feePlain">30</span> 元<strong>貨到付款處理費</strong>（非運費），已計入下方合計金額，收到商品時付款給宅配人員。</p>
+        </div>
+      </fieldset>
+
+      <!-- ===== 3. 收件資料 ===== -->
+      <fieldset class="fieldset">
+        <legend class="fieldset__title">3・收件資料</legend>
+        <p class="fieldset__hint">為了順利完成冷藏配送，請填寫可以聯絡到的電話。</p>
+
+        <div class="field" id="f-rname">
+          <label class="field__label" for="rname">收件人姓名<span class="req">＊</span></label>
+          <input class="input" type="text" id="rname" name="rname" autocomplete="name" placeholder="例：王小明">
+          <p class="field__err">請填寫收件人姓名。</p>
+        </div>
+
+        <div class="field" id="f-rphone">
+          <label class="field__label" for="rphone">收件人電話<span class="req">＊</span></label>
+          <input class="input" type="tel" id="rphone" name="rphone" inputmode="tel" autocomplete="tel" placeholder="例：0912345678">
+          <p class="field__hint">手機或市話皆可，宅配人員會用此電話聯絡。</p>
+          <p class="field__err">請填寫正確的電話號碼。</p>
+        </div>
+
+        <div class="field" id="f-city">
+          <label class="field__label" for="city">配送縣市<span class="req">＊</span></label>
+          <select class="select" id="city" name="city"><option value="">請選擇</option></select>
+          <p class="field__err">請選擇配送縣市。</p>
+        </div>
+        <div class="note note--warn hide mb-24" id="city-warn"></div>
+
+        <div class="field" id="f-addr">
+          <label class="field__label" for="addr">配送地址<span class="req">＊</span></label>
+          <textarea class="textarea" id="addr" name="addr" autocomplete="street-address" placeholder="例：台北市中正區忠孝東路一段 1 號 5 樓"></textarea>
+          <p class="field__hint">請填寫完整地址，包含縣市、樓層與門牌號碼。</p>
+          <p class="field__err">請填寫完整的配送地址。</p>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="gift">
+          <span>這是要送人的（附上祝福留言）</span>
+        </label>
+
+        <div id="gift-block" class="hide">
+          <div class="field" id="f-giftmsg">
+            <label class="field__label" for="giftmsg">賀卡留言<span class="opt-tag">（選填）</span></label>
+            <textarea class="textarea" id="giftmsg" maxlength="60" placeholder="例：中秋節快樂，天氣熱記得多喝一點。"></textarea>
+            <p class="field__hint">
+              <span id="giftmsg-count">0</span> / 60 字。
+              <span data-bzh="gift.note"></span>
+            </p>
+          </div>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="same" checked>
+          <span>訂購人與收件人相同</span>
+        </label>
+
+        <div id="buyer-block" class="hide">
+          <div class="field" id="f-bname">
+            <label class="field__label" for="bname">訂購人姓名<span class="req">＊</span></label>
+            <input class="input" type="text" id="bname" name="bname" placeholder="例：王大明">
+            <p class="field__err">請填寫訂購人姓名。</p>
+          </div>
+          <div class="field" id="f-bphone">
+            <label class="field__label" for="bphone">訂購人電話<span class="req">＊</span></label>
+            <input class="input" type="tel" id="bphone" name="bphone" inputmode="tel" placeholder="例：0912345678">
+            <p class="field__err">請填寫正確的電話號碼。</p>
+          </div>
+        </div>
+
+        <div class="field" id="f-email">
+          <label class="field__label" for="email">Email<span class="opt-tag">（選填）</span></label>
+          <input class="input" type="email" id="email" name="email" inputmode="email" autocomplete="email" placeholder="例：name@example.com">
+          <p class="field__hint">留下 Email 可收到訂單紀錄，不填也可以正常訂購。</p>
+          <p class="field__err">Email 格式不正確，或請留白。</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="note">備註<span class="opt-tag">（選填）</span></label>
+          <textarea class="textarea" id="note" name="note" placeholder="例：希望週五後送達／送禮，請勿放置管理室"></textarea>
+          <p class="field__hint">我們會盡量配合指定時段，但因冷藏配送排程，恕無法保證一定送達指定日期。</p>
+        </div>
+
+        <!-- 防機器人：正常使用者看不到，也不會填 -->
+        <div style="position:absolute;left:-9999px" aria-hidden="true">
+          <label for="website">請勿填寫</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+      </fieldset>
+
+      <!-- ===== 確認訂單 ===== -->
+      <div class="summary" id="summary">
+        <p class="summary__title">訂單內容確認</p>
+        <div id="summary-rows"></div>
+        <div class="summary__total">
+          <span class="k">應付金額</span>
+          <span class="v" id="summary-total">NT$ 0</span>
+        </div>
+        <p class="small mt-16" id="summary-hint"></p>
+      </div>
+
+      <div class="note note--warn hide" id="api-warn">
+        <p><strong>提醒：線上訂單系統尚未啟用</strong></p>
+        <p>目前網站尚未連接訂單資料表（設定值：<code>api.url</code> 為空）。按下送出後，系統會把您的訂單內容整理好並複製起來，請用官方 LINE 傳送給我們，我們會為您人工建立訂單。</p>
+      </div>
+
+      <p class="field__err" id="submit-err">請確認上方標示紅字的欄位。</p>
+
+      <button class="btn btn--primary btn--lg btn--block mt-16" type="submit" id="submit-btn">送出訂單</button>
+
+      <p class="small center mt-16">
+        送出即表示您同意<a href="info.html#order">訂購須知</a>與<a href="info.html#privacy">隱私權政策</a>。<br>
+        本站不會向您索取信用卡號、金融卡密碼或網銀帳號密碼。
+      </p>
+
+      <div class="btn-row btn-row--stack mt-24">
+        <a class="btn btn--line btn--block" data-bzh-link="line" href="#">訂購遇到問題？用 LINE 問我們</a>
+        <a class="btn btn--tel btn--block" data-bzh-link="tel" href="#">撥打客服電話 <span data-bzh="contact.tel"></span></a>
+      </div>
+    </form>
+  </div>
+</main>
+
+<!-- ===== 固定計價列 ===== -->
+<div class="orderbar">
+  <div class="orderbar__in">
+    <div class="orderbar__sum">
+      <span class="k" id="bar-label">尚未選擇方案</span>
+      <span class="v" id="bar-total">NT$ 0</span>
+    </div>
+    <button class="btn btn--primary" type="button" id="bar-btn">送出訂單</button>
+  </div>
+</div>
+
+<script src="assets/js/config.js?v=1"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/order.js"></script>
+</body>
+</html>

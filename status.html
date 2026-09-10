@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>訂單查詢／付款回報｜冰盞紅酸梅湯</title>
+<meta name="description" content="冰盞紅酸梅湯訂單查詢與付款回報。ATM 轉帳完成後可在此填寫帳號後 5 碼，或查詢訂單目前狀態。">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#20604F">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+
+<body class="has-bottombar">
+
+<header class="site-header">
+  <div class="wrap site-header__in">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="42" height="42">
+      <span class="brand__txt">
+        <span class="brand__name">冰盞<i>紅</i></span>
+        <span class="brand__sub">訂單查詢／付款回報</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="product.html">產品</a>
+      <a href="story.html">品牌故事</a>
+      <a href="index.html#price">價格</a>
+      <a href="wholesale.html">團購訂購</a>
+      <a href="index.html#faq">常見問題</a>
+    </nav>
+  </div>
+</header>
+
+<main class="sec">
+  <div class="wrap wrap--narrow">
+
+    <h1 class="sec-title mb-16">訂單查詢／付款回報</h1>
+    <p class="sec-lead mb-24">
+      已經完成訂購或付款，想確認我們是否收到嗎？在這裡填寫就可以，
+      也歡迎直接用官方 LINE 或電話聯絡我們。
+    </p>
+
+    <div class="note note--warn hide mb-24" id="api-warn">
+      <p><strong>線上查詢功能尚未開通</strong></p>
+      <p>目前請直接透過官方 LINE 或客服電話與我們聯絡，我們會協助您確認訂單與款項。</p>
+    </div>
+
+    <!-- ===== 付款回報 ===== -->
+    <section id="report">
+      <h2 class="fieldset__title">已完成付款，回報給我們</h2>
+      <p class="fieldset__hint">
+        ATM 轉帳與 LINE Pay 為人工核對款項。填寫下列資料可以讓我們更快找到您的款項並安排出貨。
+      </p>
+
+      <form id="report-form" novalidate>
+        <div class="field" id="f-orderno">
+          <label class="field__label" for="orderno">訂單編號<span class="opt-tag">（如果沒有留下，可以不填）</span></label>
+          <input class="input" type="text" id="orderno" placeholder="例：BZH-20260910-001">
+          <p class="field__hint">訂單編號會顯示在您送出訂單後的完成頁面上。</p>
+        </div>
+
+        <div class="field" id="f-phone">
+          <label class="field__label" for="phone">訂購或收件電話<span class="req">＊</span></label>
+          <input class="input" type="tel" id="phone" inputmode="tel" placeholder="例：0912345678">
+          <p class="field__hint">沒有訂單編號時，我們會用電話為您查詢。</p>
+          <p class="field__err">請填寫正確的電話號碼。</p>
+        </div>
+
+        <div class="field" id="f-method">
+          <label class="field__label" for="method">付款方式<span class="req">＊</span></label>
+          <select class="select" id="method">
+            <option value="">請選擇</option>
+            <option value="atm">ATM／網路銀行轉帳</option>
+            <option value="linepay">LINE Pay</option>
+          </select>
+          <p class="field__err">請選擇付款方式。</p>
+        </div>
+
+        <div class="field hide" id="f-last5">
+          <label class="field__label" for="last5">轉帳帳號後 5 碼<span class="req">＊</span></label>
+          <input class="input" type="text" id="last5" inputmode="numeric" maxlength="5" placeholder="例：12345">
+          <p class="field__hint">請填寫您<strong>轉出帳號</strong>的最後 5 碼，這是核對款項最重要的資訊。</p>
+          <p class="field__err">請填寫 5 位數字。</p>
+        </div>
+
+        <div class="field" id="f-paidat">
+          <label class="field__label" for="paidat">付款日期<span class="opt-tag">（選填）</span></label>
+          <input class="input" type="date" id="paidat">
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="rnote">補充說明<span class="opt-tag">（選填）</span></label>
+          <textarea class="textarea" id="rnote" placeholder="例：轉帳金額與訂單不同，因為…"></textarea>
+        </div>
+
+        <p class="field__err" id="report-err">請確認上方標示紅字的欄位。</p>
+
+        <div class="note note--ok hide" id="report-ok">
+          <p><strong>已收到您的付款回報，謝謝！</strong></p>
+          <p>我們會盡快人工核對款項。如果需要立即確認，也可以用官方 LINE 詢問。</p>
+        </div>
+
+        <button class="btn btn--primary btn--lg btn--block" type="submit" id="report-btn">送出付款回報</button>
+      </form>
+    </section>
+
+    <hr class="hr">
+
+    <!-- ===== 訂單查詢 ===== -->
+    <section id="lookup">
+      <h2 class="fieldset__title">查詢訂單目前進度</h2>
+      <p class="fieldset__hint">輸入訂單編號與收件電話，確認訂單是否成立、款項是否已核對。</p>
+
+      <form id="lookup-form" novalidate>
+        <div class="field" id="f-q-orderno">
+          <label class="field__label" for="q-orderno">訂單編號<span class="req">＊</span></label>
+          <input class="input" type="text" id="q-orderno" placeholder="例：BZH-20260910-001">
+          <p class="field__err">請填寫訂單編號。</p>
+        </div>
+        <div class="field" id="f-q-phone">
+          <label class="field__label" for="q-phone">收件電話<span class="req">＊</span></label>
+          <input class="input" type="tel" id="q-phone" inputmode="tel" placeholder="例：0912345678">
+          <p class="field__hint">為了保護個人資料，需要電話與訂單編號一致才能查詢。</p>
+          <p class="field__err">請填寫正確的電話號碼。</p>
+        </div>
+
+        <button class="btn btn--ghost btn--lg btn--block" type="submit" id="lookup-btn">查詢訂單</button>
+
+        <div class="summary hide mt-24" id="lookup-result">
+          <p class="summary__title">查詢結果</p>
+          <div id="lookup-rows"></div>
+        </div>
+        <div class="note note--warn hide mt-24" id="lookup-none">
+          <p><strong>查不到符合的訂單</strong></p>
+          <p>可能是訂單編號或電話輸入有誤。歡迎用官方 LINE 或電話聯絡我們，我們會直接為您查。</p>
+        </div>
+      </form>
+    </section>
+
+    <hr class="hr">
+
+    <!-- ===== 直接聯絡 ===== -->
+    <section class="center">
+      <h2 class="fieldset__title">想直接問人也可以</h2>
+      <p class="fieldset__hint">告訴我們您的姓名與電話，我們就能查到您的訂單。</p>
+      <div class="btn-row btn-row--stack">
+        <a class="btn btn--line btn--lg btn--block" data-bzh-link="line" href="#">用 LINE 聯絡我們</a>
+        <a class="btn btn--tel btn--lg btn--block" data-bzh-link="tel" href="#">撥打客服電話 <span data-bzh="contact.tel"></span></a>
+      </div>
+      <p class="small mt-24">
+        官方 LINE｜<span data-bzh="contact.lineId"></span>　客服電話｜<span data-bzh="contact.tel"></span><br>
+        服務時間｜<span data-bzh="contact.hours"></span>
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap center">
+    <p style="margin:0">© <span data-bzh="year"></span> <span data-bzh="brand.name">冰盞紅</span>　|　<a href="info.html#order">訂購須知</a>　<a href="info.html#privacy">隱私權政策</a></p>
+  </div>
+</footer>
+
+<div class="bottombar">
+  <a class="btn btn--primary" href="order.html">立即訂購</a>
+  <a class="btn btn--line" data-bzh-link="line" href="#">LINE</a>
+  <a class="btn btn--tel" data-bzh-link="tel" href="#">電話</a>
+</div>
+
+<script src="assets/js/config.js?v=1"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/status.js"></script>
+</body>
+</html>

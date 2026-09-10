@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>訂單完成｜冰盞紅酸梅湯</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#20604F">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap site-header__in">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="42" height="42">
+      <span class="brand__txt">
+        <span class="brand__name">冰盞<i>紅</i></span>
+        <span class="brand__sub">訂單完成</span>
+      </span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap wrap--narrow">
+
+    <!-- ===== 狀態標頭（由 done.js 切換）===== -->
+    <section class="done-hero">
+      <div class="done-mark" id="done-mark">✓</div>
+      <h1 class="done-title" id="done-title">訂單已送出</h1>
+      <p class="done-sub" id="done-sub">感謝您的訂購！</p>
+      <p class="orderno hide" id="orderno-box">訂單編號　<span id="orderno"></span></p>
+    </section>
+
+    <!-- ===== 訂單尚未送出時的處理 ===== -->
+    <section class="sec hide" id="manual-block" style="padding-top:32px">
+      <div class="note note--warn">
+        <p><strong id="manual-title">訂單內容已為您整理好</strong></p>
+        <p id="manual-desc"></p>
+      </div>
+
+      <div class="field mt-24">
+        <label class="field__label" for="manual-text">訂單內容</label>
+        <textarea class="textarea" id="manual-text" rows="12" readonly style="min-height:260px"></textarea>
+      </div>
+
+      <div class="btn-row btn-row--stack">
+        <button class="btn btn--primary btn--lg btn--block" type="button" id="copy-btn">複製訂單內容</button>
+        <a class="btn btn--line btn--lg btn--block" data-bzh-link="line" href="#">開啟官方 LINE 並貼上傳送</a>
+        <a class="btn btn--tel btn--lg btn--block" data-bzh-link="tel" href="#">或直接撥打電話訂購</a>
+      </div>
+    </section>
+
+    <!-- ===== 訂單摘要 ===== -->
+    <section class="sec hide" id="recap-block" style="padding-top:32px">
+      <div class="summary">
+        <p class="summary__title">您的訂單</p>
+        <div id="recap-rows"></div>
+        <div class="summary__total">
+          <span class="k" id="recap-total-label">應付金額</span>
+          <span class="v" id="recap-total">NT$ 0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 下一步：ATM ===== -->
+    <section class="sec hide" id="next-atm" style="padding-top:0">
+      <h2 class="sec-title mb-16">接下來請完成轉帳</h2>
+      <table class="bank-table mb-24">
+        <tr><th>銀行</th><td><span data-bzh="bank.name"></span>（<span data-bzh="bank.code"></span>）</td></tr>
+        <tr><th>分行</th><td><span data-bzh="bank.branch"></span></td></tr>
+        <tr><th>帳號</th><td><span data-bzh="bank.account"></span></td></tr>
+        <tr><th>戶名</th><td><span data-bzh="bank.holder"></span></td></tr>
+        <tr><th>金額</th><td id="atm-amount">NT$ 0</td></tr>
+      </table>
+      <div class="note hide" id="bank-tbd">
+        <p><strong>匯款帳戶資訊尚未設定</strong></p>
+        <p>請透過官方 LINE 或客服電話向我們索取轉帳帳號，我們會立即提供。</p>
+      </div>
+      <div class="note note--warn">
+        <p><strong>轉帳後請務必回報，我們才能核對到您的款項。</strong></p>
+        <p>款項為人工核對，請提供<strong>轉帳帳號後 5 碼</strong>，以便對帳。</p>
+      </div>
+      <a class="btn btn--primary btn--lg btn--block mt-24" href="status.html">我已完成轉帳，前往回報</a>
+    </section>
+
+    <!-- ===== 下一步：LINE Pay ===== -->
+    <section class="sec hide" id="next-linepay" style="padding-top:0">
+      <h2 class="sec-title mb-16">接下來請完成 LINE Pay 付款</h2>
+      <p class="sec-lead mb-24">請掃描下方 QR Code，付款金額 <strong id="linepay-amount">NT$ 0</strong>。</p>
+      <figure class="ph ph--square qr-slot" data-ph="LINE Pay QR Code">
+        <img src="assets/img/linepay-qr.png" alt="LINE Pay 付款 QR Code" width="400" height="400">
+      </figure>
+      <div class="note mt-24">
+        <p><strong>掃描 QR Code 完成 LINE Pay 付款</strong></p>
+        <p>如果無法掃描，或想確認我們是否收到款項，歡迎透過官方 LINE 聯絡我們。</p>
+      </div>
+      <a class="btn btn--primary btn--lg btn--block mt-24" href="status.html">我已完成付款，前往回報</a>
+    </section>
+
+    <!-- ===== 下一步：貨到付款 ===== -->
+    <section class="sec hide" id="next-cod" style="padding-top:0">
+      <h2 class="sec-title mb-16">接下來由我們安排出貨</h2>
+      <div class="note note--ok">
+        <p><strong>您選擇的是貨到付款，現在不需要先付款。</strong></p>
+        <p>商品將依冷藏宅配流程出貨，宅配人員送達時，請支付 <strong id="cod-amount">NT$ 0</strong>（已含每箱 <span data-bzh="cod.feePlain">30</span> 元貨到付款處理費）。</p>
+      </div>
+      <div class="note mt-16">
+        <p><strong>請留意收件電話</strong></p>
+        <p>冷藏商品送達前宅配人員會先致電，麻煩保持電話暢通，以免商品需要退回。</p>
+      </div>
+    </section>
+
+    <!-- ===== 共用提醒與聯絡 ===== -->
+    <section class="sec" style="padding-top:8px">
+      <div class="note note--warn mb-24">
+        <p><strong>收到商品後請立即冷藏。</strong></p>
+        <p>保存期限 <span data-bzh="product.shelfLife">10 天</span>，請全程冷藏，開封後請儘速飲用。</p>
+      </div>
+
+      <h2 class="sec-title mb-16">需要協助嗎？</h2>
+      <p class="sec-lead mb-24">想確認訂單、修改地址，或有任何問題，都可以直接聯絡我們。</p>
+      <div class="btn-row btn-row--stack">
+        <a class="btn btn--line btn--lg btn--block" data-bzh-link="line" href="#">用 LINE 聯絡我們</a>
+        <a class="btn btn--tel btn--lg btn--block" data-bzh-link="tel" href="#">撥打客服電話 <span data-bzh="contact.tel"></span></a>
+        <a class="btn btn--ghost btn--block" href="index.html">回到首頁</a>
+      </div>
+      <p class="small center mt-24">
+        官方 LINE｜<span data-bzh="contact.lineId"></span>　客服電話｜<span data-bzh="contact.tel"></span>
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap center">
+    <p style="margin:0">© <span data-bzh="year"></span> <span data-bzh="brand.name">冰盞紅</span>　|　<a href="info.html#order">訂購須知</a>　<a href="info.html#privacy">隱私權政策</a></p>
+  </div>
+</footer>
+
+<script src="assets/js/config.js?v=1"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/done.js"></script>
+</body>
+</html>
