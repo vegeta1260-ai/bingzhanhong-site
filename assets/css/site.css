@@ -32,6 +32,10 @@
   --green-lit:  #2E7A66;
   --green-soft: #E2EBE6;
 
+  /* LINE 官方綠 —— 只用在 LINE 按鈕，屬平台識別色，不是品牌色 */
+  --line-green:      #06C755;
+  --line-green-deep: #05AE4B;
+
   /* 桂花金 —— 點綴，用得極少 */
   --gold:       #B8891C;
   --gold-soft:  #F6EDD5;
@@ -143,8 +147,8 @@ a:hover{ color:var(--green-deep); }
 .btn--green:hover{ background:var(--green-deep); color:#fff; }
 .btn--ghost{ background:transparent; color:var(--green); border-color:var(--green); }
 .btn--ghost:hover{ background:var(--green-soft); color:var(--green-deep); }
-.btn--line{ background:var(--green); color:#fff; }
-.btn--line:hover{ background:var(--green-deep); color:#fff; }
+.btn--line{ background:var(--line-green); color:#fff; }
+.btn--line:hover{ background:var(--line-green-deep); color:#fff; }
 .btn--tel{ background:var(--surface); color:var(--ink); border-color:var(--line-2); }
 .btn--tel:hover{ border-color:var(--green); color:var(--green-deep); }
 .btn--lg{ min-height:64px; font-size:1.16rem; padding:0 32px; }
@@ -409,8 +413,8 @@ a:hover{ color:var(--green-deep); }
 .contact-band .sec-lead{ color:rgba(255,255,255,.82); }
 .contact-band .sec-kicker{ color:rgba(255,255,255,.62); }
 .contact-band .sec-kicker::before{ border-color:rgba(255,255,255,.5); }
-.contact-band .btn--line{ background:#fff; color:var(--green-deep); }
-.contact-band .btn--line:hover{ background:#F2EADA; color:var(--green-deep); }
+.contact-band .btn--line{ background:var(--line-green); color:#fff; }
+.contact-band .btn--line:hover{ background:var(--line-green-deep); color:#fff; }
 .contact-band .btn--tel{ background:transparent; color:#fff; border-color:rgba(255,255,255,.5); }
 .contact-band .btn--tel:hover{ border-color:#fff; color:#fff; }
 .contact-info{ margin:24px 0 0; font-size:1rem; color:rgba(255,255,255,.82); }
