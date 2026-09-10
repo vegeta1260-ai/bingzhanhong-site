@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=98ce0695">
+<link rel="stylesheet" href="assets/css/site.css?v=2ffd957e">
 <!-- @end:head -->
 </head>
 
@@ -28,7 +28,7 @@
 <header class="site-header">
   <div class="wrap site-header__in">
     <a class="brand" href="index.html">
-      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="44" height="44">
+      <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="44" height="44">
       <span class="brand__txt">
         <img class="brand__wordmark" src="assets/img/wordmark.png" alt="冰盞紅" width="747" height="221">
         <span class="brand__sub">品牌故事</span>
@@ -54,21 +54,20 @@
 
 <main>
 
-<!-- ===== Hero ===== -->
-<section class="hero">
-  <div class="wrap hero__grid">
-    <div>
-      <span class="hero__tag">OUR STORY</span>
-      <h1 class="hero__title">名字裡有三件事：<br>冰、盞、紅</h1>
-      <p class="hero__sub">來自台南的手作酸梅湯。</p>
-      <div class="btn-row">
-        <a class="btn btn--primary btn--lg" href="order.html">立即訂購</a>
-        <a class="btn btn--ghost btn--lg" href="product.html">看產品介紹</a>
-      </div>
+<!-- ===== Hero：滿版照片＋面板 ===== -->
+<section class="hero hero--bleed">
+  <div class="hero__media" data-ph="品牌主視覺（橫幅）：老屋門口或熬煮現場，人只露手">
+    <img src="assets/img/story-hero.jpg" data-fallback="assets/img/drink-3.jpg" alt="冰盞紅" width="1920" height="820">
+  </div>
+  <div class="hero__panel">
+    <span class="hero__tag">OUR STORY</span>
+    <h1 class="hero__title">名字裡有三件事：<br>冰、盞、紅</h1>
+    <p class="hero__latin">Sour Plum Drink · Tainan</p>
+    <p class="hero__sub">來自台南的手作酸梅湯。</p>
+    <div class="btn-row">
+      <a class="btn btn--primary btn--lg" href="order.html">立即訂購</a>
+      <a class="btn btn--ghost btn--lg" href="product.html">看產品介紹</a>
     </div>
-    <figure class="ph ph--square" data-ph="品牌情境照：老屋、餐桌，或熬煮現場">
-      <img src="assets/img/story-hero.jpg" data-fallback="assets/img/drink-3.jpg" alt="冰盞紅" width="900" height="900">
-    </figure>
   </div>
 </section>
 
@@ -82,7 +81,7 @@
 
     <div class="grid grid--2" style="align-items:center">
       <figure class="ph ph--square" style="max-width:320px;background:var(--paper-2);display:grid;place-items:center;border:1px solid var(--line)">
-        <img src="assets/img/logo.svg" alt="冰盞紅標誌" width="240" height="240"
+        <img src="assets/img/logo-mark.png" alt="冰盞紅標誌" width="240" height="240"
              style="width:62%;height:auto;object-fit:contain">
       </figure>
       <div class="prose">
@@ -181,7 +180,7 @@
   <div class="wrap footer-grid">
     <div>
       <a class="brand" href="index.html" style="margin-bottom:12px">
-        <img class="brand__mark" src="assets/img/logo.svg" alt="" width="38" height="38">
+        <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="38" height="38">
         <span class="brand__txt"><span class="brand__name" style="color:#fff">冰盞<i style="color:#E8897E">紅</i></span></span>
       </a>
       <p style="margin:0">
