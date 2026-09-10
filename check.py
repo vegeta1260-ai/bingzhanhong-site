@@ -86,6 +86,17 @@ for name in PAGES:
     for m in re.finditer(r'<!--\s*草稿', html):
         warns.append('%s 第 %d 行：草稿段落尚未經業主確認' % (name, line_of(html, m.start())))
 
+# ---------- 2b. 版面：容易造成橫向溢出的寫法 ----------
+css_path = os.path.join(ROOT, 'assets', 'css', 'site.css')
+if os.path.isfile(css_path):
+    css = read(css_path)
+    # aspect-ratio 搭配 min-height 又沒給 width，瀏覽器會用高度反推寬度而撐破版面
+    for m in re.finditer(r'\{[^{}]*\}', css):
+        rule = m.group(0)
+        if 'aspect-ratio' in rule and 'min-height' in rule and 'width:' not in rule:
+            warns.append('site.css 第 %d 行：規則同時有 aspect-ratio 與 min-height 卻沒有 width，'
+                         '可能在窄螢幕撐破版面' % line_of(css, m.start()))
+
 # ---------- 3. config.js ----------
 cfg = read(os.path.join(ROOT, 'assets', 'js', 'config.js'))
 for m in re.finditer(r"'(\[待確認\][^']*)'", cfg):
