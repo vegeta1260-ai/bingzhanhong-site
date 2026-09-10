@@ -582,9 +582,10 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
    ============================================================ */
 /* 宣言帶：一句大字，三行短語 */
 .manifesto{ text-align:center; padding:80px 0; }
-.manifesto__q{ margin:0 auto 26px; max-width:14em; font-family:var(--serif); font-weight:700; font-size:clamp(1.7rem,4.6vw,2.6rem); line-height:1.5; letter-spacing:.04em; text-wrap:balance; }
+.manifesto__q{ margin:0 auto 30px; max-width:20em; font-family:var(--serif); font-weight:700; font-size:clamp(1.55rem,4vw,2.4rem); line-height:1.6; letter-spacing:.05em; text-wrap:balance; }
+.manifesto__q span{ display:inline-block; }
 .manifesto__q em{ font-style:normal; color:var(--red); }
-.manifesto__lines{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px 34px; margin:0; padding:0; list-style:none; font-family:var(--latin); font-weight:600; font-size:1.05rem; letter-spacing:.14em; color:var(--ink-2); }
+.manifesto__lines{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px 40px; margin:0; padding:0; list-style:none; font-family:var(--latin); font-weight:600; font-size:1.05rem; letter-spacing:.14em; color:var(--ink-2); }
 .manifesto__lines li b{ font-family:var(--serif); font-weight:700; color:var(--ink); letter-spacing:.08em; margin-right:.4em; }
 
 /* 三層風味：由淺到深的三條色帶 */
