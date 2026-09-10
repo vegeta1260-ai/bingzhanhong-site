@@ -23,7 +23,7 @@ var ORDER_PREFIX = 'BZH';
 /** 訂單表欄位（順序即為試算表欄位順序，請勿隨意調換） */
 var ORDER_HEADERS = [
   '訂單編號', '訂購日期', '訂購人', '訂購人電話',
-  '收件人', '收件人電話', '配送縣市', '配送地址', 'Email',
+  '收件人', '收件人電話', '配送縣市', '配送地址', '希望到貨日', 'Email',
   '方案', '箱數', '瓶數',
   '商品金額', '處理費', '訂單金額',
   '付款方式', '付款狀態', '訂單狀態',
@@ -193,6 +193,7 @@ function handleOrder_(d) {
       asText_(d.receiverPhone),
       d.city || '',
       d.address || '',
+      d.arriveDate || '',
       d.email || '',
       d.planTitle || '',
       d.boxes || '',
@@ -414,6 +415,7 @@ function notify_(orderNo, d) {
     '付款方式：' + (d.paymentName || ''),
     '收件人：' + (d.receiverName || '') + '　' + (d.receiverPhone || ''),
     '地址：' + (d.address || ''),
+    '希望到貨日：' + (d.arriveDate || '（不指定）'),
     '訂購人：' + (d.buyerName || '') + '　' + (d.buyerPhone || ''),
     'Email：' + (d.email || ''),
     '備註：' + (d.note || '')

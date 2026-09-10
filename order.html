@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=b4348580">
+<link rel="stylesheet" href="assets/css/site.css?v=13fff4ce">
 <!-- @end:head -->
 </head>
 
@@ -46,12 +46,6 @@
     <p class="sec-lead mb-24">不需要註冊會員。照下面四步，大約兩分鐘。</p>
 
     <!-- ===== 四步圖解 ===== -->
-    <ol class="howto" aria-label="訂購步驟">
-      <li><b>選方案</b><span>1 箱或 2 箱</span></li>
-      <li><b>選付款方式</b><span>ATM、LINE Pay 或貨到付款</span></li>
-      <li><b>填收件資料</b><span>姓名、電話、地址</span></li>
-      <li><b>確認後送出</b><span>依付款方式完成付款</span></li>
-    </ol>
 
     <!-- ===== 先講清楚 ===== -->
     <div class="note note--warn mb-24">
@@ -60,6 +54,68 @@
       ② 出貨時間：<span data-bzh="shipping.leadTime">[待確認]</span>。
       ③ 兩箱會分成兩個冷藏宅配箱寄送。</p>
     </div>
+
+    <!-- @include:flow -->
+<section class="sec" id="flow">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">How It Works</span>
+      <h2 class="sec-title">下單之後會發生什麼事</h2>
+      <p class="sec-lead">這個網站沒有線上刷卡。<b>訂單送出不等於付款</b>——
+      你會先收到我們的確認，確認之後才需要付錢。</p>
+    </div>
+
+    <ol class="flow">
+      <li class="flow__step">
+        <span class="flow__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9.5 4h5v2.5h-5z"/><path d="M8.5 11h7M8.5 15h4.5"/></svg></span>
+        <div>
+          <span class="flow__n">Step 01</span>
+          <h3 class="flow__t">你填表下單</h3>
+          <p class="flow__d">選一箱或兩箱，填收件資料，大約兩分鐘。<b>這一步還不用付錢。</b></p>
+        </div>
+      </li>
+
+      <li class="flow__step">
+        <span class="flow__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5H4v11h4v4l4-4h8z"/><path d="M8.5 10.5h7"/></svg></span>
+        <div>
+          <span class="flow__n">Step 02</span>
+          <h3 class="flow__t">我們跟你確認</h3>
+          <p class="flow__d">用 LINE 或電話跟你確認庫存、地址與到貨日。小批次手工熬煮，偶爾要請你等下一批。</p>
+        </div>
+      </li>
+
+      <li class="flow__step">
+        <span class="flow__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10.5h18M6.5 14.5h3"/></svg></span>
+        <div>
+          <span class="flow__n">Step 03</span>
+          <h3 class="flow__t">你付款回報</h3>
+          <p class="flow__d">ATM 或 LINE Pay，付完到<a href="status.html">付款回報</a>填後五碼。<b>選貨到付款就跳過這步。</b></p>
+        </div>
+      </li>
+
+      <li class="flow__step">
+        <span class="flow__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l8-4 8 4v9l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v9"/></svg></span>
+        <div>
+          <span class="flow__n">Step 04</span>
+          <h3 class="flow__t">熬好就出貨</h3>
+          <p class="flow__d">你的訂單排進最近一批，熬好就裝瓶冷藏出貨，不會先做起來放。</p>
+        </div>
+      </li>
+
+      <li class="flow__step">
+        <span class="flow__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6v9H4z"/><path d="M12 12.5v5M9.8 13.8l4.4 2.4M14.2 13.8l-4.4 2.4"/></svg></span>
+        <div>
+          <span class="flow__n">Step 05</span>
+          <h3 class="flow__t">冷藏宅配到府</h3>
+          <p class="flow__d"><b>需要有人簽收。</b>收到請立刻冰起來，保存期限 <span data-bzh="product.shelfLife">10 天</span>。</p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="flow__foot">整個過程都可以透過官方 LINE 找到我們。有任何一步不確定，先問再下單都可以。</p>
+  </div>
+</section>
+<!-- @end:flow -->
 
     <!-- ===== 上次的收件資料（有存才顯示）===== -->
     <div class="remember-bar hide" id="remember-bar">
@@ -148,6 +204,20 @@
           <p class="field__err">請填寫完整的路名與門牌。</p>
         </div>
 
+        <div class="field" id="f-arrive">
+          <label class="field__label" for="arrive">希望到貨日<span class="opt-tag">（選填）</span></label>
+          <input class="input" type="date" id="arrive" name="arrive">
+          <p class="field__hint">不填的話，我們會在備好貨之後儘快出貨。<span data-bzh="shipping.arriveNote"></span></p>
+          <p class="field__err">請選擇 <span id="arrive-range">可選範圍</span> 之間的日期。</p>
+        </div>
+
+        <div class="note note--warn mb-24">
+          <p><strong>冷藏宅配，這兩件事請務必確認</strong></p>
+          <p>① 宅配到達時<strong>需要有人簽收</strong>。冷藏商品若因無人簽收而退回，品質已受影響，無法再次配送。
+          ② 收到後<strong>請立即冷藏</strong>，不要放在室溫或車上。</p>
+          <p>那幾天家裡沒人的話，建議填上希望到貨日，或改寄到有人收的地址。</p>
+        </div>
+
         <label class="check">
           <input type="checkbox" id="gift">
           <span>這是要送人的（附上祝福留言）</span>
@@ -193,8 +263,8 @@
 
         <div class="field">
           <label class="field__label" for="note">備註<span class="opt-tag">（選填）</span></label>
-          <textarea class="textarea" id="note" name="note" placeholder="例：希望週五後送達／第二箱請寄到：…"></textarea>
-          <p class="field__hint">我們會盡量配合指定時段，但因冷藏配送排程，恕無法保證一定送達指定日期。</p>
+          <textarea class="textarea" id="note" name="note" placeholder="例：第二箱請寄到：…／白天不在家，請下午三點後送"></textarea>
+          <p class="field__hint">想指定日期請用上面的「希望到貨日」。這裡可以寫其他需求，例如第二箱要分寄的地址。</p>
         </div>
 
         <label class="check">
@@ -269,10 +339,10 @@
 </div>
 
 <!-- @include:scripts -->
-<script src="assets/js/config.js?v=640f5f1f"></script>
-<script src="assets/js/site.js?v=54279174"></script>
+<script src="assets/js/config.js?v=db3d65f7"></script>
+<script src="assets/js/site.js?v=f6b74030"></script>
 <!-- @end:scripts -->
 <script src="assets/js/tw-districts.js?v=902c74d6"></script>
-<script src="assets/js/order.js?v=07052dd7"></script>
+<script src="assets/js/order.js?v=a2bb3869"></script>
 </body>
 </html>

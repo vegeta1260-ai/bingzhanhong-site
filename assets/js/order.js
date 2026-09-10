@@ -276,6 +276,7 @@
     if (DIST) check('f-district', !!$('district').value);
     check('f-addr', $('addr').value.trim().length >= 4);
     check('f-email', validEmail($('email').value.trim()));
+    check('f-arrive', arriveValid());
 
     if (!$('same').checked) {
       check('f-bname', $('bname').value.trim().length >= 2);
@@ -322,6 +323,7 @@
       city: $('city').value,
       district: district,
       address: (district ? district + ' ' : '') + $('addr').value.trim().replace(/\s+/g, ' '),
+      arriveDate: ($('arrive') && $('arrive').value) || '',
       isGift: $('gift').checked,
       giftMessage: $('gift').checked ? $('giftmsg').value.trim() : '',
       buyerName: same ? $('rname').value.trim() : $('bname').value.trim(),
@@ -344,6 +346,7 @@
     L.push('收件人：' + o.receiverName);
     L.push('收件電話：' + o.receiverPhone);
     L.push('配送地址：' + o.city + ' ' + o.address);
+    if (o.arriveDate) L.push('希望到貨日：' + o.arriveDate.replace(/-/g, '/'));
     if (o.isGift) L.push('※ 送禮，賀卡留言：' + (o.giftMessage || '（未填）'));
     if (o.buyerName !== o.receiverName || o.buyerPhone !== o.receiverPhone) {
       L.push('訂購人：' + o.buyerName + '（' + o.buyerPhone + '）');
@@ -410,10 +413,42 @@
     location.href = 'done.html';
   }
 
+  /* ---------------- 希望到貨日 ---------------- */
+  // 只用本地時間組 yyyy-mm-dd，避免 toISOString() 因時區把日期退一天
+  function ymd(d) {
+    return d.getFullYear() + '-' +
+           ('0' + (d.getMonth() + 1)).slice(-2) + '-' +
+           ('0' + d.getDate()).slice(-2);
+  }
+  function arriveBounds() {
+    var sp = C.shipping || {};
+    var lo = new Date(), hi = new Date();
+    lo.setDate(lo.getDate() + (sp.arriveMinDays || 3));
+    hi.setDate(hi.getDate() + (sp.arriveMaxDays || 30));
+    return { lo: ymd(lo), hi: ymd(hi) };
+  }
+  function setupArrive() {
+    var el = $('arrive');
+    if (!el) return;
+    var b = arriveBounds();
+    el.min = b.lo; el.max = b.hi;
+    var label = $('arrive-range');
+    if (label) label.textContent = b.lo.replace(/-/g, '/') + ' 至 ' + b.hi.replace(/-/g, '/');
+  }
+  function arriveValid() {
+    var el = $('arrive');
+    if (!el) return true;
+    var v = el.value;
+    if (!v) return true;                 // 選填，空白代表不指定
+    var b = arriveBounds();
+    return v >= b.lo && v <= b.hi;
+  }
+
   /* ---------------- 事件綁定 ---------------- */
   renderPlans();
   renderPayments();
   renderCities();
+  setupArrive();
   bindGift();
   bindRemember();
 

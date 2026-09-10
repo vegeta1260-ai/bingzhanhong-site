@@ -714,6 +714,40 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   .spec-split{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:start; }
 }
 
+/* ============================================================
+   訂購流程圖解
+   ============================================================ */
+.flow{ list-style:none; margin:0; padding:0; display:grid; }
+.flow__step{ position:relative; display:grid; grid-template-columns:54px 1fr; gap:18px; padding:0 0 30px; }
+/* 連接線：手機直向串起來，桌機橫向 */
+.flow__step::before{
+  content:""; position:absolute; left:26px; top:60px; bottom:4px; width:1px;
+  background:var(--rule); opacity:.2;
+}
+.flow__step:last-child::before{ display:none; }
+.flow__icon{
+  width:54px; height:54px; border-radius:50%; display:grid; place-items:center;
+  border:1px solid rgba(22,21,19,.16); background:var(--paper); color:var(--red);
+}
+.sec--alt .flow__icon{ background:var(--paper-2); }
+.flow__icon svg{ width:25px; height:25px; }
+.flow__n{ font-family:var(--latin); font-weight:600; font-size:.78rem; letter-spacing:.2em;
+          text-transform:uppercase; color:var(--ink-3); }
+.flow__t{ margin:3px 0 7px; font-family:var(--serif); font-weight:700; font-size:1.1rem; letter-spacing:.02em; }
+.flow__d{ margin:0; font-size:.94rem; line-height:1.85; color:var(--ink-2); }
+.flow__d b{ color:var(--ink); font-weight:700; }
+.flow__foot{ margin:6px 0 0; font-size:.9rem; color:var(--ink-3); }
+
+@media (min-width:900px){
+  .flow{ grid-template-columns:repeat(5,1fr); gap:22px; align-items:start; }
+  /* align-content 預設會讓 auto 列吸收 li 被拉伸的剩餘空間，
+     造成文字少的欄圖示列變高、文字往下掉。必須明確設為 start。 */
+  .flow__step{ grid-template-columns:1fr; grid-template-rows:auto auto; align-content:start; gap:14px; padding:0; }
+  .flow__d{ font-size:.9rem; }
+  .flow__step::before{ left:54px; right:-24px; top:26px; bottom:auto; width:auto; height:1px; }
+  .flow__foot{ margin-top:34px; }
+}
+
 /* ---------- 雜項 ---------- */
 .hr{ height:1px; background:var(--rule); border:0; margin:40px 0; opacity:.6; }
 .center{ text-align:center; }

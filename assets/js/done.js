@@ -39,6 +39,7 @@
   html += row('收件人', order.receiverName);
   html += row('收件電話', order.receiverPhone);
   html += row('配送地址', (order.city ? order.city + ' ' : '') + order.address);
+  if (order.arriveDate) html += row('希望到貨日', order.arriveDate.replace(/-/g, '/'));
   if (order.isGift) html += row('送禮', order.giftMessage ? '賀卡留言：' + order.giftMessage : '附贈賀卡');
   if (order.boxes > 1) html += row('寄送方式', order.boxes + ' 個獨立冷藏宅配箱');
   if (order.note) html += row('備註', order.note);

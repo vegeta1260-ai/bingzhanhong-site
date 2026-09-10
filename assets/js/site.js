@@ -97,6 +97,7 @@
     'shipping.method': C.shipping.method,
     'shipping.leadTime': C.shipping.leadTime,
     'shipping.areaNote': C.shipping.areaNote,
+    'shipping.arriveNote': C.shipping.arriveNote || '',
 
     'bank.name': C.bank.bankName,
     'bank.code': C.bank.bankCode,
