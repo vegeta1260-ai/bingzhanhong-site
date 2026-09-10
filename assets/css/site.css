@@ -647,6 +647,67 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   .store{ grid-template-columns:1fr auto; align-items:center; }
 }
 
+
+/* ============================================================
+   編排工具：出血、錯落、滿版引言
+   ============================================================ */
+/* 圖片延伸到視窗邊緣。min() 讓視窗比版心窄時退回一般邊距 */
+@media (min-width:900px){
+  .bleed-r{ margin-right:min(-22px, calc((100vw - 1140px) / -2 - 22px)); }
+  .bleed-l{ margin-left:min(-22px, calc((100vw - 1140px) / -2 - 22px)); }
+  .bleed-r .ph,.bleed-l .ph{ border-radius:var(--radius-lg); }
+  .bleed-r .ph{ border-top-right-radius:0; border-bottom-right-radius:0; }
+  .bleed-l .ph{ border-top-left-radius:0; border-bottom-left-radius:0; }
+}
+
+/* 圖文段落：文字欄窄、圖欄寬，比 1:1 更有主從 */
+@media (min-width:900px){
+  .feature--wide{ grid-template-columns:0.85fr 1.15fr; gap:56px; }
+  .feature--wide.feature--flip{ grid-template-columns:1.15fr 0.85fr; }
+  .feature__media .ph{ aspect-ratio:4/3; }
+  .feature--tallpic .feature__media .ph{ aspect-ratio:3/4; }
+}
+.feature__cap{ margin:12px 0 0; font-size:.86rem; color:var(--ink-3); }
+@media (min-width:900px){
+  /* 出血側的圖說靠回版心，不要貼到視窗邊緣 */
+  .bleed-l .feature__cap{ text-align:right; padding-right:0; }
+  .bleed-r .feature__cap{ padding-left:0; }
+}
+
+/* 滿版引言帶：一句話撐一個區塊 */
+.quote-band{ padding:96px 0; text-align:center; }
+.quote-band p{
+  margin:0 auto; max-width:22em;
+  font-family:var(--serif); font-weight:700;
+  font-size:clamp(1.5rem,3.6vw,2.3rem); line-height:1.75; letter-spacing:.04em;
+  text-wrap:balance;
+}
+.quote-band em{ font-style:normal; color:var(--red); }
+.quote-band cite{ display:block; margin-top:20px; font-style:normal; font-family:var(--latin); font-weight:600; font-size:.95rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3); }
+.sec--ink .quote-band cite,.bleed .quote-band cite{ color:rgba(255,255,255,.6); }
+
+/* 食材圖鑑：大小交錯 + 上下錯落，不再八個一模一樣 */
+@media (min-width:640px){
+  .ing-grid--vary .ing:nth-child(even){ margin-top:44px; }
+  .ing-grid--vary .ing:nth-child(even) .ing__fig{ width:84%; margin-left:auto; margin-right:auto; }
+}
+
+/* 標誌展示：墨底讓徽章發光 */
+.markshow{ display:grid; gap:34px; align-items:center; }
+.markshow__fig{ display:grid; place-items:center; aspect-ratio:1/1; max-width:320px; margin:0; border-radius:50%;
+  background:radial-gradient(circle at 50% 45%, rgba(255,255,255,.10) 0%, rgba(255,255,255,.03) 62%, transparent 72%); }
+.markshow__fig img{ width:74%; height:auto; filter:drop-shadow(0 18px 40px rgba(0,0,0,.45)); }
+.markshow__list{ margin:0; padding:0; list-style:none; display:grid; gap:22px; }
+.markshow__list li{ display:grid; grid-template-columns:58px 1fr; gap:20px; align-items:baseline; }
+.markshow__ch{ font-family:var(--serif); font-size:2.6rem; font-weight:700; line-height:1; color:#fff; }
+.markshow__list p{ margin:0; color:rgba(251,248,241,.8); font-size:1rem; line-height:1.85; }
+@media (min-width:900px){ .markshow{ grid-template-columns:0.8fr 1.2fr; gap:60px; } }
+
+/* 規格：左表右圖 */
+@media (min-width:900px){
+  .spec-split{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:start; }
+}
+
 /* ---------- 雜項 ---------- */
 .hr{ height:1px; background:var(--rule); border:0; margin:40px 0; opacity:.6; }
 .center{ text-align:center; }

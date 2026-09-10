@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=8330688c">
+<link rel="stylesheet" href="assets/css/site.css?v=9f4dba36">
 <!-- @end:head -->
 </head>
 
@@ -57,7 +57,7 @@
 <!-- ===== Hero：滿版照片＋面板 ===== -->
 <section class="hero hero--bleed">
   <div class="hero__media" data-ph="品牌主視覺（橫幅）：老屋門口或熬煮現場，人只露手">
-    <img src="assets/img/story-hero.jpg" data-fallback="assets/img/process-pot.jpg" alt="冰盞紅" width="1920" height="820">
+    <img src="assets/img/story-hero.jpg" data-fallback="assets/img/hero-wide.jpg" alt="冰盞紅" width="1920" height="820">
   </div>
   <div class="hero__panel">
     <span class="hero__tag">OUR STORY</span>
@@ -72,26 +72,30 @@
 </section>
 
 <!-- ===== 名字與標誌 ===== -->
-<section class="sec">
+<section class="sec sec--ink">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-kicker">THE MARK</span>
+      <span class="sec-kicker">The Mark</span>
       <h2 class="sec-title">標誌就是把名字畫出來</h2>
     </div>
-
-    <div class="grid grid--2" style="align-items:center">
-      <figure class="ph ph--square" style="max-width:320px;background:var(--paper-2);display:grid;place-items:center;border:1px solid var(--line)">
-        <img src="assets/img/logo-mark.png" alt="冰盞紅標誌" width="240" height="240"
-             style="width:62%;height:auto;object-fit:contain">
+    <div class="markshow">
+      <figure class="markshow__fig">
+        <img src="assets/img/logo-mark.png" alt="冰盞紅標誌" width="340" height="340">
       </figure>
-      <div class="prose">
-        <p><strong>冰</strong>——徽章中間那圈冷冷的白底。這是一瓶要冰著喝的飲料，
-        從裝瓶到你家門口，全程沒有離開過冷藏。</p>
-        <p><strong>盞</strong>——中央那只高足的器皿。盞是拿來盛、拿來分的，
-        不是自己一個人捧著喝的容器。</p>
-        <p><strong>紅</strong>——盞裡那抹朱紅，是八種食材熬出來的顏色。
-        連字標的「紅」字本身，都是紅的。</p>
-      </div>
+      <ul class="markshow__list">
+        <li>
+          <span class="markshow__ch">冰</span>
+          <p>徽章中間那圈冷冷的白底。這是一瓶要冰著喝的飲料，從裝瓶到你家門口，全程沒有離開過冷藏。</p>
+        </li>
+        <li>
+          <span class="markshow__ch">盞</span>
+          <p>中央那只高足的器皿。盞是拿來盛、拿來分的，不是自己一個人捧著喝的容器。</p>
+        </li>
+        <li>
+          <span class="markshow__ch" style="color:#E8897E">紅</span>
+          <p>盞裡那抹朱紅，是八種食材熬出來的顏色。連字標的「紅」字本身，都是紅的。</p>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -153,21 +157,21 @@
   </div>
 </section>
 
-<!-- ===== 台南 ===== -->
-<section class="sec sec--alt">
-  <div class="wrap wrap--narrow">
-    <div class="sec-head">
-      <span class="sec-kicker">TAINAN</span>
+<!-- ===== 台南：出血背景 ===== -->
+<section class="sec bleed">
+  <div class="bleed__bg" data-ph="全景：台南街屋或老宅門口，午後光">
+    <img src="assets/img/story-tainan.jpg" data-fallback="assets/img/scene-party.jpg" alt="" loading="lazy" width="1920" height="900">
+  </div>
+  <div class="wrap">
+    <div class="sec-head" style="max-width:640px">
+      <span class="sec-kicker">Tainan</span>
       <h2 class="sec-title">從台南出發</h2>
     </div>
-    <div class="prose">
-      <p>冰盞紅是台南的品牌。這座城市夏天長、天氣熱，
+    <div class="prose" style="max-width:600px">
+      <p style="color:rgba(255,255,255,.86)">冰盞紅是台南的品牌。這座城市夏天長、天氣熱，
       也是最懂得吃、最挑嘴的地方之一——酸梅湯在這裡不是新奇的東西，
       而是餐桌上本來就會出現的一杯。</p>
-    </div>
-    <!-- 草稿：以下依已確認事實（台南、手工小批次）撰寫，請業主補充店址、在地細節後確認 -->
-    <div class="prose mt-24">
-      <p>我們在這裡熬煮、裝瓶、冷藏，然後直接送到你家。
+      <p style="color:rgba(255,255,255,.86)">我們在這裡熬煮、裝瓶、冷藏，然後直接送到你家。
       從熬好到出貨，中間不會放太久——這是小批次才做得到的事。</p>
     </div>
   </div>
@@ -175,41 +179,58 @@
 
 <!-- ===== 為什麼做酸梅湯 ===== -->
 <section class="sec">
-  <div class="wrap wrap--narrow">
+  <div class="wrap">
     <div class="sec-head">
-      <span class="sec-kicker">WHY</span>
+      <span class="sec-kicker">Why</span>
       <h2 class="sec-title">為什麼是酸梅湯</h2>
     </div>
-    <!-- 草稿：不涉及創辦人姓名、年份等未確認事實。若業主願意提供「誰、為什麼、做給誰喝」，可替換為更具體的版本 -->
-    <div class="prose">
-      <p>酸梅湯不是什麼新發明。它一直都在——夏天的餐桌上、廟口的攤子上、長輩的冰箱裡。</p>
-      <p>我們做的只是把它認真做好：八種食材，分別秤量、洗淨、依序下鍋，用時間把味道熬出來，
-      然後在它最好喝的時候裝瓶、冰起來。</p>
-      <p>所以這不是一瓶要說服你什麼的飲料。它只是希望你打開冰箱的時候，有一瓶好喝的東西可以倒。</p>
+    <div class="feature feature--wide">
+      <div class="prose">
+        <p>酸梅湯不是什麼新發明。它一直都在——夏天的餐桌上、廟口的攤子上、長輩的冰箱裡。</p>
+        <p>我們做的只是把它認真做好：八種食材，分別秤量、洗淨、依序下鍋，用時間把味道熬出來，
+        然後在它最好喝的時候裝瓶、冰起來。</p>
+        <p>所以這不是一瓶要說服你什麼的飲料。它只是希望你打開冰箱的時候，有一瓶好喝的東西可以倒。</p>
+      </div>
+      <div class="feature__media bleed-r">
+        <figure class="ph" data-ph="俯拍：八種乾料分放小碟">
+          <img src="assets/img/note-eight.jpg" data-fallback="assets/img/process-prep.jpg" alt="八種食材" loading="lazy" width="960" height="720">
+        </figure>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ===== 手工這件事 ===== -->
 <section class="sec sec--alt">
-  <div class="wrap wrap--narrow">
+  <div class="wrap">
     <div class="sec-head">
-      <span class="sec-kicker">BY HAND</span>
+      <span class="sec-kicker">By Hand</span>
       <h2 class="sec-title">為什麼堅持一鍋一鍋熬</h2>
     </div>
-    <div class="prose">
-      <p>八種食材分別秤量、洗淨，依序下鍋，用慢火把料熬開。
-      不是把粉沖成飲料，也不是濃縮汁加水還原。</p>
-      <p>因為是手工小批次，一次做的量有限，
-      所以每一批都是熬好、裝瓶、立刻冷藏，直接出貨。
-      也因為這樣，偶爾會遇到來不及做、需要請客人稍等的時候。</p>
-      <p>保存期限 <span data-bzh="product.shelfLife">10 天</span>，
-      短，但那就是沒有多餘處理的樣子。</p>
+    <div class="feature feature--wide feature--flip">
+      <div class="prose">
+        <p>八種食材分別秤量、洗淨，依序下鍋，用慢火把料熬開。
+        不是把粉沖成飲料，也不是濃縮汁加水還原。</p>
+        <p>因為是手工小批次，一次做的量有限，
+        所以每一批都是熬好、裝瓶、立刻冷藏，直接出貨。
+        也因為這樣，偶爾會遇到來不及做、需要請客人稍等的時候。</p>
+        <p>保存期限 <span data-bzh="product.shelfLife">10 天</span>，
+        短，但那就是沒有多餘處理的樣子。</p>
+        <p><a href="notes.html#batch">讀〈小批次的代價〉→</a></p>
+      </div>
+      <div class="feature__media bleed-l">
+        <figure class="ph" data-ph="製程：熬好的湯倒入容器靜置">
+          <picture><source srcset="assets/img/process-cool.webp" type="image/webp"><img src="assets/img/process-cool.jpg" data-fallback="assets/img/process-pot.jpg" alt="靜置冷卻" loading="lazy" width="800" height="600"></picture>
+        </figure>
+      </div>
     </div>
-    <p class="pullquote">
-      放在冰箱，吃飯的時候倒一杯。<br>
-      這就是我們想像中，它被喝掉的樣子。
-    </p>
+  </div>
+</section>
+
+<!-- ===== 滿版引言 ===== -->
+<section class="quote-band">
+  <div class="wrap">
+    <p>放在冰箱，吃飯的時候倒一杯。<br>這就是我們想像中，<em>它被喝掉的樣子</em>。</p>
   </div>
 </section>
 

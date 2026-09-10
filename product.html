@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=8330688c">
+<link rel="stylesheet" href="assets/css/site.css?v=9f4dba36">
 <!-- @end:head -->
 </head>
 
@@ -71,43 +71,52 @@
   </div>
 </section>
 
-<!-- ===== 三個特色（圖文交錯）===== -->
+<!-- ===== 三個特色：出血圖文交錯 ===== -->
 <section class="sec">
   <div class="wrap">
-    <div class="feature">
+    <div class="feature feature--wide">
       <div>
         <h3>手工熬煮，不是沖泡</h3>
         <p>八種食材分別秤量、洗淨，依序下鍋，用慢火把料熬開。
         不是把粉沖成飲料，也不是濃縮汁加水還原。</p>
         <p>小批次製作，當批熬好、當批裝瓶、當批冷藏出貨。</p>
       </div>
-      <figure class="ph ph--wide feature__media" data-ph="製程照：熬煮中的鍋，有人的動作">
-        <picture><source srcset="assets/img/process-pot.webp" type="image/webp"><img src="assets/img/process-pot.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="手工熬煮酸梅湯" loading="lazy" width="800" height="450"></picture>
-      </figure>
+      <div class="feature__media bleed-r">
+        <figure class="ph" data-ph="製程照：熬煮中的鍋，蒸氣與木杓">
+          <picture><source srcset="assets/img/process-pot.webp" type="image/webp"><img src="assets/img/process-pot.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="熬煮中的酸梅湯" loading="lazy" width="800" height="600"></picture>
+        </figure>
+        <p class="feature__cap">一次一鍋，熬好才裝瓶。</p>
+      </div>
     </div>
 
-    <div class="feature feature--flip">
+    <div class="feature feature--wide feature--flip">
       <div>
         <h3>1000ml，是倒給大家喝的份量</h3>
         <p>一瓶 1000ml，不是一個人喝的隨手瓶。放在冰箱，開飯時整瓶端上桌，
         一家人一人一杯剛剛好。</p>
         <p>一箱 <span data-bzh="product.perBox">12 瓶</span>，聚餐、送禮、冰箱常備都夠用。</p>
       </div>
-      <figure class="ph ph--wide feature__media" data-ph="情境照：餐桌上，整瓶與數個杯子">
-        <img src="assets/img/scene-table.jpg" data-fallback="assets/img/drink-4.jpg" alt="餐桌上的冰盞紅酸梅湯" loading="lazy" width="800" height="450">
-      </figure>
+      <div class="feature__media bleed-l">
+        <figure class="ph" data-ph="全景：中秋聚餐餐桌，多人的手與數個杯子">
+          <picture><source srcset="assets/img/scene-party.webp" type="image/webp"><img src="assets/img/scene-party.jpg" data-fallback="assets/img/scene-meal.jpg" alt="餐桌上的冰盞紅酸梅湯" loading="lazy" width="960" height="720"></picture>
+        </figure>
+        <p class="feature__cap">一瓶大約夠一桌四到六個人各喝一輪。</p>
+      </div>
     </div>
 
-    <div class="feature">
+    <div class="feature feature--wide feature--tallpic">
       <div>
         <h3>全程冷藏，直接送到家</h3>
         <p>從裝瓶到你家門口，全程維持冷藏。收到後請立即冷藏，
         保存期限 <span data-bzh="product.shelfLife">10 天</span>，開封後請儘速飲用。</p>
         <p>訂購兩箱時，會<strong>分成兩個獨立的冷藏宅配箱</strong>寄送，不會裝成一個大箱子。</p>
       </div>
-      <figure class="ph ph--wide feature__media" data-ph="情境照：冰箱裡的瓶子，或宅配紙箱開箱">
-        <picture><source srcset="assets/img/scene-fridge.webp" type="image/webp"><img src="assets/img/scene-fridge.jpg" data-fallback="assets/img/drink-2.jpg" alt="冰箱中冷藏的酸梅湯" loading="lazy" width="800" height="450"></picture>
-      </figure>
+      <div class="feature__media">
+        <figure class="ph" data-ph="冷光：打開的冰箱層架，玻璃壺與冰塊">
+          <picture><source srcset="assets/img/scene-fridge.webp" type="image/webp"><img src="assets/img/scene-fridge.jpg" data-fallback="assets/img/drink-2.jpg" alt="冰箱中冷藏的酸梅湯" loading="lazy" width="600" height="800"></picture>
+        </figure>
+        <p class="feature__cap">收到請立刻冰起來，這件事比什麼都重要。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -121,7 +130,7 @@
       <p class="sec-lead">以下說明是食材在風味裡扮演的角色。</p>
     </div>
 
-    <div class="ing-grid">
+    <div class="ing-grid ing-grid--vary">
       <div class="ing">
         <figure class="ing__fig"><picture><source srcset="assets/img/ing-wumei.webp" type="image/webp"><img src="assets/img/ing-wumei.jpg" alt="烏梅" loading="lazy" width="300" height="300"></picture></figure>
         <span class="ing__name">烏梅</span>
@@ -187,6 +196,14 @@
         <picture><source srcset="assets/img/process-chill.webp" type="image/webp"><img src="assets/img/process-chill.jpg" data-fallback="assets/img/drink-2.jpg" alt="裝瓶冷藏" loading="lazy" width="600" height="750"></picture></figure>
         <figcaption><span class="strip__n">Step 04</span><span class="strip__t">裝瓶冷藏</span><span class="strip__d">當批裝瓶、立即冷藏，全程冷鏈送到你家。</span></figcaption></li>
     </ul>
+  </div>
+</section>
+
+<!-- ===== 引言帶 ===== -->
+<section class="sec--ink quote-band">
+  <div class="wrap">
+    <p>不是沖泡，也不是濃縮還原。<br>是真的<em>把料熬開</em>。</p>
+    <cite>Small batch, made by hand</cite>
   </div>
 </section>
 
@@ -267,6 +284,7 @@
       <span class="sec-kicker">SPEC</span>
       <h2 class="sec-title">商品規格</h2>
     </div>
+    <div class="spec-split">
     <ul class="spec-list mb-24">
       <li><span class="k">品名</span><span class="v" data-bzh="brand.product">冰盞紅酸梅湯</span></li>
       <li><span class="k">容量</span><span class="v" data-bzh="product.volume">1000ml</span><span class="small">／瓶</span></li>
@@ -281,8 +299,12 @@
       <li><span class="k">食品業者登錄字號</span><span class="v v--plain" data-bzh="legal.foodReg">[待確認]</span></li>
       <li><span class="k">營養標示</span><span class="v v--plain tbd">[待確認]</span></li>
     </ul>
+    <figure class="ph ph--tall" data-ph="產品照：瓶身正面，標籤清晰（必須實拍）">
+      <img src="assets/img/product-bottle.jpg" data-fallback="assets/img/scene-fridge.jpg" alt="冰盞紅酸梅湯瓶裝" loading="lazy" width="600" height="800">
+    </figure>
+    </div>
 
-    <div class="note note--warn mb-24">
+    <div class="note note--warn mb-24 mt-32">
       <p><strong>飲用提醒</strong></p>
       <p>本品含糖，需留意糖分攝取者請斟酌飲用。如對成分中任一食材過敏，請勿飲用。
       本品為一般食品，非藥品，不具醫療效能。</p>
