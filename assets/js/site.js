@@ -179,7 +179,17 @@
     (root || document).querySelectorAll('.ph img, .ing__fig img').forEach(function (img) {
       var box = img.closest('.ph') || img.closest('.ing__fig');
       if (!box) return;
-      function fail() { box.classList.add('is-empty'); }
+      var fallback = img.getAttribute('data-fallback');
+      function fail() {
+        // 正式圖還沒到，先用同組已完成的圖暫代；暫代也失敗才顯示佔位框
+        if (fallback && img.getAttribute('src') !== fallback) {
+          img.setAttribute('src', fallback);
+          var pic = img.parentNode && img.parentNode.tagName === 'PICTURE' ? img.parentNode : null;
+          if (pic) pic.querySelectorAll('source').forEach(function (so) { so.remove(); });
+          return;
+        }
+        box.classList.add('is-empty');
+      }
       img.addEventListener('error', fail);
       if (img.complete && img.naturalWidth === 0) fail();
     });

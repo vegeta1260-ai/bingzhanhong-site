@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 只載入標題用的宋體一個字重與等寬體；內文用系統字，零下載（見 site.css 說明） -->
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=c9946b00">
+<link rel="stylesheet" href="assets/css/site.css?v=ec0dee70">
 <!-- @end:head -->
 </head>
 
@@ -30,9 +30,9 @@
 <header class="site-header">
   <div class="wrap site-header__in">
     <a class="brand" href="index.html">
-      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="42" height="42">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="44" height="44">
       <span class="brand__txt">
-        <span class="brand__name">冰盞<i>紅</i></span>
+        <img class="brand__wordmark" src="assets/img/wordmark.png" alt="冰盞紅" width="747" height="221">
         <span class="brand__sub" data-bzh="brand.tagline">台南手作酸梅湯・冷藏宅配</span>
       </span>
     </a>
@@ -59,7 +59,15 @@
 <section class="hero">
   <div class="wrap hero__grid">
     <div>
-      <span class="hero__tag" data-bzh="campaign.label">中秋分享箱</span>
+      <div class="hero__tagrow">
+        <span class="hero__tag" data-bzh="campaign.label">中秋分享箱</span>
+        <span class="seal" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="7" fill="#B51823"/>
+            <text x="32" y="29" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="21" font-weight="700" fill="#FBF6EA">台南</text>
+            <text x="32" y="53" text-anchor="middle" font-family="Noto Serif TC,serif" font-size="21" font-weight="700" fill="#FBF6EA">手作</text>
+          </svg>
+        </span>
+      </div>
       <h1 class="hero__title" data-bzh="campaign.heroTitle">今年中秋，冰箱裡也準備一箱。</h1>
       <p class="hero__sub">
         <b data-bzh="brand.product">冰盞紅酸梅湯</b>　台南手作　<span data-bzh="product.spec">1000ml × 12 瓶</span>
@@ -86,7 +94,7 @@
       </p>
     </div>
     <figure class="ph ph--square" data-ph="主視覺：玻璃杯中冰鎮的酸梅湯，逆光、可見冰塊">
-      <img src="assets/img/hero.jpg" alt="玻璃杯中冰鎮的冰盞紅酸梅湯" width="900" height="900">
+      <img src="assets/img/hero.jpg" data-fallback="assets/img/drink-1.jpg" alt="玻璃杯中冰鎮的冰盞紅酸梅湯" width="900" height="900">
     </figure>
   </div>
 </section>
@@ -132,6 +140,7 @@
   </div>
 </section>
 
+<div class="arc-divider" aria-hidden="true"><svg viewBox="0 0 220 26"><path d="M6 5 Q110 30 214 5" fill="none" stroke="#B51823" stroke-width="2.2" stroke-linecap="round"/></svg></div>
 <!-- ===== 3. 認識這一瓶（摘要，完整內容在產品頁）===== -->
 <section class="sec" id="about">
   <div class="wrap">
@@ -143,7 +152,7 @@
     <div class="intro-cards">
       <a class="intro-card" href="product.html#ingredients">
         <figure class="ph" data-ph="食材平拍：烏梅、山楂、洛神、桂花">
-          <img src="assets/img/ing-luoshen.jpg" alt="酸梅湯的食材" loading="lazy" width="640" height="400">
+          <picture><source srcset="assets/img/ing-luoshen.webp" type="image/webp"><img src="assets/img/ing-luoshen.jpg" alt="酸梅湯的食材" loading="lazy" width="640" height="400"></picture>
         </figure>
         <div class="intro-card__body">
           <span class="intro-card__k">INGREDIENTS</span>
@@ -165,7 +174,7 @@
       </a>
       <a class="intro-card" href="product.html#drink">
         <figure class="ph" data-ph="喝法：加冰塊的玻璃杯">
-          <img src="assets/img/drink-2.jpg" alt="加冰塊的酸梅湯" loading="lazy" width="640" height="400">
+          <picture><source srcset="assets/img/drink-2.webp" type="image/webp"><img src="assets/img/drink-2.jpg" alt="加冰塊的酸梅湯" loading="lazy" width="640" height="400"></picture>
         </figure>
         <div class="intro-card__body">
           <span class="intro-card__k">HOW TO DRINK</span>
@@ -179,7 +188,7 @@
 </section>
 
 <!-- ===== 4. 送禮 ===== -->
-<section class="sec gift-band" id="gift">
+<section class="sec sec--ink" id="gift">
   <div class="wrap">
     <div class="grid grid--2" style="align-items:center">
       <div>
@@ -200,7 +209,7 @@
         </div>
       </div>
       <figure class="ph ph--square" data-ph="情境照：餐桌上整瓶與數個杯子（scene-table）">
-        <img src="assets/img/scene-table.jpg" alt="餐桌上的冰盞紅酸梅湯" loading="lazy" width="800" height="800">
+        <img src="assets/img/scene-table.jpg" data-fallback="assets/img/drink-4.jpg" alt="餐桌上的冰盞紅酸梅湯" loading="lazy" width="800" height="800">
       </figure>
     </div>
   </div>
@@ -243,6 +252,7 @@
   </div>
 </section>
 
+<div class="arc-divider" aria-hidden="true"><svg viewBox="0 0 220 26"><path d="M6 5 Q110 30 214 5" fill="none" stroke="#B51823" stroke-width="2.2" stroke-linecap="round"/></svg></div>
 <!-- ===== 6. 配送・保存・付款 ===== -->
 <section class="sec" id="delivery">
   <div class="wrap">
@@ -570,7 +580,7 @@
 
 <!-- @include:scripts -->
 <script src="assets/js/config.js?v=d7870ae8"></script>
-<script src="assets/js/site.js?v=d042b059"></script>
+<script src="assets/js/site.js?v=d43d57f4"></script>
 <!-- @end:scripts -->
 </body>
 </html>

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="冰盞紅">
   <title>冰盞紅</title>
-  <!-- 小尺寸簡化版：只保留墨綠環與朱紅盞，高光、梅與圈足在 16px 下會糊成一團。 -->
-  <rect width="120" height="120" rx="24" fill="#F1E6CE"/>
-  <circle cx="60" cy="60" r="50" fill="none" stroke="#20604F" stroke-width="10"/>
-  <path d="M26 50 L60 61 L94 50 A34 22 0 0 1 26 50 Z" fill="#C0281B"/>
-  <rect x="47" y="76" width="26" height="7" rx="3.5" fill="#C0281B"/>
+  <!-- 小尺寸簡化版：只留黑環、朱紅盞與高足，其餘細節在 16px 會糊 -->
+  <circle cx="60" cy="60" r="52" fill="#FFFFFF" stroke="#0B0B0B" stroke-width="9"/>
+  <path d="M14 50 Q60 63 106 50 A46 29 0 0 1 14 50 Z" fill="#0B0B0B"/>
+  <path d="M20 51 Q60 61 100 51 A40 23 0 0 1 20 51 Z" fill="#B51823"/>
+  <path d="M50 78 L70 78 L77 94 L43 94 Z" fill="#0B0B0B"/>
 </svg>

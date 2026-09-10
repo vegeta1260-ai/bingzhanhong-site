@@ -18,6 +18,9 @@
 ├─ wholesale.html            團購・企業訂購詢價
 ├─ info.html                 訂購須知・配送・付款・保存・隱私權
 ├─ IMAGE-BRIEF.md            ★ 圖片製作規格書（交給製圖的人／Codex）
+├─ build.py                  ★ 組建：同步共用片段、資產版本號、FAQ 結構化資料、sitemap
+├─ check.py                  ★ 上線前檢查：連結、圖片、待確認殘留、草稿
+├─ partials/                 共用片段：head / header / footer / bottombar / scripts
 ├─ assets/
 │  ├─ css/site.css           全站樣式與設計系統
 │  ├─ js/config.js           ★ 設定檔：價格、聯絡方式、活動、銀行帳號
@@ -26,7 +29,11 @@
 │  ├─ js/done.js             完成頁
 │  ├─ js/status.js           查詢／回報
 │  ├─ js/wholesale.js        團購詢價
-│  ├─ img/logo.svg           品牌徽章（依瓶身標籤實物重繪）
+│  ├─ js/tw-districts.js     全台 368 鄉鎮市區（訂購頁下拉）
+│  ├─ img/logo.svg           品牌徽章向量版（依官方標誌重繪）
+│  ├─ img/logo-official.jpg  業主提供的官方徽章原檔
+│  ├─ img/logo-lockup.jpg    業主提供的橫式組合原檔
+│  ├─ img/wordmark.png       從原檔去背的毛筆字標（頁首使用）
 │  ├─ img/favicon.svg        小尺寸簡化版徽章
 │  └─ img/                   其餘圖片見 IMAGE-BRIEF.md
 └─ google-apps-script/
@@ -52,11 +59,35 @@
 **用色原則：墨綠當結構色大量使用，朱紅只留給「要按的東西與價格」。**
 朱紅配米白的對比度約 5.4:1，墨綠約 7.2:1——主客群含中高齡，長文用墨綠比較好讀。
 
-字體：標題 Noto Serif TC、內文 Noto Sans TC、數字與訂單編號 IBM Plex Mono。
-品牌字標「冰盞紅」是毛筆手寫，**不屬於任何字型，須以圖檔沿用**（目前頁首用宋體代打）。
+字體：標題 Noto Serif TC（只載入一個字重）、內文用系統字（零下載）、數字與訂單編號 IBM Plex Mono。
+品牌字標「冰盞紅」是毛筆手寫，以 `assets/img/wordmark.png`（從官方橫式組合去白底裁出）在頁首使用。
 
-`assets/img/logo.svg` 與 `favicon.svg` 是依瓶身標籤照片重繪的向量版，
-網頁使用沒問題，**印刷請以官方原始檔為準**，取得後直接覆蓋這兩個檔案即可。
+`assets/img/logo.svg` 與 `favicon.svg` 是依業主提供的官方標誌（`logo-official.jpg`）重繪的向量版，
+網頁與 favicon 使用；**印刷請以官方原始檔為準**。
+
+---
+
+## 改完任何東西之後：跑 `build.py`
+
+```bash
+python build.py
+```
+
+它會把 `partials/` 的頁首、頁尾、底部列同步進八個頁面（**改頁尾只要改一次**），
+幫 CSS／JS 連結加上內容雜湊版本號（改檔後快取自動失效，**不用再手動改 `?v=`**），
+有 `.webp` 的圖片自動用 `<picture>` 包起來，並依 `config.js` 的 `site.url` 產生 `sitemap.xml`。
+
+輸出仍是純 HTML，直接開檔就能看。共用片段的位置在各頁的
+`<!-- @include:header sub="…" -->` … `<!-- @end:header -->` 之間，**不要手動改那裡面的內容**，改 `partials/` 再組建。
+
+## 上線前：跑 `check.py`
+
+```bash
+python check.py --strict
+```
+
+列出所有還不能上線的原因：連結壞掉、圖片沒到、還有 `[待確認]`、草稿還沒經業主確認、`config.js` 的 API 或網址沒填。
+全部綠燈才上線。
 
 ---
 
@@ -85,6 +116,16 @@ campaign: { enabled: false, ... }
 全站文案會自動從「中秋分享箱／今年中秋，冰箱裡也準備一箱。」
 切換成常態版「冷藏分享箱／冰箱裡常備一箱，吃飯配一杯。」，**不用重做網站**。
 
+### 其他開關
+
+| 設定 | 用途 |
+|---|---|
+| `site.url` | 正式網址，給 sitemap 與分享連結用 |
+| `analytics.ga4` | GA4 評估 ID。留空完全不載入；填了隱私權頁會自動換成有追蹤的版本 |
+| `campaign.deadline` / `deliveryWindow` | 檔期最後下單日與送達區間，顯示在首頁 |
+| `remember.enabled` | 訂購頁「記住收件資料」（只存客人自己的裝置） |
+| `lineQr` | 官方 LINE 加好友 QR Code 圖片，桌機客人在完成頁掃描用 |
+
 ### 缺貨或來不及做的時候
 
 手工小批次一定會遇到。改 `config.js` 的 `stock.status` 一個字即可，全站自動反應：
@@ -99,21 +140,10 @@ campaign: { enabled: false, ... }
 stock: { status: 'preorder', ... }
 ```
 
-### ⚠ 改完 `config.js` 一定要做這件事
+### ⚠ 改完 `config.js` 記得跑 `python build.py`
 
-瀏覽器會把 `config.js` 存在快取裡。如果不處理，**改了價格之後，來過的客人可能還看到舊價格**。
-
-解法：每次修改 `config.js`（尤其是改價格）後，把五個 HTML 檔案最下方的版本號 `+1`：
-
-```html
-<script src="assets/js/config.js?v=1"></script>   ←  改成 ?v=2、?v=3 …
-```
-
-在專案根目錄執行這行指令一次改完所有頁面（Git Bash）：
-
-```bash
-sed -i 's/config\.js?v=1/config.js?v=2/' *.html
-```
+瀏覽器會快取 `config.js`。`build.py` 會依檔案內容產生新的版本號，讓來過的客人也拿到新價格。
+不跑組建，改了價格老客人可能還看到舊的。
 
 ---
 
@@ -123,6 +153,10 @@ sed -i 's/config\.js?v=1/config.js?v=2/' *.html
 以及「哪些能生成、哪些必須實拍」的規則（有瓶子入鏡的畫面一律用實拍，不要生成假瓶子）。
 
 在放入圖片之前，網頁會顯示灰色的「【待製圖】」提示框，不會破圖。
+部分位置設有 `data-fallback`：正式圖還沒到時先用同組已完成的圖暫代（例如首頁主視覺暫用 `drink-1.jpg`）。
+
+目前狀態：食材八張與喝法四張已由 Codex 產出（PR #1），並已轉出 WebP 版本。
+主視覺、瓶身、製程、餐桌、冰箱、故事頁主圖等 7 張需實拍，仍待業主提供。
 
 ---
 

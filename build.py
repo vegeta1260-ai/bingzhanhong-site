@@ -127,6 +127,21 @@ def version_assets(text):
     return ASSET_RE.sub(rep, text)
 
 
+# ---------- WebP：有同名 .webp 就用 <picture> 包起來，舊瀏覽器自動退回 .jpg ----------
+PICTURE_RE = re.compile(r'<picture><source srcset="[^"]*" type="image/webp">(<img[^>]*>)</picture>')
+IMG_RE = re.compile(r'<img([^>]*\ssrc="(assets/img/[^"]+)\.jpg"[^>]*)>')
+
+
+def wrap_webp(text):
+    text = PICTURE_RE.sub(r'\1', text)                  # 先拆掉舊的包裝，保持可重複執行
+    def rep(m):
+        webp = m.group(2) + '.webp'
+        if not os.path.isfile(os.path.join(ROOT, webp.replace('/', os.sep))):
+            return m.group(0)
+        return '<picture><source srcset="%s" type="image/webp">%s</picture>' % (webp, m.group(0))
+    return IMG_RE.sub(rep, text)
+
+
 # ---------- 組頁 ----------
 def build_page(name, page_html):
     def rep(m):
@@ -141,7 +156,7 @@ def build_page(name, page_html):
             body = render(read(tpl_path), ctx).rstrip('\n')
         return '<!-- @include:%s%s -->\n%s\n<!-- @end:%s -->' % (pname, attrs, body, pname)
     out = INCLUDE_RE.sub(rep, page_html)
-    return version_assets(out)
+    return version_assets(wrap_webp(out))
 
 
 # ---------- sitemap / robots ----------

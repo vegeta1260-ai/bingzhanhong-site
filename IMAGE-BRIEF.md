@@ -108,8 +108,9 @@
 
 ## 五、已完成、不需要製作的項目
 
-- `logo.svg` — 品牌徽章向量版（依瓶身標籤實物重繪）
-- `favicon.svg` — 小尺寸簡化版，已內建於網站
+- 食材八張（`ing-*.jpg`）與喝法四張（`drink-*.jpg`）— 已由 Codex 產出並合併，另有同名 `.webp`
+- `logo-official.jpg`、`logo-lockup.jpg` — 業主提供的官方標誌與橫式組合原檔
+- `logo.svg` — 依官方標誌重繪的向量版；`favicon.svg` — 小尺寸簡化版
+- `wordmark.png`、`wordmark-sub.png` — 從橫式組合原檔去白底裁出的毛筆字標與副標
 
-> 這兩個是我依照片重繪的，**網頁使用沒問題，印刷請以官方原始檔為準**。
-> 若店家能提供徽章的 AI／SVG／EPS 原始檔與毛筆字標去背檔，請直接替換。
+> 新增照片時請同時產出 `.webp`（品質 80），`build.py` 會自動用 `<picture>` 包起來。

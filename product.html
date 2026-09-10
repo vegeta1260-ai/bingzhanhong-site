@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 只載入標題用的宋體一個字重與等寬體；內文用系統字，零下載（見 site.css 說明） -->
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=c9946b00">
+<link rel="stylesheet" href="assets/css/site.css?v=ec0dee70">
 <!-- @end:head -->
 </head>
 
@@ -28,9 +28,9 @@
 <header class="site-header">
   <div class="wrap site-header__in">
     <a class="brand" href="index.html">
-      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="42" height="42">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="44" height="44">
       <span class="brand__txt">
-        <span class="brand__name">冰盞<i>紅</i></span>
+        <img class="brand__wordmark" src="assets/img/wordmark.png" alt="冰盞紅" width="747" height="221">
         <span class="brand__sub">產品介紹</span>
       </span>
     </a>
@@ -102,7 +102,7 @@
         <p>一箱 <span data-bzh="product.perBox">12 瓶</span>，聚餐、送禮、冰箱常備都夠用。</p>
       </div>
       <figure class="ph ph--wide feature__media" data-ph="情境照：餐桌上，整瓶與數個杯子">
-        <img src="assets/img/scene-table.jpg" alt="餐桌上的冰盞紅酸梅湯" loading="lazy" width="800" height="450">
+        <img src="assets/img/scene-table.jpg" data-fallback="assets/img/drink-4.jpg" alt="餐桌上的冰盞紅酸梅湯" loading="lazy" width="800" height="450">
       </figure>
     </div>
 
@@ -131,42 +131,42 @@
 
     <div class="ing-grid">
       <div class="ing">
-        <figure class="ing__fig"><img src="assets/img/ing-wumei.jpg" alt="烏梅" loading="lazy" width="300" height="300"></figure>
+        <figure class="ing__fig"><picture><source srcset="assets/img/ing-wumei.webp" type="image/webp"><img src="assets/img/ing-wumei.jpg" alt="烏梅" loading="lazy" width="300" height="300"></picture></figure>
         <span class="ing__name">烏梅</span>
         <span class="ing__desc">酸味的主體，整鍋的骨架。</span>
       </div>
       <div class="ing">
-        <figure class="ing__fig"><img src="assets/img/ing-shanzha.jpg" alt="山楂" loading="lazy" width="300" height="300"></figure>
+        <figure class="ing__fig"><picture><source srcset="assets/img/ing-shanzha.webp" type="image/webp"><img src="assets/img/ing-shanzha.jpg" alt="山楂" loading="lazy" width="300" height="300"></picture></figure>
         <span class="ing__name">山楂</span>
         <span class="ing__desc">明亮的果酸，喝完會回甘。</span>
       </div>
       <div class="ing">
-        <figure class="ing__fig"><img src="assets/img/ing-luoshen.jpg" alt="洛神" loading="lazy" width="300" height="300"></figure>
+        <figure class="ing__fig"><picture><source srcset="assets/img/ing-luoshen.webp" type="image/webp"><img src="assets/img/ing-luoshen.jpg" alt="洛神" loading="lazy" width="300" height="300"></picture></figure>
         <span class="ing__name">洛神</span>
         <span class="ing__desc">那抹透亮紅色的來源。</span>
       </div>
       <div class="ing">
-        <figure class="ing__fig"><img src="assets/img/ing-chenpi.jpg" alt="陳皮" loading="lazy" width="300" height="300"></figure>
+        <figure class="ing__fig"><picture><source srcset="assets/img/ing-chenpi.webp" type="image/webp"><img src="assets/img/ing-chenpi.jpg" alt="陳皮" loading="lazy" width="300" height="300"></picture></figure>
         <span class="ing__name">陳皮</span>
         <span class="ing__desc">柑橘系的乾香，讓味道有層次。</span>
       </div>
       <div class="ing">
-        <figure class="ing__fig"><img src="assets/img/ing-gancao.jpg" alt="甘草" loading="lazy" width="300" height="300"></figure>
+        <figure class="ing__fig"><picture><source srcset="assets/img/ing-gancao.webp" type="image/webp"><img src="assets/img/ing-gancao.jpg" alt="甘草" loading="lazy" width="300" height="300"></picture></figure>
         <span class="ing__name">甘草</span>
         <span class="ing__desc">收在尾韻的那一點甜。</span>
       </div>
       <div class="ing">
-        <figure class="ing__fig"><img src="assets/img/ing-guihua.jpg" alt="桂花" loading="lazy" width="300" height="300"></figure>
+        <figure class="ing__fig"><picture><source srcset="assets/img/ing-guihua.webp" type="image/webp"><img src="assets/img/ing-guihua.jpg" alt="桂花" loading="lazy" width="300" height="300"></picture></figure>
         <span class="ing__name">桂花</span>
         <span class="ing__desc">開瓶時浮上來的花香。</span>
       </div>
       <div class="ing">
-        <figure class="ing__fig"><img src="assets/img/ing-meigan.jpg" alt="梅乾" loading="lazy" width="300" height="300"></figure>
+        <figure class="ing__fig"><picture><source srcset="assets/img/ing-meigan.webp" type="image/webp"><img src="assets/img/ing-meigan.jpg" alt="梅乾" loading="lazy" width="300" height="300"></picture></figure>
         <span class="ing__name">梅乾</span>
         <span class="ing__desc">果實感與厚度。</span>
       </div>
       <div class="ing">
-        <figure class="ing__fig"><img src="assets/img/ing-bingtang.jpg" alt="冰糖" loading="lazy" width="300" height="300"></figure>
+        <figure class="ing__fig"><picture><source srcset="assets/img/ing-bingtang.webp" type="image/webp"><img src="assets/img/ing-bingtang.jpg" alt="冰糖" loading="lazy" width="300" height="300"></picture></figure>
         <span class="ing__name">冰糖</span>
         <span class="ing__desc">把整體甜度收整起來。</span>
       </div>
@@ -221,7 +221,7 @@
     <div class="drinks">
       <div class="drink">
         <figure class="ph" data-ph="喝法一：玻璃杯中的酸梅湯（不要入鏡瓶子）">
-          <img src="assets/img/drink-1.jpg" alt="冰鎮後直接飲用" loading="lazy" width="600" height="480">
+          <picture><source srcset="assets/img/drink-1.webp" type="image/webp"><img src="assets/img/drink-1.jpg" alt="冰鎮後直接飲用" loading="lazy" width="600" height="480"></picture>
         </figure>
         <div class="drink__body">
           <span class="drink__no">01</span>
@@ -231,7 +231,7 @@
       </div>
       <div class="drink">
         <figure class="ph" data-ph="喝法二：杯中明顯的冰塊">
-          <img src="assets/img/drink-2.jpg" alt="加冰塊飲用" loading="lazy" width="600" height="480">
+          <picture><source srcset="assets/img/drink-2.webp" type="image/webp"><img src="assets/img/drink-2.jpg" alt="加冰塊飲用" loading="lazy" width="600" height="480"></picture>
         </figure>
         <div class="drink__body">
           <span class="drink__no">02</span>
@@ -241,7 +241,7 @@
       </div>
       <div class="drink">
         <figure class="ph" data-ph="喝法三：杯中可見細密氣泡">
-          <img src="assets/img/drink-3.jpg" alt="兌氣泡水" loading="lazy" width="600" height="480">
+          <picture><source srcset="assets/img/drink-3.webp" type="image/webp"><img src="assets/img/drink-3.jpg" alt="兌氣泡水" loading="lazy" width="600" height="480"></picture>
         </figure>
         <div class="drink__body">
           <span class="drink__no">03</span>
@@ -251,7 +251,7 @@
       </div>
       <div class="drink">
         <figure class="ph" data-ph="喝法四：餐桌一角，吃過的菜色旁一杯">
-          <img src="assets/img/drink-4.jpg" alt="餐後飲用" loading="lazy" width="600" height="480">
+          <picture><source srcset="assets/img/drink-4.webp" type="image/webp"><img src="assets/img/drink-4.jpg" alt="餐後飲用" loading="lazy" width="600" height="480"></picture>
         </figure>
         <div class="drink__body">
           <span class="drink__no">04</span>
@@ -363,7 +363,7 @@
 </script>
 <!-- @include:scripts -->
 <script src="assets/js/config.js?v=d7870ae8"></script>
-<script src="assets/js/site.js?v=d042b059"></script>
+<script src="assets/js/site.js?v=d43d57f4"></script>
 <!-- @end:scripts -->
 </body>
 </html>
