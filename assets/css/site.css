@@ -668,6 +668,12 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   .feature--tallpic .feature__media .ph{ aspect-ratio:3/4; }
 }
 .feature__cap{ margin:12px 0 0; font-size:.86rem; color:var(--ink-3); }
+/* 補充說明：比內文小一階，左側朱線標示這是附註而非主張 */
+.feature__note{
+  margin-top:18px; padding-left:14px;
+  border-left:2px solid var(--red);
+  font-size:.9rem; line-height:1.85; color:var(--ink-2);
+}
 @media (min-width:900px){
   /* 出血側的圖說靠回版心，不要貼到視窗邊緣 */
   .bleed-l .feature__cap{ text-align:right; padding-right:0; }
