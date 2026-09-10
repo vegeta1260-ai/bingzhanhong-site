@@ -238,6 +238,8 @@ a:hover{ color:var(--red); text-decoration-color:var(--red); }
 
 /* ---------- 10. 喝法 ---------- */
 .drinks{ display:grid; gap:26px 18px; grid-template-columns:1fr; }
+.drink:nth-child(odd) .ph{ aspect-ratio:4/5; }
+.drink:nth-child(even) .ph{ aspect-ratio:1/1; }
 .drink{ background:transparent; border:0; }
 .drink .ph{ aspect-ratio:5/4; }
 .drink__body{ padding:16px 2px 0; }
@@ -507,6 +509,8 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
 
 .tiles{ display:grid; gap:14px; grid-template-columns:repeat(2,1fr); }
 .tile{ position:relative; display:block; aspect-ratio:3/4; overflow:hidden; border-radius:var(--radius-lg); background:var(--paper-3); color:#fff; text-decoration:none; }
+/* 第一格是全景橫圖，手機也讓它跨滿一整列，避免橫幅被裁成直式只剩中間 */
+.tile--wide{ grid-column:1 / -1; aspect-ratio:16/9; }
 .tile img{ width:100%; height:100%; object-fit:cover; transition:transform .7s ease; }
 .tile:hover img{ transform:scale(1.04); }
 .tile::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(22,21,19,0) 35%, rgba(22,21,19,.55) 70%, rgba(22,21,19,.85) 100%); }
@@ -545,6 +549,11 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
 
 .strip{ display:grid; gap:14px; grid-template-columns:repeat(2,1fr); margin:0; padding:0; list-style:none; }
 .strip li{ margin:0; }
+@media (min-width:760px){
+  .strip li:nth-child(even){ margin-top:38px; }
+  .strip li:nth-child(odd) .ph{ aspect-ratio:4/5; }
+  .strip li:nth-child(even) .ph{ aspect-ratio:3/4; }
+}
 .strip .ph{ aspect-ratio:4/5; }
 .strip figcaption{ margin-top:12px; }
 .strip__n{ display:block; font-family:var(--latin); font-weight:600; font-size:.9rem; letter-spacing:.18em; color:var(--red); }
@@ -567,7 +576,16 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   .hero__panel{ margin:-120px auto 0; max-width:760px; padding:40px 40px 44px; }
 }
 @media (min-width:1000px){
-  .tiles{ grid-template-columns:repeat(4,1fr); }
+  /* 大橫圖佔左上 2×1，右側一張高直圖跨兩列，左下兩張小圖——大小交錯才有編排感 */
+  .tiles{
+    grid-template-columns:1.15fr 1fr 0.95fr;
+    grid-template-rows:auto auto;
+    gap:16px;
+  }
+  .tile{ aspect-ratio:auto; }
+  .tile--wide{ grid-column:1 / 3; grid-row:1 / 2; aspect-ratio:16/9; }
+  .tile--tall{ grid-column:3 / 4; grid-row:1 / 3; aspect-ratio:auto; }
+  .tile--sm{ grid-row:2 / 3; aspect-ratio:auto; min-height:264px; }
   .hero__media{ aspect-ratio:21/9; max-height:78vh; }
   .hero__panel{ margin:-200px 0 0 calc((100% - var(--wrap)) / 2 + 22px); max-width:640px; }
 }
@@ -582,9 +600,10 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
 }
 /* 手機：磁磚橫向滑動一列，不用捲那麼長 */
 @media (max-width:639px){
-  .tiles{ display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding:0 0 10px; margin:0 -22px; padding-left:22px; padding-right:22px; scrollbar-width:none; }
-  .tiles::-webkit-scrollbar{ display:none; }
-  .tile{ flex:0 0 74%; scroll-snap-align:start; }
+  .tiles{ grid-template-columns:1fr; gap:14px; }
+  .tile--wide{ aspect-ratio:16/10; }
+  .tile--tall{ aspect-ratio:3/4; }
+  .tile--sm{ aspect-ratio:4/3; }
 }
 
 
