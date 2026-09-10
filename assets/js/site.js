@@ -60,6 +60,10 @@
     'contact.lineId': C.contact.lineId,
     'contact.tel': C.contact.tel,
     'contact.hours': C.contact.hours,
+    'contact.tel2': (C.contact.tel2 || ''),
+    'store.address': (C.store && C.store.address) || '',
+    'store.services': (C.store && C.store.services) || '',
+    'store.hours': (C.store && C.store.hours) || '',
 
     'campaign.label': campaignLabel,
     'campaign.heroTitle': on ? camp.heroTitle : camp.heroTitleOff,
@@ -129,6 +133,12 @@
     });
     r.querySelectorAll('[data-bzh-link="tel"]').forEach(function (a) {
       a.href = 'tel:' + C.contact.telDial;
+    });
+    r.querySelectorAll('[data-bzh-link="tel2"]').forEach(function (a) {
+      a.href = 'tel:' + (C.contact.tel2Dial || '');
+    });
+    r.querySelectorAll('[data-bzh-link="map"]').forEach(function (a) {
+      if (C.store && C.store.mapUrl) { a.href = C.store.mapUrl; a.target = '_blank'; a.rel = 'noopener'; }
     });
   }
 

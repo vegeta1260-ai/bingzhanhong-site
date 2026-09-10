@@ -576,6 +576,46 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   .tile{ flex:0 0 74%; scroll-snap-align:start; }
 }
 
+
+/* ============================================================
+   品牌理念區塊
+   ============================================================ */
+/* 宣言帶：一句大字，三行短語 */
+.manifesto{ text-align:center; padding:80px 0; }
+.manifesto__q{ margin:0 auto 26px; max-width:14em; font-family:var(--serif); font-weight:700; font-size:clamp(1.7rem,4.6vw,2.6rem); line-height:1.5; letter-spacing:.04em; text-wrap:balance; }
+.manifesto__q em{ font-style:normal; color:var(--red); }
+.manifesto__lines{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px 34px; margin:0; padding:0; list-style:none; font-family:var(--latin); font-weight:600; font-size:1.05rem; letter-spacing:.14em; color:var(--ink-2); }
+.manifesto__lines li b{ font-family:var(--serif); font-weight:700; color:var(--ink); letter-spacing:.08em; margin-right:.4em; }
+
+/* 三層風味：由淺到深的三條色帶 */
+.layers{ display:grid; gap:2px; border-radius:var(--radius-lg); overflow:hidden; }
+.layer{ display:grid; grid-template-columns:56px 1fr; gap:16px; align-items:center; padding:22px 22px; color:#fff; }
+.layer:nth-child(1){ background:#C8353D; }
+.layer:nth-child(2){ background:#9A1E27; }
+.layer:nth-child(3){ background:#4A1A17; }
+.layer__n{ font-family:var(--latin); font-weight:600; font-size:2rem; line-height:1; opacity:.85; }
+.layer__t{ display:block; font-family:var(--serif); font-size:1.25rem; font-weight:700; }
+.layer__d{ display:block; font-size:.92rem; opacity:.85; line-height:1.6; margin-top:2px; }
+
+/* 四步喝法 */
+.ritual{ display:grid; gap:0; grid-template-columns:1fr; border-top:1px solid var(--rule); counter-reset:r; margin:0; padding:0; list-style:none; }
+.ritual li{ display:grid; grid-template-columns:72px 1fr; gap:18px; padding:26px 0; border-bottom:1px solid var(--line); }
+.ritual__n{ font-family:var(--latin); font-weight:600; font-size:2.6rem; line-height:.9; color:var(--red); }
+.ritual__t{ display:block; font-family:var(--serif); font-size:1.5rem; font-weight:700; letter-spacing:.12em; margin:0 0 6px; }
+.ritual__t small{ font-family:var(--latin); font-weight:600; font-size:.95rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3); margin-left:10px; }
+.ritual__d{ display:block; font-size:1rem; color:var(--ink-2); line-height:1.8; }
+
+/* 店址卡 */
+.store{ display:grid; gap:18px; border:1px solid var(--ink); border-radius:var(--radius-lg); padding:26px; background:var(--surface); }
+.store__name{ margin:0; font-family:var(--serif); font-size:1.3rem; font-weight:700; }
+.store__addr{ margin:0; font-size:1.08rem; }
+.store__meta{ margin:0; color:var(--ink-2); font-size:.95rem; }
+
+@media (min-width:760px){
+  .ritual{ grid-template-columns:repeat(2,1fr); column-gap:40px; }
+  .store{ grid-template-columns:1fr auto; align-items:center; }
+}
+
 /* ---------- 雜項 ---------- */
 .hr{ height:1px; background:var(--rule); border:0; margin:40px 0; opacity:.6; }
 .center{ text-align:center; }

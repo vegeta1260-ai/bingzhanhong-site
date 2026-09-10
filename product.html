@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=2ffd957e">
+<link rel="stylesheet" href="assets/css/site.css?v=efa3e757">
 <!-- @end:head -->
 </head>
 
@@ -57,7 +57,7 @@
 <!-- ===== Hero：滿版照片＋面板 ===== -->
 <section class="hero hero--bleed">
   <div class="hero__media" data-ph="產品主視覺（橫幅）：瓶身側放於餐桌，旁邊玻璃杯（必須實拍）">
-    <img src="assets/img/product-hero.jpg" data-fallback="assets/img/drink-1.jpg" alt="冰盞紅酸梅湯" width="1920" height="820">
+    <img src="assets/img/product-hero.jpg" data-fallback="assets/img/hero-wide.jpg" alt="冰盞紅酸梅湯" width="1920" height="820">
   </div>
   <div class="hero__panel">
     <span class="hero__tag">PRODUCT</span>
@@ -82,7 +82,7 @@
         <p>小批次製作，當批熬好、當批裝瓶、當批冷藏出貨。</p>
       </div>
       <figure class="ph ph--wide feature__media" data-ph="製程照：熬煮中的鍋，有人的動作">
-        <img src="assets/img/process-pot.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="手工熬煮酸梅湯" loading="lazy" width="800" height="450">
+        <picture><source srcset="assets/img/process-pot.webp" type="image/webp"><img src="assets/img/process-pot.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="手工熬煮酸梅湯" loading="lazy" width="800" height="450"></picture>
       </figure>
     </div>
 
@@ -106,7 +106,7 @@
         <p>訂購兩箱時，會<strong>分成兩個獨立的冷藏宅配箱</strong>寄送，不會裝成一個大箱子。</p>
       </div>
       <figure class="ph ph--wide feature__media" data-ph="情境照：冰箱裡的瓶子，或宅配紙箱開箱">
-        <img src="assets/img/scene-fridge.jpg" data-fallback="assets/img/drink-2.jpg" alt="冰箱中冷藏的酸梅湯" loading="lazy" width="800" height="450">
+        <picture><source srcset="assets/img/scene-fridge.webp" type="image/webp"><img src="assets/img/scene-fridge.jpg" data-fallback="assets/img/drink-2.jpg" alt="冰箱中冷藏的酸梅湯" loading="lazy" width="800" height="450"></picture>
       </figure>
     </div>
   </div>
@@ -175,18 +175,35 @@
     </div>
     <ul class="strip">
       <li><figure class="ph" data-ph="製程 01：八種乾料分別秤量、洗淨，木盤俯拍">
-        <img src="assets/img/process-prep.jpg" data-fallback="assets/img/ing-chenpi.jpg" alt="備料" loading="lazy" width="600" height="750"></figure>
+        <picture><source srcset="assets/img/process-prep.webp" type="image/webp"><img src="assets/img/process-prep.jpg" data-fallback="assets/img/ing-chenpi.jpg" alt="備料" loading="lazy" width="600" height="750"></picture></figure>
         <figcaption><span class="strip__n">Step 01</span><span class="strip__t">備料</span><span class="strip__d">八種食材分別秤量、洗淨，依序下鍋。</span></figcaption></li>
       <li><figure class="ph" data-ph="製程 02：熬煮中的大鍋，蒸氣、木杓，深紅湯色">
-        <img src="assets/img/process-pot.jpg" alt="慢火熬煮" loading="lazy" width="600" height="750"></figure>
+        <picture><source srcset="assets/img/process-pot.webp" type="image/webp"><img src="assets/img/process-pot.jpg" alt="慢火熬煮" loading="lazy" width="600" height="750"></picture></figure>
         <figcaption><span class="strip__n">Step 02</span><span class="strip__t">慢火熬煮</span><span class="strip__d">不是沖泡，也不是濃縮還原，是真的把料熬開。</span></figcaption></li>
       <li><figure class="ph" data-ph="製程 03：熬好的湯倒入大容器靜置，表面微微反光">
-        <img src="assets/img/process-cool.jpg" alt="靜置冷卻" loading="lazy" width="600" height="750"></figure>
+        <picture><source srcset="assets/img/process-cool.webp" type="image/webp"><img src="assets/img/process-cool.jpg" alt="靜置冷卻" loading="lazy" width="600" height="750"></picture></figure>
         <figcaption><span class="strip__n">Step 03</span><span class="strip__t">靜置冷卻</span><span class="strip__d">熬好後移出靜置，讓味道沉下來再裝瓶。</span></figcaption></li>
       <li><figure class="ph" data-ph="製程 04：冰箱層架上排列整齊的玻璃壺（不露品牌瓶）">
-        <img src="assets/img/process-chill.jpg" data-fallback="assets/img/drink-2.jpg" alt="裝瓶冷藏" loading="lazy" width="600" height="750"></figure>
+        <picture><source srcset="assets/img/process-chill.webp" type="image/webp"><img src="assets/img/process-chill.jpg" data-fallback="assets/img/drink-2.jpg" alt="裝瓶冷藏" loading="lazy" width="600" height="750"></picture></figure>
         <figcaption><span class="strip__n">Step 04</span><span class="strip__t">裝瓶冷藏</span><span class="strip__d">當批裝瓶、立即冷藏，全程冷鏈送到你家。</span></figcaption></li>
     </ul>
+  </div>
+</section>
+
+<!-- ===== 四步品飲 ===== -->
+<section class="sec" id="ritual">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Four Steps</span>
+      <h2 class="sec-title">先望色、聞香，再酌飲、暢喉</h2>
+      <p class="sec-lead">四步喝法。酸、甘、煙燻香會一層一層打開，不趕才完整。<a href="story.html#ritual">完整說明 →</a></p>
+    </div>
+    <ol class="ritual">
+      <li><span class="ritual__n">01</span><span><span class="ritual__t">望色<small>Look</small></span><span class="ritual__d">對著光看，紅寶石一樣透亮。</span></span></li>
+      <li><span class="ritual__n">02</span><span><span class="ritual__t">聞香<small>Smell</small></span><span class="ritual__d">桂花在上面，烏梅的煙燻氣在底下。</span></span></li>
+      <li><span class="ritual__n">03</span><span><span class="ritual__t">酌飲<small>Sip</small></span><span class="ritual__d">先小口，甘甜先到，酸慢慢上來。</span></span></li>
+      <li><span class="ritual__n">04</span><span><span class="ritual__t">暢喉<small>Drink</small></span><span class="ritual__d">再大口。冰涼順著喉嚨下去。</span></span></li>
+    </ol>
   </div>
 </section>
 
@@ -313,6 +330,8 @@
       <ul class="footer-list">
         <li>官方 LINE｜<span data-bzh="contact.lineId">@sph0133f</span></li>
         <li>客服電話｜<span class="num" data-bzh="contact.tel">0933-661-041</span></li>
+        <li>門市電話｜<span class="num" data-bzh="contact.tel2">06-290-8018</span></li>
+        <li>門市｜<a data-bzh-link="map" href="#"><span data-bzh="store.address">台南市東區崇明二十四街 29 號</span></a></li>
       </ul>
       <div class="btn-row mt-16">
         <a class="btn btn--line" data-bzh-link="line" href="#">LINE 聯絡</a>
@@ -343,8 +362,8 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"index.html"},{"@type":"ListItem","position":2,"name":"產品介紹","item":"product.html"}]}
 </script>
 <!-- @include:scripts -->
-<script src="assets/js/config.js?v=d7870ae8"></script>
-<script src="assets/js/site.js?v=10418296"></script>
+<script src="assets/js/config.js?v=640f5f1f"></script>
+<script src="assets/js/site.js?v=54279174"></script>
 <!-- @end:scripts -->
 </body>
 </html>
