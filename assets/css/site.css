@@ -9,23 +9,33 @@
 
 /* ---------- 1. 權杖 ---------- */
 :root{
-  --paper:      #FBF8F1;   /* 紙白 */
-  --paper-2:    #F3EEE4;   /* 交錯區 */
-  --paper-3:    #EAE3D5;
+  /* 色票取自官方棚拍實拍圖的量測值（_drive/ 內 10 張，中位數取樣）：
+     瓶身紅 #B41016 / #B61117、水泥牆冷灰藍 #CDD4E0 / #D2D7E0、
+     米白 #F5F2ED、木頭與烏梅的暖褐暗部 #452A1F / #573727。
+     紙白改為偏冷一階，暗部改為暖黑，才接得住照片。 */
+  --paper:      #F8F5EE;   /* 紙白（原 #FBF8F1 偏黃，照片是 #F5F2ED） */
+  --paper-2:    #F1ECE3;   /* 交錯區 */
+  --paper-3:    #E6DFD3;
   --surface:    #FFFFFF;
 
-  --ink:        #161513;   /* 墨 */
-  --ink-2:      #4B4741;
-  --ink-3:      #8B857A;
-  --ink-soft:   #4B4741;   /* 相容別名 */
+  /* 水泥牆冷灰藍：官方所有棚拍的背景色，原本完全缺席。
+     用在墨底區塊與照片鄰接處，讓版面跟照片同一個世界。 */
+  --slate:      #CDD4E0;
+  --slate-2:    #9D9CAB;
+  --slate-deep: #3B3F4A;
 
-  --line:       #E1DBCF;   /* 淡線（分隔） */
-  --line-2:     #C7C0B2;   /* 表單框 */
-  --rule:       #161513;   /* 墨線（結構） */
+  --ink:        #1A1512;   /* 墨。照片暗部是暖褐，不是中性黑 */
+  --ink-2:      #4E4840;
+  --ink-3:      #8C857A;
+  --ink-soft:   #4E4840;   /* 相容別名 */
 
-  --red:        #B51823;   /* 朱紅，取自官方標誌 */
-  --red-deep:   #8E111A;
-  --red-soft:   #F8E7E5;
+  --line:       #E0DACE;   /* 淡線（分隔） */
+  --line-2:     #C6BFB1;   /* 表單框 */
+  --rule:       #1A1512;   /* 墨線（結構） */
+
+  --red:        #B41016;   /* 朱紅。直接取自瓶身實拍量測值 */
+  --red-deep:   #8B0C11;
+  --red-soft:   #F8E6E4;
 
   --gold:       #B8891C;   /* 桂花金，極少量 */
   --gold-soft:  #F7EFD9;
@@ -608,7 +618,9 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   .tile--wide{ grid-column:1 / 3; grid-row:1 / 2; aspect-ratio:16/9; }
   .tile--tall{ grid-column:3 / 4; grid-row:1 / 3; aspect-ratio:auto; }
   .tile--sm{ grid-row:2 / 3; aspect-ratio:auto; height:100%; }
-  .hero__media{ aspect-ratio:21/9; max-height:78vh; }
+  /* 原本 21:9。那是風景照的比例，裝不下直立的瓶身——官方實拍是直立產品，
+     超寬帶狀會把瓶蓋切掉。改 2:1，瓶身完整且仍有寬幅感。 */
+  .hero__media{ aspect-ratio:2/1; max-height:78vh; }
   .hero__panel{ margin:-200px 0 0 calc((100% - var(--wrap)) / 2 + 22px); max-width:640px; }
 }
 
@@ -795,6 +807,22 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
 .sec-ico{ flex:none; width:34px; height:34px; border-radius:50%; display:grid; place-items:center;
           border:1px solid rgba(22,21,19,.16); color:var(--red); }
 .sec-ico svg{ width:18px; height:18px; }
+
+/* 兩種瓶對照。線上賣的那一種給大一點的版位，主從要看得出來 */
+.duo{ display:grid; gap:28px; }
+.duo__item{ margin:0; }
+.duo__item .ph{ aspect-ratio:1/1; border-radius:var(--radius-lg); overflow:hidden; background:var(--paper-3); }
+.duo__item .ph img{ width:100%; height:100%; object-fit:cover; display:block; }
+.duo__item figcaption{ padding:18px 2px 0; }
+.duo__k{ font-family:var(--latin); font-weight:600; font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3); }
+.duo__t{ margin:4px 0 2px; font-family:var(--serif); font-size:1.3rem; font-weight:700; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.duo__flag{ padding:3px 11px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--sans); font-size:.72rem; font-weight:700; letter-spacing:.08em; }
+.duo__v{ margin:0 0 8px; font-family:var(--latin); font-weight:600; font-size:1.6rem; line-height:1; color:var(--red); }
+.duo__d{ margin:0; font-size:.94rem; line-height:1.85; color:var(--ink-2); }
+.duo__foot{ margin:26px 0 0; padding-top:18px; border-top:1px solid var(--line); font-size:.9rem; color:var(--ink-3); }
+@media (min-width:820px){
+  .duo{ grid-template-columns:0.85fr 1.15fr; gap:44px; align-items:start; }
+}
 
 /* ---------- 常見問題分組 ---------- */
 .faq-nav{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 30px; }

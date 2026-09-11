@@ -11,8 +11,19 @@ window.BZH = {
   /* ---------- 品牌 ---------- */
   brand: {
     name: '冰盞紅',
-    product: '冰盞紅酸梅湯',
-    tagline: '台南手作酸梅湯・冷藏宅配'
+    /* 官方全名。門市「產品特色」與「美味四步飲」兩張海報、以及官方product
+       照檔名，都寫「冰盞紅 手作桂花酸梅湯」。桂花是配方裡最上層的香氣，
+       名字本身就在說明風味，不該省略。 */
+    product: '冰盞紅　手作桂花酸梅湯',
+    productShort: '冰盞紅酸梅湯',
+    tagline: '台南手作桂花酸梅湯・冷藏宅配'
+  },
+
+  /* 兩種瓶。門市與線上規格不同，粉專看到 480ml、網站看到 1000ml 會困惑，
+     官方棚拍剛好兩種都有，放在一起對照最清楚。 */
+  bottles: {
+    solo:  { name: '獨享瓶', volume: '480ml',  where: '門市外帶',   img: 'assets/img/product-solo.jpg' },
+    share: { name: '分享瓶', volume: '1000ml', where: '線上訂購',   img: 'assets/img/product-share.jpg' }
   },
 
   /* ---------- 聯絡方式 ---------- */

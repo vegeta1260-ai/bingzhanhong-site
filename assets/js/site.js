@@ -108,6 +108,7 @@
     'shipping.leadTime': C.shipping.leadTime,
     'shipping.areaNote': C.shipping.areaNote,
     'shipping.arriveNote': C.shipping.arriveNote || '',
+    'brand.productShort': C.brand.productShort || C.brand.product,
 
     'bank.name': C.bank.bankName,
     'bank.code': C.bank.bankCode,
