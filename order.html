@@ -51,7 +51,7 @@
     <div class="note note--warn mb-24">
       <p><strong>下單前請先知道這三件事</strong></p>
       <p>① 保存期限 <span data-bzh="product.shelfLife">10 天</span>，全程冷藏，收到請立即冰起來。
-      ② 出貨時間：<span data-bzh="shipping.leadTime">[待確認]</span>。
+      ② 出貨時間：<span data-bzh="shipping.leadTime">訂單確認後 2–3 個工作天出貨</span>。
       ③ 兩箱會分成兩個冷藏宅配箱寄送。</p>
     </div>
 
@@ -207,8 +207,10 @@
         <div class="field" id="f-arrive">
           <label class="field__label" for="arrive">希望到貨日<span class="opt-tag">（選填）</span></label>
           <input class="input" type="date" id="arrive" name="arrive">
-          <p class="field__hint">不填的話，我們會在備好貨之後儘快出貨。<span data-bzh="shipping.arriveNote"></span></p>
-          <p class="field__err">請選擇 <span id="arrive-range">可選範圍</span> 之間的日期。</p>
+          <p class="field__hint"><span data-bzh-html="shipping.arriveWeekdayNote"></span>
+          可選範圍 <span id="arrive-range">—</span>。不填的話，我們會在備好貨之後儘快出貨。</p>
+          <p class="field__hint"><span data-bzh="shipping.arriveNote"></span></p>
+          <p class="field__err" id="arrive-err">請選擇可配送的日期。</p>
         </div>
 
         <div class="note note--warn mb-24">
@@ -318,9 +320,9 @@
   <div class="wrap footer-legal footer-legal--solo">
     <p style="margin:0 0 8px"><a href="index.html">回首頁</a>　<a href="info.html#order">訂購須知</a>　<a href="info.html#privacy">隱私權政策</a></p>
     <p style="margin:0 0 6px">
-      營業人名稱：<span data-bzh="legal.company">[待確認]</span>｜
-      統一編號：<span data-bzh="legal.taxId">[待確認]</span>｜
-      食品業者登錄字號：<span data-bzh="legal.foodReg">[待確認]</span>
+      營業人名稱：<span data-bzh="legal.company">羅鈞</span>｜
+      <span data-bzh="legal.taxNote">免用統一發票（免稅籍營業登記）</span>｜
+      食品業者登錄字號：<span data-bzh="legal.foodReg">D-200158057-00000-8</span>
     </p>
     <p style="margin:0">© <span data-bzh="year">2026</span> 冰盞紅</p>
   </div>
@@ -339,10 +341,10 @@
 </div>
 
 <!-- @include:scripts -->
-<script src="assets/js/config.js?v=dbf3c54e"></script>
-<script src="assets/js/site.js?v=d77e4426"></script>
+<script src="assets/js/config.js?v=cdf6b9f6"></script>
+<script src="assets/js/site.js?v=9878116b"></script>
 <!-- @end:scripts -->
 <script src="assets/js/tw-districts.js?v=902c74d6"></script>
-<script src="assets/js/order.js?v=b504140c"></script>
+<script src="assets/js/order.js?v=38689861"></script>
 </body>
 </html>

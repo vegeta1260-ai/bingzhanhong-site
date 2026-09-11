@@ -279,7 +279,9 @@
     if (DIST) check('f-district', !!$('district').value);
     check('f-addr', $('addr').value.trim().length >= 4);
     check('f-email', validEmail($('email').value.trim()));
-    check('f-arrive', arriveValid());
+    var aMsg = arriveError();
+    if ($('arrive-err')) $('arrive-err').innerHTML = aMsg;
+    check('f-arrive', !aMsg);
 
     if (!$('same').checked) {
       check('f-bname', $('bname').value.trim().length >= 2);
@@ -437,6 +439,23 @@
     el.min = b.lo; el.max = b.hi;
     var label = $('arrive-range');
     if (label) label.textContent = b.lo.replace(/-/g, '/') + ' 至 ' + b.hi.replace(/-/g, '/');
+    // 選了不配送的日子就當場說，不要等到按送出
+    el.addEventListener('change', function () {
+      var msg = arriveError();
+      var box = $('arrive-err');
+      if (box) box.innerHTML = msg;
+      setError('f-arrive', !!msg);
+    });
+  }
+  // 允許的星期，來自 config。空陣列代表不限制。
+  function arriveDays() {
+    var d = (C.shipping && C.shipping.arriveWeekdays) || [];
+    return d.length ? d : [0, 1, 2, 3, 4, 5, 6];
+  }
+  function weekdayOf(ymdStr) {
+    var p = ymdStr.split('-');
+    // 用本地時間建構，避免 new Date('YYYY-MM-DD') 被當成 UTC 而差一天
+    return new Date(+p[0], +p[1] - 1, +p[2]).getDay();
   }
   function arriveValid() {
     var el = $('arrive');
@@ -444,7 +463,23 @@
     var v = el.value;
     if (!v) return true;                 // 選填，空白代表不指定
     var b = arriveBounds();
-    return v >= b.lo && v <= b.hi;
+    if (v < b.lo || v > b.hi) return false;
+    return arriveDays().indexOf(weekdayOf(v)) >= 0;
+  }
+  // 錯誤訊息要說出是哪一種錯，不然客人只會一直改日期
+  function arriveError() {
+    var el = $('arrive'), v = el && el.value;
+    if (!v) return '';
+    var b = arriveBounds();
+    if (v < b.lo || v > b.hi) {
+      return '請選擇 ' + b.lo.replace(/-/g, '/') + ' 至 ' + b.hi.replace(/-/g, '/') + ' 之間的日期。';
+    }
+    if (arriveDays().indexOf(weekdayOf(v)) < 0) {
+      var NAMES = ['日', '一', '二', '三', '四', '五', '六'];
+      return '這天是星期' + NAMES[weekdayOf(v)] + '，我們不配送。可指定的到貨日為星期' +
+             arriveDays().map(function (d) { return NAMES[d]; }).join('、') + '。';
+    }
+    return '';
   }
 
   /* ---------------- 事件綁定 ---------------- */

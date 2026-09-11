@@ -108,6 +108,10 @@
     'shipping.leadTime': C.shipping.leadTime,
     'shipping.areaNote': C.shipping.areaNote,
     'shipping.arriveNote': C.shipping.arriveNote || '',
+    'shipping.arriveWeekdayNote': C.shipping.arriveWeekdayNote || '',
+    'contact.telLabel': C.contact.telLabel || '電話',
+    'contact.tel2Label': C.contact.tel2Label || '門市電話',
+    'legal.taxNote': (C.legal && C.legal.taxNote) || '',
     'brand.productShort': C.brand.productShort || C.brand.product,
 
     'bank.name': C.bank.bankName,
@@ -126,6 +130,11 @@
 
   /* ---------- 填入文字 ---------- */
   function fillText(root) {
+    // 少數欄位需要保留 <strong> 之類的標記，走這條；其餘一律當純文字
+    (root || document).querySelectorAll('[data-bzh-html]').forEach(function (el) {
+      var k = el.getAttribute('data-bzh-html');
+      if (Object.prototype.hasOwnProperty.call(DICT, k)) el.innerHTML = DICT[k];
+    });
     (root || document).querySelectorAll('[data-bzh]').forEach(function (el) {
       var key = el.getAttribute('data-bzh');
       if (Object.prototype.hasOwnProperty.call(DICT, key)) {
