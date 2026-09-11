@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=329140f1">
+<link rel="stylesheet" href="assets/css/site.css?v=c0415641">
 <!-- @end:head -->
 </head>
 
@@ -50,11 +50,28 @@
 
 <main>
 
+<!-- ===== Hero：滿版照片＋面板 ===== -->
+<section class="hero hero--bleed">
+  <div class="hero__media" data-ph="全景：聚餐餐桌，多人的手與數個杯子">
+    <picture><source srcset="assets/img/scene-party.webp" type="image/webp"><img src="assets/img/scene-party.jpg" data-fallback="assets/img/hero-wide.jpg" alt="聚餐場合的冰盞紅酸梅湯" width="1920" height="900"></picture>
+  </div>
+  <div class="hero__panel">
+    <span class="hero__tag">WHOLESALE</span>
+    <h1 class="hero__title">整批訂購，<br>一次送到定點</h1>
+    <p class="hero__latin">For offices, gatherings & gifting</p>
+    <p class="hero__sub">公司送禮・社區團購・餐飲通路　全程冷藏宅配</p>
+    <div class="btn-row">
+      <a class="btn btn--primary btn--lg" href="#form">填寫需求</a>
+      <a class="btn btn--ghost btn--lg" data-bzh-link="line" href="#">用 LINE 問</a>
+    </div>
+  </div>
+</section>
+
 <section class="sec">
   <div class="wrap wrap--narrow">
     <div class="sec-head">
       <span class="sec-kicker">WHOLESALE</span>
-      <h1 class="sec-title">團購・企業訂購</h1>
+      <h2 class="sec-title">團購・企業訂購</h2>
       <p class="sec-lead">
         數量較多的訂購，請填寫下面的需求，我們會與您聯絡確認出貨安排與報價。
         急件也可以直接打電話或用 LINE 找我們。
@@ -107,6 +124,12 @@
       大量訂單需要提前安排製作與出貨，請儘早告知需求日期。</p>
       <p>③ 多箱訂單一律以<strong>每箱 <span data-bzh="product.perBox">12 瓶</span>、獨立冷藏宅配箱</strong>寄送。</p>
     </div>
+
+    <!-- ===== 送禮情境圖 ===== -->
+    <figure class="ph ph--wide mb-24" data-ph="中景：雙手在門口交付繫緞帶的紙盒">
+      <picture><source srcset="assets/img/scene-gift.webp" type="image/webp"><img src="assets/img/scene-gift.jpg" data-fallback="assets/img/scene-party.jpg" alt="整箱冷藏宅配到對方家裡" loading="lazy" width="1200" height="675"></picture>
+      <figcaption class="ph__cap">整箱冷藏宅配到對方指定的地址，不用自己提。</figcaption>
+    </figure>
 
     <!-- ===== 詢價表單 ===== -->
     <form id="wholesale-form" novalidate>
@@ -283,7 +306,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"index.html"},{"@type":"ListItem","position":2,"name":"團購・企業訂購","item":"wholesale.html"}]}
 </script>
 <!-- @include:scripts -->
-<script src="assets/js/config.js?v=db3d65f7"></script>
+<script src="assets/js/config.js?v=019a32d5"></script>
 <script src="assets/js/site.js?v=d2bba2b1"></script>
 <!-- @end:scripts -->
 <script src="assets/js/wholesale.js?v=dce83182"></script>

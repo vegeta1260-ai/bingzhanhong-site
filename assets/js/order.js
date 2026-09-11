@@ -26,11 +26,14 @@
     $('plan-opts').innerHTML = C.plans.map(function (p) {
       var badge = p.badge ? '<span class="opt__flag">' + p.badge + '</span>' : '';
       return '' +
-        '<label class="opt" data-plan="' + p.id + '">' +
+        '<label class="opt opt--pic" data-plan="' + p.id + '">' +
           '<input type="radio" name="plan" value="' + p.id + '">' +
+          (p.img ? '<span class="opt__thumb"><img src="' + p.img + '" alt="' + (p.imgAlt || '') + '" loading="lazy" width="240" height="300"></span>' : '') +
+          '<span class="opt__body">' +
           '<span class="opt__title">' + U.campaignLabel + '｜' + p.title + badge + '</span>' +
           '<span class="opt__meta">' + p.spec + '　･　' + p.note + '</span>' +
           '<span class="opt__price">' + U.money(p.price) + '</span>' +
+          '</span>' +
         '</label>';
     }).join('');
   }

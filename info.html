@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=329140f1">
+<link rel="stylesheet" href="assets/css/site.css?v=c0415641">
 <!-- @end:head -->
 </head>
 
@@ -60,9 +60,20 @@
       <li><a href="#privacy">隱私權政策</a></li>
     </ul>
 
+    <!-- ===== 三句話摘要：條文很長，先給重點 ===== -->
+    <div class="gist">
+      <h2 class="gist__t">先看這三件事</h2>
+      <ol class="gist__list">
+        <li><span><b>訂單送出不等於付款。</b>我們會先跟你確認，確認後才需要付錢。</span></li>
+        <li><span><b>生鮮冷藏商品，不適用七天鑑賞期。</b>但商品有瑕疵一定處理——收貨當日拍照聯絡我們，補寄運費由我們負擔。</span></li>
+        <li><span><b>收到請立刻冷藏。</b>保存期限 <span data-bzh="product.shelfLife">10 天</span>，無人簽收退回的冷藏品無法再次配送。</span></li>
+      </ol>
+      <p class="gist__foot">以下是完整條文。有看不懂的地方，直接用官方 LINE 問我們就好。</p>
+    </div>
+
     <!-- ===== 訂購須知 ===== -->
     <section id="order" class="mb-24">
-      <h2 class="fieldset__title">訂購須知</h2>
+      <h2 class="fieldset__title fieldset__title--icon"><span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M8.5 11h7M8.5 15h4.5"/></svg></span>訂購須知</h2>
       <ul class="spec-list mb-24">
         <li><span class="k">販售單位</span><span class="v">一箱 <span data-bzh="product.perBox">12 瓶</span>（<span data-bzh="product.volume">1000ml</span>／瓶）</span></li>
         <li><span class="k">1 箱</span><span class="v" data-bzh="price.box1"></span></li>
@@ -83,7 +94,7 @@
     <!-- 草稿：以下「取消與退換貨」條文為草稿，依消保法第 19 條與「通訊交易解除權合理例外情事適用準則」第 2 條第 1 款撰寫。
          其中「7 個工作天退款」「瑕疵補寄運費由店家負擔」為建議的營運政策，請業主確認後移除此註解。 -->
     <section id="returns" class="mb-24">
-      <h2 class="fieldset__title">取消與退換貨</h2>
+      <h2 class="fieldset__title fieldset__title--icon"><span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h11a5 5 0 0 1 0 10h-3"/><path d="M8 5L4 9l4 4"/></svg></span>取消與退換貨</h2>
       <ol style="padding-left:1.2em;color:var(--ink-soft)">
         <li><strong>出貨前取消：</strong>請於出貨前透過官方 LINE 或客服電話告知，我們會為您取消訂單。已完成轉帳者，於確認後 7 個工作天內退款至您的原轉帳帳戶。</li>
         <li><strong>出貨後無法取消：</strong>本商品為冷藏食品，出貨後即進入冷鏈配送，無法中途召回，敬請於下單前確認。</li>
@@ -98,7 +109,7 @@
 
     <!-- ===== 配送說明 ===== -->
     <section id="shipping" class="mb-24">
-      <h2 class="fieldset__title">配送說明</h2>
+      <h2 class="fieldset__title fieldset__title--icon"><span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l8-4 8 4v9l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v9"/></svg></span>配送說明</h2>
       <ul class="spec-list mb-24">
         <li><span class="k">配送方式</span><span class="v" data-bzh="shipping.method"></span></li>
         <li><span class="k">出貨時間</span><span class="v v--plain" data-bzh="shipping.leadTime"></span></li>
@@ -121,7 +132,7 @@
 
     <!-- ===== 付款說明 ===== -->
     <section id="payment" class="mb-24">
-      <h2 class="fieldset__title">付款說明</h2>
+      <h2 class="fieldset__title fieldset__title--icon"><span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10.5h18M6.5 14.5h3"/></svg></span>付款說明</h2>
 
       <h3 class="card__title mt-24">ATM／網路銀行轉帳</h3>
       <ol style="padding-left:1.2em;color:var(--ink-soft)">
@@ -161,7 +172,7 @@
 
     <!-- ===== 保存方式 ===== -->
     <section id="storage" class="mb-24">
-      <h2 class="fieldset__title">保存方式</h2>
+      <h2 class="fieldset__title fieldset__title--icon"><span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14v18H5z"/><path d="M5 10h14M8 6.5v1.5M8 13v2"/></svg></span>保存方式</h2>
       <ul class="spec-list mb-24">
         <li><span class="k">保存期限</span><span class="v" data-bzh="product.shelfLife"></span></li>
         <li><span class="k">保存方式</span><span class="v">請全程冷藏</span></li>
@@ -180,7 +191,7 @@
 
     <!-- ===== 隱私權政策 ===== -->
     <section id="privacy" class="mb-24">
-      <h2 class="fieldset__title">隱私權政策</h2>
+      <h2 class="fieldset__title fieldset__title--icon"><span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9.5 12l1.8 1.8 3.4-3.6"/></svg></span>隱私權政策</h2>
       <p style="color:var(--ink-soft)">本政策說明<span data-bzh="brand.name">冰盞紅</span>如何處理您在本網站訂購時提供的個人資料。</p>
 
       <h3 class="card__title mt-24">我們蒐集哪些資料</h3>
@@ -291,7 +302,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"index.html"},{"@type":"ListItem","position":2,"name":"購買說明","item":"info.html"}]}
 </script>
 <!-- @include:scripts -->
-<script src="assets/js/config.js?v=db3d65f7"></script>
+<script src="assets/js/config.js?v=019a32d5"></script>
 <script src="assets/js/site.js?v=d2bba2b1"></script>
 <!-- @end:scripts -->
 </body>

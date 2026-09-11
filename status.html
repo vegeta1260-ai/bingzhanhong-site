@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=329140f1">
+<link rel="stylesheet" href="assets/css/site.css?v=c0415641">
 <!-- @end:head -->
 </head>
 
@@ -68,6 +68,41 @@
       <p class="fieldset__hint">
         ATM 轉帳與 LINE Pay 為人工核對款項。填寫下列資料可以讓我們更快找到您的款項並安排出貨。
       </p>
+
+      <ol class="flow flow--4 mb-24">
+        <li class="flow__step">
+          <span class="flow__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10.5h18M6.5 14.5h3"/></svg></span>
+          <div>
+            <span class="flow__n">Step 01</span>
+            <h3 class="flow__t">你完成轉帳</h3>
+            <p class="flow__d">ATM 或 LINE Pay 都可以。</p>
+          </div>
+        </li>
+        <li class="flow__step">
+          <span class="flow__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M8.5 11h7M8.5 15h4.5"/></svg></span>
+          <div>
+            <span class="flow__n">Step 02</span>
+            <h3 class="flow__t">填下面的表單</h3>
+            <p class="flow__d">填<b>帳號後 5 碼</b>，我們才找得到你的款項。</p>
+          </div>
+        </li>
+        <li class="flow__step">
+          <span class="flow__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M15.8 15.8L21 21"/></svg></span>
+          <div>
+            <span class="flow__n">Step 03</span>
+            <h3 class="flow__t">我們人工核對</h3>
+            <p class="flow__d">款項為人工核對，不是即時的。</p>
+          </div>
+        </li>
+        <li class="flow__step">
+          <span class="flow__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l8-4 8 4v9l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v9"/></svg></span>
+          <div>
+            <span class="flow__n">Step 04</span>
+            <h3 class="flow__t">安排出貨</h3>
+            <p class="flow__d">核對完成後排進最近一批，出貨時通知你。</p>
+          </div>
+        </li>
+      </ol>
 
       <form id="report-form" novalidate>
         <div class="field" id="f-orderno">
@@ -235,7 +270,7 @@
 <!-- @end:bottombar -->
 
 <!-- @include:scripts -->
-<script src="assets/js/config.js?v=db3d65f7"></script>
+<script src="assets/js/config.js?v=019a32d5"></script>
 <script src="assets/js/site.js?v=d2bba2b1"></script>
 <!-- @end:scripts -->
 <script src="assets/js/status.js?v=8436997a"></script>

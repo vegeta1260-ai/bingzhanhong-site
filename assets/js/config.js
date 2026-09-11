@@ -84,7 +84,9 @@ window.BZH = {
       price: 1490,
       title: '1 箱',
       spec: '1000ml × 12 瓶',
-      note: '一個冷藏宅配箱'
+      note: '一個冷藏宅配箱',
+      img: 'assets/img/scene-fridge.jpg',
+      imgAlt: '冰箱裡常備一箱'
     },
     {
       id: 'box2',
@@ -94,6 +96,8 @@ window.BZH = {
       title: '2 箱',
       spec: '1000ml × 12 瓶 × 2 箱',
       note: '分成兩個冷藏宅配箱寄送',
+      img: 'assets/img/scene-party.jpg',
+      imgAlt: '聚餐時整瓶端上桌',
       badge: '兩箱更划算'
     }
   ],

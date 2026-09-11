@@ -97,6 +97,32 @@ if os.path.isfile(css_path):
             warns.append('site.css 第 %d 行：規則同時有 aspect-ratio 與 min-height 卻沒有 width，'
                          '可能在窄螢幕撐破版面' % line_of(css, m.start()))
 
+# ---------- 2c. grid 清單裡的裸文字節點 ----------
+# <li> 底下如果同時有元素子節點和沒包起來的文字，在 display:grid 的容器裡
+# 那段文字會變成獨立的格線項目，被擠進第一欄，畫面上是一個字一行。
+# 這個錯誤犯過兩次（送禮重點、條文摘要），所以自動檢查。
+if os.path.isfile(css_path):
+    grid_lists = set()
+    for m in re.finditer(r'\.([A-Za-z0-9_-]+)\s+li\s*\{([^{}]*)\}', css):
+        body_css = m.group(2)
+        if 'display:grid' in body_css.replace(' ', '') and 'grid-template-columns' in body_css:
+            grid_lists.add(m.group(1))
+    for name in PAGES:
+        path = os.path.join(ROOT, name)
+        if not os.path.isfile(path):
+            continue
+        html = read(path)
+        for cls in grid_lists:
+            for lm in re.finditer(r'<(ul|ol)[^>]*class="[^"]*%s[^"]*"[^>]*>(.*?)</>' % re.escape(cls),
+                                  html, re.S):
+                for li in re.finditer(r'<li[^>]*>(.*?)</li>', lm.group(2), re.S):
+                    inner = li.group(1)
+                    stripped = re.sub(r'<([a-z]+)[^>]*>.*?</>|<[a-z]+[^>]*/?>', '', inner, flags=re.S)
+                    if stripped.strip() and re.search(r'<[a-z]', inner):
+                        warns.append('%s 第 %d 行：.%s 的 <li> 有沒包起來的文字，'
+                                     'grid 會把它當成獨立項目擠成一行一字'
+                                     % (name, line_of(html, lm.start() + li.start()), cls))
+
 # ---------- 3. config.js ----------
 cfg = read(os.path.join(ROOT, 'assets', 'js', 'config.js'))
 for m in re.finditer(r"'(\[待確認\][^']*)'", cfg):
