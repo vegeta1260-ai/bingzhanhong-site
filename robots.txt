@@ -4,4 +4,4 @@ Disallow: /order.html
 Disallow: /done.html
 Disallow: /status.html
 
-Sitemap: https://待確認.example/sitemap.xml
+Sitemap: https://vegeta1260-ai.github.io/bingzhanhong-site/sitemap.xml

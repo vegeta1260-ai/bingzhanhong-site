@@ -194,6 +194,68 @@ def wrap_webp(text):
     return IMG_RE.sub(rep, text)
 
 
+# ---------- 社群分享與正規網址：一律補成絕對網址 ----------
+# LINE 與 Facebook 抓 og:image 需要完整網址，相對路徑會抓不到，
+# 分享出去只有一行字沒有圖。這裡在組頁時統一補齊，不用逐頁手改。
+META_TAG_RE = re.compile(r'<meta\s+(?:property|name)="([^"]+)"\s+content="([^"]*)"\s*/?>')
+
+
+def _abs(base, rel):
+    if not rel or rel.startswith(('http://', 'https://', '//')):
+        return rel
+    return base + '/' + rel.lstrip('/')
+
+
+def absolutize_meta(name, html):
+    base = site_url()
+    if not base:
+        return html                      # 還沒有網域就維持原樣，check.py 會提醒
+
+    page_url = base + '/' + ('' if name == 'index.html' else name)
+
+    def get(pattern):
+        m = re.search(pattern, html)
+        return m.group(1) if m else ''
+
+    og_image = get(r'<meta property="og:image" content="([^"]*)"')
+    abs_image = _abs(base, og_image) if og_image else base + '/assets/img/og-cover.jpg'
+    title = get(r'<meta property="og:title" content="([^"]*)"') or get(r'<title>([^<]*)</title>')
+    desc = get(r'<meta property="og:description" content="([^"]*)"') \
+        or get(r'<meta name="description" content="([^"]*)"')
+
+    # canonical 改為絕對網址
+    if re.search(r'<link rel="canonical"[^>]*>', html):
+        html = re.sub(r'<link rel="canonical" href="[^"]*">',
+                      '<link rel="canonical" href="%s">' % page_url, html)
+    # og:image 改為絕對網址
+    if og_image:
+        html = html.replace('<meta property="og:image" content="%s">' % og_image,
+                            '<meta property="og:image" content="%s">' % abs_image)
+
+    # 補上缺的欄位，插在 og:locale 之前（沒有就插在 </head> 之前）
+    add = []
+    if 'property="og:url"' not in html:
+        add.append('<meta property="og:url" content="%s">' % page_url)
+    if 'property="og:site_name"' not in html:
+        add.append('<meta property="og:site_name" content="冰盞紅">')
+    if 'property="og:image:width"' not in html:
+        add.append('<meta property="og:image:width" content="1200">')
+        add.append('<meta property="og:image:height" content="630">')
+    if 'property="og:image:alt"' not in html:
+        add.append('<meta property="og:image:alt" content="冰盞紅 手作桂花酸梅湯">')
+    if 'name="twitter:card"' not in html:
+        add.append('<meta name="twitter:card" content="summary_large_image">')
+        add.append('<meta name="twitter:title" content="%s">' % title)
+        add.append('<meta name="twitter:description" content="%s">' % desc)
+        add.append('<meta name="twitter:image" content="%s">' % abs_image)
+    if add:
+        block = '\n'.join(add) + '\n'
+        anchor = '<meta property="og:locale"'
+        html = html.replace(anchor, block + anchor, 1) if anchor in html \
+            else html.replace('</head>', block + '</head>', 1)
+    return html
+
+
 # ---------- 組頁 ----------
 def build_page(name, page_html):
     def rep(m):
@@ -208,7 +270,7 @@ def build_page(name, page_html):
             body = render(read(tpl_path), ctx).rstrip('\n')
         return '<!-- @include:%s%s -->\n%s\n<!-- @end:%s -->' % (pname, attrs, body, pname)
     out = INCLUDE_RE.sub(rep, page_html)
-    return version_assets(wrap_webp(out))
+    return absolutize_meta(name, version_assets(wrap_webp(out)))
 
 
 # ---------- sitemap / robots ----------

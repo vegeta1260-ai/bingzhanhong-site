@@ -53,7 +53,9 @@ window.BZH = {
      上線後填入，例如 'https://bingzhanhong.tw'。
      build.py 會用它產生 sitemap.xml 與 robots.txt。 */
   site: {
-    url: ''
+    /* GitHub Pages。改用自己的網域時只要換這一行，
+       canonical、og:url、og:image、sitemap 會一起跟著換。 */
+    url: 'https://vegeta1260-ai.github.io/bingzhanhong-site'
   },
 
   /* ---------- 流量分析 ----------
