@@ -580,9 +580,9 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
 .strip{ display:grid; gap:14px; grid-template-columns:repeat(2,1fr); margin:0; padding:0; list-style:none; }
 .strip li{ margin:0; }
 @media (min-width:760px){
-  .strip li:nth-child(even){ margin-top:38px; }
-  .strip li:nth-child(odd) .ph{ aspect-ratio:4/5; }
-  .strip li:nth-child(even) .ph{ aspect-ratio:3/4; }
+  /* 製程是有順序的五個步驟，讀者要照 01→05 掃過去。
+     奇偶錯落會打斷那條閱讀線，五格時更明顯，所以這裡一律等高對齊。 */
+  .strip li{ display:grid; grid-template-rows:auto 1fr; align-content:start; }
 }
 .strip .ph{ aspect-ratio:4/5; }
 .strip figcaption{ margin-top:12px; }
@@ -604,7 +604,8 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
 }
 @media (min-width:760px){
   .articles{ grid-template-columns:repeat(3,1fr); }
-  .strip{ grid-template-columns:repeat(4,1fr); }
+  .strip{ grid-template-columns:repeat(5,1fr); gap:16px; }
+  .strip__d{ font-size:.86rem; }
   .hero__panel{ margin:-120px auto 0; max-width:760px; padding:40px 40px 44px; }
 }
 @media (min-width:1000px){
