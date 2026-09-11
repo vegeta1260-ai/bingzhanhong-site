@@ -15,3 +15,7 @@ desktop.ini
 *.log
 _preview-*.html
 __pycache__/
+
+# Drive 原始素材（大檔，不進版控）
+_drive/
+drive-download-*.zip
