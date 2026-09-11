@@ -59,7 +59,7 @@
 <!-- ===== 1. Hero：滿版照片，資訊面板疊在上面 ===== -->
 <section class="hero hero--bleed">
   <div class="hero__media" data-ph="官方實拍：五瓶並列，獨享瓶與分享瓶">
-    <picture><source srcset="assets/img/hero-wide.webp" type="image/webp"><img src="assets/img/hero-wide.jpg" data-fallback="assets/img/drink-4.jpg" alt="冰盞紅手作桂花酸梅湯" width="2000" height="1000"></picture>
+    <picture><source type="image/webp" srcset="assets/img/hero-wide@480w.webp 480w, assets/img/hero-wide@800w.webp 800w, assets/img/hero-wide@1200w.webp 1200w, assets/img/hero-wide.webp 2000w" sizes="100vw"><img src="assets/img/hero-wide.jpg" data-fallback="assets/img/drink-4.jpg" alt="冰盞紅手作桂花酸梅湯" width="2000" height="1000" srcset="assets/img/hero-wide@480w.jpg 480w, assets/img/hero-wide@800w.jpg 800w, assets/img/hero-wide@1200w.jpg 1200w, assets/img/hero-wide.jpg 2000w" sizes="100vw"></picture>
   </div>
   <div class="hero__panel">
     <div class="hero__tagrow">
@@ -97,19 +97,19 @@
     </div>
     <div class="tiles">
       <a class="tile tile--wide" href="index.html#gift" data-ph="全景：餐桌上數只白瓷盞，幾隻手正伸過去拿">
-        <picture><source srcset="assets/img/scene-share.webp" type="image/webp"><img src="assets/img/scene-share.jpg" data-fallback="assets/img/scene-party.jpg" alt="聚餐時一人一盞" width="1200" height="900"></picture>
+        <picture><source type="image/webp" srcset="assets/img/scene-share@480w.webp 480w, assets/img/scene-share@800w.webp 800w, assets/img/scene-share.webp 1200w" sizes="100vw"><img src="assets/img/scene-share.jpg" data-fallback="assets/img/scene-party.jpg" alt="聚餐時一人一盞" width="1200" height="900" srcset="assets/img/scene-share@480w.jpg 480w, assets/img/scene-share@800w.jpg 800w, assets/img/scene-share.jpg 1200w" sizes="100vw"></picture>
         <span class="tile__body"><span class="tile__k">Gathering</span><span class="tile__t">聚餐與節日</span><span class="tile__d">中秋、家庭聚餐、親友來訪，冰箱裡先備著。整瓶端上桌，一人一盞。</span></span>
       </a>
       <a class="tile tile--tall" href="index.html#gift" data-ph="中景：雙手在門口交付繫緞帶的紙盒">
-        <picture><source srcset="assets/img/scene-gift.webp" type="image/webp"><img src="assets/img/scene-gift.jpg" data-fallback="assets/img/process-prep.jpg" alt="送禮" loading="lazy" width="600" height="800"></picture>
+        <picture><source type="image/webp" srcset="assets/img/scene-gift@480w.webp 480w, assets/img/scene-gift.webp 600w" sizes="100vw"><img src="assets/img/scene-gift.jpg" data-fallback="assets/img/process-prep.jpg" alt="送禮" loading="lazy" width="600" height="800" srcset="assets/img/scene-gift@480w.jpg 480w, assets/img/scene-gift.jpg 600w" sizes="100vw"></picture>
         <span class="tile__body"><span class="tile__k">Gift</span><span class="tile__t">送禮也合適</span><span class="tile__d">整箱冷藏宅配到對方家裡，不用自己提。</span></span>
       </a>
       <a class="tile tile--sm" href="product.html#drink" data-ph="中景：家常餐桌，一盤菜與一杯">
-        <picture><source srcset="assets/img/scene-meal.webp" type="image/webp"><img src="assets/img/scene-meal.jpg" data-fallback="assets/img/drink-4.jpg" alt="吃飯配一杯" loading="lazy" width="600" height="800"></picture>
+        <picture><source type="image/webp" srcset="assets/img/scene-meal@480w.webp 480w, assets/img/scene-meal@800w.webp 800w, assets/img/scene-meal.webp 1200w" sizes="100vw"><img src="assets/img/scene-meal.jpg" data-fallback="assets/img/drink-4.jpg" alt="吃飯配一杯" loading="lazy" width="600" height="800" srcset="assets/img/scene-meal@480w.jpg 480w, assets/img/scene-meal@800w.jpg 800w, assets/img/scene-meal.jpg 1200w" sizes="100vw"></picture>
         <span class="tile__body"><span class="tile__k">Daily</span><span class="tile__t">吃飯配一杯</span><span class="tile__d">酸中帶甘，餐桌上倒一杯，清爽解渴。</span></span>
       </a>
       <a class="tile tile--sm" href="product.html#spec" data-ph="冷光：打開的冰箱層架，一只玻璃壺與冰塊">
-        <picture><source srcset="assets/img/scene-fridge.webp" type="image/webp"><img src="assets/img/scene-fridge.jpg" data-fallback="assets/img/drink-2.jpg" alt="冰箱常備" loading="lazy" width="600" height="800"></picture>
+        <picture><source type="image/webp" srcset="assets/img/scene-fridge@480w.webp 480w, assets/img/scene-fridge.webp 600w" sizes="100vw"><img src="assets/img/scene-fridge.jpg" data-fallback="assets/img/drink-2.jpg" alt="冰箱常備" loading="lazy" width="600" height="800" srcset="assets/img/scene-fridge@480w.jpg 480w, assets/img/scene-fridge.jpg 600w" sizes="100vw"></picture>
         <span class="tile__body"><span class="tile__k">Always</span><span class="tile__t">冰箱常備</span><span class="tile__d">冰鎮後直接倒，隨時都有一杯冰涼的。</span></span>
       </a>
     </div>
@@ -144,7 +144,7 @@
     <div class="intro-cards intro-cards--feature">
       <a class="intro-card" href="product.html#ingredients">
         <figure class="ph" data-ph="食材平拍：烏梅、山楂、洛神、桂花">
-          <picture><source srcset="assets/img/ing-luoshen.webp" type="image/webp"><img src="assets/img/ing-luoshen.jpg" alt="酸梅湯的食材" loading="lazy" width="640" height="400"></picture>
+          <picture><source type="image/webp" srcset="assets/img/ing-luoshen@480w.webp 480w, assets/img/ing-luoshen.webp 600w" sizes="100vw"><img src="assets/img/ing-luoshen.jpg" alt="酸梅湯的食材" loading="lazy" width="640" height="400" srcset="assets/img/ing-luoshen@480w.jpg 480w, assets/img/ing-luoshen.jpg 600w" sizes="100vw"></picture>
         </figure>
         <div class="intro-card__body">
           <span class="intro-card__k">INGREDIENTS</span>
@@ -155,7 +155,7 @@
       </a>
       <a class="intro-card" href="product.html#process">
         <figure class="ph" data-ph="製程照：熬煮中的鍋">
-          <picture><source srcset="assets/img/process-pot.webp" type="image/webp"><img src="assets/img/process-pot.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="手工熬煮酸梅湯" loading="lazy" width="640" height="400"></picture>
+          <picture><source type="image/webp" srcset="assets/img/process-pot@480w.webp 480w, assets/img/process-pot.webp 600w" sizes="100vw"><img src="assets/img/process-pot.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="手工熬煮酸梅湯" loading="lazy" width="640" height="400" srcset="assets/img/process-pot@480w.jpg 480w, assets/img/process-pot.jpg 600w" sizes="100vw"></picture>
         </figure>
         <div class="intro-card__body">
           <span class="intro-card__k">HANDMADE</span>
@@ -166,7 +166,7 @@
       </a>
       <a class="intro-card" href="product.html#drink">
         <figure class="ph" data-ph="喝法：加冰塊的玻璃杯">
-          <picture><source srcset="assets/img/drink-2.webp" type="image/webp"><img src="assets/img/drink-2.jpg" alt="加冰塊的酸梅湯" loading="lazy" width="640" height="400"></picture>
+          <picture><source type="image/webp" srcset="assets/img/drink-2@480w.webp 480w, assets/img/drink-2.webp 800w" sizes="100vw"><img src="assets/img/drink-2.jpg" alt="加冰塊的酸梅湯" loading="lazy" width="640" height="400" srcset="assets/img/drink-2@480w.jpg 480w, assets/img/drink-2.jpg 800w" sizes="100vw"></picture>
         </figure>
         <div class="intro-card__body">
           <span class="intro-card__k">HOW TO DRINK</span>
@@ -182,7 +182,7 @@
 <!-- ===== 4. 送禮 ===== -->
 <section class="sec bleed" id="gift">
   <div class="bleed__bg" data-ph="出血背景：中秋餐桌全景">
-    <picture><source srcset="assets/img/scene-party.webp" type="image/webp"><img src="assets/img/scene-party.jpg" data-fallback="assets/img/drink-4.jpg" alt="" loading="lazy" width="1920" height="900"></picture>
+    <picture><source type="image/webp" srcset="assets/img/scene-party@480w.webp 480w, assets/img/scene-party@800w.webp 800w, assets/img/scene-party@1200w.webp 1200w, assets/img/scene-party.webp 1920w" sizes="100vw"><img src="assets/img/scene-party.jpg" data-fallback="assets/img/drink-4.jpg" alt="" loading="lazy" width="1920" height="900" srcset="assets/img/scene-party@480w.jpg 480w, assets/img/scene-party@800w.jpg 800w, assets/img/scene-party@1200w.jpg 1200w, assets/img/scene-party.jpg 1920w" sizes="100vw"></picture>
   </div>
   <div class="wrap">
     <div class="grid" style="max-width:640px">
@@ -219,7 +219,7 @@
     <div class="articles">
       <a class="article" href="notes.html#smoke">
         <figure class="ph" data-ph="專欄：烏梅特寫，深褐色皺褶表面">
-          <picture><source srcset="assets/img/note-smoke.webp" type="image/webp"><img src="assets/img/note-smoke.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="" loading="lazy" width="800" height="600"></picture>
+          <picture><source type="image/webp" srcset="assets/img/note-smoke@480w.webp 480w, assets/img/note-smoke@800w.webp 800w, assets/img/note-smoke.webp 960w" sizes="100vw"><img src="assets/img/note-smoke.jpg" data-fallback="assets/img/ing-wumei.jpg" alt="" loading="lazy" width="800" height="600" srcset="assets/img/note-smoke@480w.jpg 480w, assets/img/note-smoke@800w.jpg 800w, assets/img/note-smoke.jpg 960w" sizes="100vw"></picture>
         </figure>
         <span class="article__k">No. 02</span>
         <h3 class="article__t">煙燻香從哪裡來</h3>
@@ -228,7 +228,7 @@
       </a>
       <a class="article" href="notes.html#batch">
         <figure class="ph" data-ph="專欄：熬煮中的鍋，蒸氣與木杓">
-          <picture><source srcset="assets/img/process-pot.webp" type="image/webp"><img src="assets/img/process-pot.jpg" alt="" loading="lazy" width="800" height="600"></picture>
+          <picture><source type="image/webp" srcset="assets/img/process-pot@480w.webp 480w, assets/img/process-pot.webp 600w" sizes="100vw"><img src="assets/img/process-pot.jpg" alt="" loading="lazy" width="800" height="600" srcset="assets/img/process-pot@480w.jpg 480w, assets/img/process-pot.jpg 600w" sizes="100vw"></picture>
         </figure>
         <span class="article__k">No. 04</span>
         <h3 class="article__t">小批次的代價</h3>
@@ -237,7 +237,7 @@
       </a>
       <a class="article" href="notes.html#eight">
         <figure class="ph" data-ph="專欄：八種乾料分別放在小碟中，俯拍">
-          <picture><source srcset="assets/img/note-eight.webp" type="image/webp"><img src="assets/img/note-eight.jpg" data-fallback="assets/img/process-prep.jpg" alt="" loading="lazy" width="800" height="600"></picture>
+          <picture><source type="image/webp" srcset="assets/img/note-eight@480w.webp 480w, assets/img/note-eight@800w.webp 800w, assets/img/note-eight.webp 960w" sizes="100vw"><img src="assets/img/note-eight.jpg" data-fallback="assets/img/process-prep.jpg" alt="" loading="lazy" width="800" height="600" srcset="assets/img/note-eight@480w.jpg 480w, assets/img/note-eight@800w.jpg 800w, assets/img/note-eight.jpg 960w" sizes="100vw"></picture>
         </figure>
         <span class="article__k">No. 05</span>
         <h3 class="article__t">八種食材，各站各的位置</h3>

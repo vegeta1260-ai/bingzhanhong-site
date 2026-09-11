@@ -127,18 +127,70 @@ def version_assets(text):
     return ASSET_RE.sub(rep, text)
 
 
-# ---------- WebP：有同名 .webp 就用 <picture> 包起來，舊瀏覽器自動退回 .jpg ----------
-PICTURE_RE = re.compile(r'<picture><source srcset="[^"]*" type="image/webp">(<img[^>]*>)</picture>')
+# ---------- 響應式圖片：產生 srcset，讓手機不要下載 2000px 的圖 ----------
+# 變體由 tools/gen_images.py 產生，檔名格式 name@480w.jpg / name@480w.webp。
+# sizes 預設 100vw（不會漏抓，只會多抓）；需要更精準時在 <img> 上加 data-sizes。
+SRCSET_WIDTHS = (480, 800, 1200)
+PICTURE_RE = re.compile(r'<picture><source [^>]*type="image/webp"[^>]*>(<img[^>]*>)</picture>')
 IMG_RE = re.compile(r'<img([^>]*\ssrc="(assets/img/[^"]+)\.jpg"[^>]*)>')
+GEN_ATTR_RE = re.compile(r'\s(?:srcset|sizes)="[^"]*"')
+SIZES_RE = re.compile(r'\sdata-sizes="([^"]*)"')
+
+
+def jpeg_width(path):
+    """只讀 JPEG 標頭取出實際寬度，避免 build.py 依賴 Pillow。"""
+    try:
+        with open(path, 'rb') as f:
+            if f.read(2) != b'\xff\xd8':
+                return 0
+            while True:
+                b = f.read(1)
+                while b and b != b'\xff':
+                    b = f.read(1)
+                while b == b'\xff':
+                    b = f.read(1)
+                if not b:
+                    return 0
+                marker = b[0]
+                if marker in (0xD8, 0xD9) or 0xD0 <= marker <= 0xD7:
+                    continue
+                ln = int.from_bytes(f.read(2), 'big')
+                if 0xC0 <= marker <= 0xCF and marker not in (0xC4, 0xC8, 0xCC):
+                    f.read(3)                       # precision + height
+                    return int.from_bytes(f.read(2), 'big')
+                f.seek(ln - 2, 1)
+    except Exception:
+        return 0
+
+
+def _variants(stem, ext):
+    out = []
+    for w in SRCSET_WIDTHS:
+        rel = '%s@%dw.%s' % (stem, w, ext)
+        if os.path.isfile(os.path.join(ROOT, rel.replace('/', os.sep))):
+            out.append('%s %dw' % (rel, w))
+    full = '%s.%s' % (stem, ext)
+    fw = jpeg_width(os.path.join(ROOT, ('%s.jpg' % stem).replace('/', os.sep)))
+    if fw and os.path.isfile(os.path.join(ROOT, full.replace('/', os.sep))):
+        out.append('%s %dw' % (full, fw))
+    return ', '.join(out)
 
 
 def wrap_webp(text):
-    text = PICTURE_RE.sub(r'\1', text)                  # 先拆掉舊的包裝，保持可重複執行
+    text = PICTURE_RE.sub(r'\1', text)                  # 先拆掉舊包裝，保持可重複執行
     def rep(m):
-        webp = m.group(2) + '.webp'
-        if not os.path.isfile(os.path.join(ROOT, webp.replace('/', os.sep))):
-            return m.group(0)
-        return '<picture><source srcset="%s" type="image/webp">%s</picture>' % (webp, m.group(0))
+        attrs, stem = m.group(1), m.group(2)
+        attrs = GEN_ATTR_RE.sub('', attrs)              # 清掉上一輪產生的 srcset/sizes
+        ms = SIZES_RE.search(attrs)
+        sizes = ms.group(1) if ms else '100vw'
+        jpg_set = _variants(stem, 'jpg')
+        img = '<img%s>' % attrs
+        if jpg_set.count(',') >= 1:
+            img = '<img%s srcset="%s" sizes="%s">' % (attrs, jpg_set, sizes)
+        if not os.path.isfile(os.path.join(ROOT, ('%s.webp' % stem).replace('/', os.sep))):
+            return img
+        webp_set = _variants(stem, 'webp')
+        return '<picture><source type="image/webp" srcset="%s" sizes="%s">%s</picture>' % (webp_set, sizes, img)
     return IMG_RE.sub(rep, text)
 
 
