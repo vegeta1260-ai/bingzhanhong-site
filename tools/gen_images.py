@@ -21,7 +21,9 @@ for src in sorted(glob.glob('assets/img/*.jpg')):
             continue
         out_j = 'assets/img/%s@%dw.jpg' % (base, w)
         out_w = 'assets/img/%s@%dw.webp' % (base, w)
-        if os.path.isfile(out_j) and os.path.isfile(out_w):
+        # 原圖被換掉時必須重新產生，否則手機會一直吃到舊圖的縮圖。
+        # 只比對存在與否會讓替換過的圖永遠停在舊版本。
+        if os.path.isfile(out_j) and os.path.isfile(out_w)            and os.path.getmtime(out_j) >= os.path.getmtime(src)            and os.path.getmtime(out_w) >= os.path.getmtime(src):
             continue
         r = im.resize((w, round(H * w / W)), Image.LANCZOS)
         q = 80
