@@ -825,6 +825,28 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   .duo{ grid-template-columns:0.85fr 1.15fr; gap:44px; align-items:start; }
 }
 
+/* 四步：中英文不可斷開 */
+.manifesto__lines li{ white-space:nowrap; }
+/* 窄螢幕改 2×2。四個並排需要 389px、實際只有 316px，
+   flex 自然換行會變成 3+1，「暢喉」單獨掉一列很難看。
+   2×2 是刻意的排法，而且剛好分成「看與聞」「小口與大口」。 */
+@media (max-width:560px){
+  .manifesto__lines{
+    display:grid; grid-template-columns:repeat(2, auto);
+    justify-content:center; gap:12px 30px;
+    font-size:1rem; letter-spacing:.1em;
+  }
+}
+
+/* 方案規格不要斷行。文案已縮短，這裡再加一道保險 */
+.plan__spec{ text-wrap:nowrap; }
+@media (max-width:400px){
+  .plan__spec{ font-size:.94rem; }
+}
+
+/* 門市資訊：服務項目整段一起換行，不要把「路預約」三個字切掉 */
+.store__meta .nb{ white-space:nowrap; }
+
 /* ---------- 常見問題分組 ---------- */
 .faq-nav{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 30px; }
 .faq-nav a{
