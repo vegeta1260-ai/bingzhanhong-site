@@ -881,6 +881,21 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   .track__step{ padding-top:24px; }
 }
 
+/* 門市實拍兩張並排 */
+.storeduo{ display:grid; gap:18px; }
+.storeduo .ph{ aspect-ratio:3/4; border-radius:var(--radius-lg); overflow:hidden; }
+.storeduo .ph img{ width:100%; height:100%; object-fit:cover; display:block; }
+.storeduo .ph__cap{ padding:0 2px; }
+@media (min-width:760px){ .storeduo{ grid-template-columns:1fr 1fr; gap:24px; } }
+
+/* 故事頁門市區：左圖右資訊 */
+.store--pic .store__pic{ margin:0; border-radius:var(--radius); overflow:hidden; aspect-ratio:3/4; }
+.store--pic .store__pic img{ width:100%; height:100%; object-fit:cover; display:block; }
+@media (min-width:720px){
+  .store--pic{ grid-template-columns:0.72fr 1fr; align-items:center; gap:26px; }
+  .store--pic .btn-row{ grid-column:2; }
+}
+
 /* ---------- 常見問題分組 ---------- */
 .faq-nav{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 30px; }
 .faq-nav a{

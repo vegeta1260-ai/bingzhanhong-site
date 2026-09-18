@@ -9,7 +9,7 @@
  */
 
 /** 通知信箱：填入後每筆新訂單會寄一封通知信。留空則不寄。 */
-var NOTIFY_EMAIL = '';
+var NOTIFY_EMAIL = 'klobant27@gmail.com';
 
 /** 工作表名稱 */
 var SHEET_ORDERS    = '訂單';
