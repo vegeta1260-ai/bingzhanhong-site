@@ -317,20 +317,13 @@ function handleWholesale_(d) {
   if (NOTIFY_EMAIL) {
     MailApp.sendEmail(NOTIFY_EMAIL, '【冰盞紅】團購詢價 ' + (d.org || d.name || ''),
       '單位：' + (d.org || '（個人）') +
-      '
-用途：' + (d.usage || '') +
-      '
-箱數：' + (d.qty || '') +
-      '
-希望到貨：' + (d.when || '') +
-      '
-配送縣市：' + (d.area || '') +
-      '
-聯絡人：' + (d.name || '') + '　' + (d.phone || '') +
-      '
-Email：' + (d.email || '') +
-      '
-說明：' + (d.note || ''));
+      '\n用途：' + (d.usage || '') +
+      '\n箱數：' + (d.qty || '') +
+      '\n希望到貨：' + (d.when || '') +
+      '\n配送縣市：' + (d.area || '') +
+      '\n聯絡人：' + (d.name || '') + '　' + (d.phone || '') +
+      '\nEmail：' + (d.email || '') +
+      '\n說明：' + (d.note || ''));
   }
 
   return { ok: true };
@@ -354,7 +347,7 @@ function handleLookup_(d) {
     ok: true,
     order: {
       orderNo: String(col('訂單編號')),
-      orderedAt: String(col('訂購日期')),
+      orderedAt: fmtDate_(col('訂購日期')),
       planTitle: String(col('方案')),
       total: Number(col('訂單金額')) || 0,
       paymentName: String(col('付款方式')),
@@ -362,6 +355,18 @@ function handleLookup_(d) {
       orderStatus: String(col('訂單狀態'))
     }
   };
+}
+
+
+/** 試算表會把日期字串自動轉成 Date。
+ *  直接 String() 會變成 'Fri Sep 18 2026 23:36:00 GMT+0800'，
+ *  客人在查詢結果看到那串會一頭霧水。 */
+function fmtDate_(v) {
+  if (v instanceof Date) {
+    var tz = Session.getScriptTimeZone() || 'Asia/Taipei';
+    return Utilities.formatDate(v, tz, 'yyyy/MM/dd HH:mm');
+  }
+  return String(v == null ? '' : v);
 }
 
 function findOrderRow_(sheet, orderNo, phone) {

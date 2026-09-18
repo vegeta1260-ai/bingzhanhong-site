@@ -19,3 +19,6 @@ __pycache__/
 # Drive 原始素材（大檔，不進版控）
 _drive/
 drive-download-*.zip
+
+# clasp 本機專案設定（機器相關，不進版控）
+.clasp.json

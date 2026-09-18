@@ -219,8 +219,9 @@ window.BZH = {
   /* ---------- 訂單系統 ----------
      ★ 部署 google-apps-script/Code.gs 後，把網頁應用程式網址貼在這裡。
        空字串 = 尚未啟用，網站會誠實告知客人改用 LINE 下單，不會假裝已送出。 */
+  /* Apps Script 網頁應用程式端點。換部署時只改這一行。 */
   api: {
-    url: ''
+    url: 'https://script.google.com/macros/s/AKfycbxZ3XeDAy8G1PJ_SkBu4cN5i6kQtGt3ExKOBmO_oOuj99T9E4ZSMEeAMlqr_tpwXDZK/exec'
   },
 
   /* ---------- 公司資訊（頁尾）---------- */
