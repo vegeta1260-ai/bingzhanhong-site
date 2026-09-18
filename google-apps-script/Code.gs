@@ -20,6 +20,7 @@ var SHEET_OVERVIEW  = '總覽';
 /** 訂單編號前綴 */
 var ORDER_PREFIX = 'BZH';
 
+
 /** 訂單表欄位（順序即為試算表欄位順序，請勿隨意調換） */
 var ORDER_HEADERS = [
   '訂單編號', '訂購日期', '訂購人', '訂購人電話',
@@ -46,7 +47,7 @@ var PAYMENT_STATUSES = ['待付款', '待核對', '已付款', '貨到付款', '
 /* ============================================================
    一次性設定：在編輯器選擇 setup 後按「執行」，建立工作表與標題列
    ============================================================ */
-function setup() {
+function setupCore_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
 
   var orders = ss.getSheetByName(SHEET_ORDERS) || ss.insertSheet(SHEET_ORDERS);
@@ -86,6 +87,13 @@ function setup() {
 
   buildOverview_(ss);
 
+}
+
+/** 從編輯器執行用：做完會跳提示。
+ *  網頁應用程式的執行環境沒有 UI，
+ *  所以實作拆在 setupCore_，這裡只負責提示。 */
+function setup() {
+  setupCore_();
   SpreadsheetApp.getUi().alert('設定完成，已建立「總覽」「訂單」「付款回報」「團購詢價」四個工作表。');
 }
 
@@ -159,7 +167,8 @@ function doPost(e) {
   }
 }
 
-function doGet() {
+function doGet(e) {
+
   return json({ ok: true, service: '冰盞紅訂單系統', time: new Date().toISOString() });
 }
 
