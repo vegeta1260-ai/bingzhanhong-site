@@ -896,6 +896,16 @@ body.has-bottombar .toast,body.has-orderbar .toast{ bottom:calc(104px + env(safe
   .store--pic .btn-row{ grid-column:2; }
 }
 
+/* 跳過導覽：鍵盤使用者不用 Tab 過整條導覽才進得了內容。
+   平常移出畫面，只在取得焦點時現身。 */
+.skip-link{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  padding:12px 18px; background:var(--ink); color:var(--paper);
+  font-size:.95rem; text-decoration:none; border-radius:0 0 var(--radius) 0;
+}
+.skip-link:focus{ left:0; }
+#main:focus{ outline:none; }
+
 /* ---------- 常見問題分組 ---------- */
 .faq-nav{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 30px; }
 .faq-nav a{

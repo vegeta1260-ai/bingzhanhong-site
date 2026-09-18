@@ -30,13 +30,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 標題宋體一個字重、英文 Cormorant 襯線（呼應標誌上的 Sour Plum Drink）、等寬體；內文用系統字，零下載 -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=ca576da7">
+<link rel="stylesheet" href="assets/css/site.css?v=3c630b4d">
 <!-- @end:head -->
 </head>
 
 <body class="has-bottombar">
 
 <!-- @include:header -->
+<a class="skip-link" href="#main">跳到主要內容</a>
 <div class="ribbon"><span data-bzh="campaign.banner"></span></div>
 <header class="site-header">
   <div class="wrap site-header__in">
@@ -65,7 +66,7 @@
 </header>
 <!-- @end:header -->
 
-<main>
+<main id="main" tabindex="-1">
 
 <!-- ===== 1. Hero：滿版照片，資訊面板疊在上面 ===== -->
 <section class="hero hero--bleed">
@@ -148,8 +149,8 @@
 <section class="sec" id="about">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-kicker">THE BOTTLE</span>
-      <h2 class="sec-title">認識這一瓶</h2>
+      <span class="sec-kicker">PRODUCT</span>
+      <h2 class="sec-title">產品介紹</h2>
       <p class="sec-lead">八種食材、慢火熬煮、四種喝法。完整介紹在產品頁。</p>
     </div>
     <div class="intro-cards intro-cards--feature">
@@ -224,8 +225,8 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-kicker">Notes</span>
-      <h2 class="sec-title">關於這一杯的幾件小事</h2>
-      <p class="sec-lead">不是廣告，是我們自己覺得值得說的。七篇手記，每篇兩三分鐘。</p>
+      <h2 class="sec-title">冰盞紅手記</h2>
+      <p class="sec-lead">七篇短文，寫配方、製程、喝法與保存。每篇兩三分鐘。</p>
     </div>
     <div class="articles">
       <a class="article" href="notes.html#smoke">
@@ -406,18 +407,18 @@
     <div class="sec-head">
       <span class="sec-kicker">FAQ</span>
       <h2 class="sec-title">常見問題</h2>
-      <p class="sec-lead">找不到答案的話，直接用官方 LINE 問我們就好。</p>
+      <p class="sec-lead">這裡沒有的，歡迎透過官方 LINE 詢問。</p>
     </div>
 
     <!-- 純錨點連結，沒有 JS 也能用 -->
     <nav class="faq-nav" aria-label="常見問題分類">
-      <a href="#faq-product">關於這一瓶</a>
+      <a href="#faq-product">關於商品</a>
       <a href="#faq-order">訂購</a>
       <a href="#faq-ship">配送</a>
       <a href="#faq-pay">付款與發票</a>
     </nav>
 
-    <h3 class="faq-group" id="faq-product"><span>01</span>關於這一瓶</h3>
+    <h3 class="faq-group" id="faq-product"><span>01</span>關於商品</h3>
     <div class="faq">
       <details open>
         <summary>酸梅湯需要冷藏嗎？</summary>
