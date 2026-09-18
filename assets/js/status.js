@@ -100,6 +100,51 @@
       });
   });
 
+  /* ---------- 訂單進度條 ----------
+     試算表有兩個欄位：付款狀態與訂單狀態。客人不需要理解那兩欄，
+     他只想知道「我的東西到哪了」。這裡把兩欄合成一條四段進度。 */
+  var TRACK_STEPS = ['訂單成立', '款項確認', '備貨熬煮', '出貨配送'];
+
+  function trackIndex(order) {
+    var pay = String(order.paymentStatus || '');
+    var ord = String(order.orderStatus || '');
+    if (ord === '已取消') return -1;
+    if (ord === '已出貨' || ord === '已完成') return 3;
+    if (ord === '備貨中') return 2;
+    // 貨到付款不需要事先收款，確認後就直接進備貨
+    if (pay === '已付款' || pay === '貨到付款') return 1;
+    return 0;
+  }
+
+  function trackNote(order) {
+    var pay = String(order.paymentStatus || '');
+    var ord = String(order.orderStatus || '');
+    if (ord === '已取消') return '這張訂單已取消。如有疑問請透過官方 LINE 與我們聯絡。';
+    if (ord === '已完成') return '訂單已完成，謝謝您。收到後請立即冷藏，保存期限內喝完。';
+    if (ord === '已出貨') return '已交給冷藏宅配。宅配到達時<strong>需要有人簽收</strong>，請保持電話暢通。';
+    if (ord === '備貨中') return '您的訂單已排進最近一批熬煮。熬好、裝瓶、冷藏後就會出貨。';
+    if (pay === '待核對') return '已收到您的付款回報，我們正在核對款項。核對完成後會排進備貨。';
+    if (pay === '貨到付款') return '這張訂單是貨到付款，不需要事先匯款。我們會直接安排備貨。';
+    if (pay === '待付款') return '訂單已成立，尚未收到款項。完成轉帳後請到上方<a href="#report">付款回報</a>告訴我們。';
+    return '訂單已成立，我們會盡快與您確認。';
+  }
+
+  function renderTrack(order) {
+    var idx = trackIndex(order);
+    var html = '<ol class="track" aria-label="訂單進度">';
+    for (var i = 0; i < TRACK_STEPS.length; i++) {
+      var cls = 'track__step';
+      if (idx < 0) cls += ' is-void';
+      else if (i < idx) cls += ' is-done';
+      else if (i === idx) cls += ' is-now';
+      html += '<li class="' + cls + '"><span class="track__dot"></span>' +
+              '<span class="track__label">' + TRACK_STEPS[i] + '</span></li>';
+    }
+    html += '</ol>';
+    html += '<p class="track__note' + (idx < 0 ? ' track__note--void' : '') + '">' + trackNote(order) + '</p>';
+    return html;
+  }
+
   /* ---------- 訂單查詢 ---------- */
   $('lookup-form').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -136,6 +181,7 @@
           return '<div class="summary__row"><span class="k">' + k + '</span><span class="v">' + (v || '—') + '</span></div>';
         }
         $('lookup-rows').innerHTML =
+          renderTrack(o) +
           row('訂單編號', o.orderNo) +
           row('訂購日期', o.orderedAt) +
           row('商品', o.planTitle) +
